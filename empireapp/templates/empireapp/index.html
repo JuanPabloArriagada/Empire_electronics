@@ -1,0 +1,313 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empire Electronics | Todo lo que necesitas para tu PC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'empireapp/css/style.css' %}">
+    <script src={% static 'empireapp/js/app.js' %}></script>
+</head>
+
+<body>
+    <header class="empire-header empire-bg">
+        <section class="empire-header-call">
+            <div class="empire-header-call-container">
+                <div class="empire-header-call-attention">
+                    <p class="empire-header-call-attention__days">Lunes a viernes: </p>
+                    <p class="empire-header-call-attention__hours">9:00 AM - 18:00 PM</p>
+                </div>
+                <div class="empire-header-call-city">
+                    <p class="empire-header-call-city__address">Visita nuestra sala de ventas en Mall Plaza del Trébol,
+                        Talcahuano</p>
+                </div>
+                <div class="empire-header-call-rrss">
+                    <a class="empire-header-call-rrss__phone" href="tel:+569 123 456 789">
+                        <strong>Llámanos al +569 123 456 789</strong>
+                    </a>
+                    <a class="empire-header-call-rrss__icon" href="https:www.facebook.com" target="_blank">
+                        <img src="{% static 'empireapp/images/icon-facebook.svg' %}" alt="Logo Facebook">
+                    </a>
+                    <a class="empire-header-call-rrss__icon" href="https:www.instagram.com" target="_blank">
+                        <img src={% static "empireapp/images/icon-instagram.svg" %} alt="Logo Instagram">
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="empire-header-container">
+            <div class="empire-header-logo">
+                <img class="empire-header-logo__img" src={% static "empireapp/images/logo-empire-01.png" %}
+                    alt="Logo Empire">
+            </div>
+            <nav class="empire-menu">
+                <ul class="empire-menu-nav">
+                    <li class="empire-menu-nav__list">
+                        <a class="empire-menu-nav__link active" href="#">Home</a>
+                    </li>
+                    <li class="empire-menu-nav__list">
+                        <a class="empire-menu-nav__link" href=productos>Productos</a>
+                    </li>
+                    <li class="empire-menu-nav__list">
+                        <a class="empire-menu-nav__link" href="pages/blog.html">Blog</a>
+                    </li>
+                    <li class="empire-menu-nav__list">
+                        <a class="empire-menu-nav__link" href="pages/about.html">Nosotros</a>
+                    </li>
+                    <li class="empire-menu-nav__list">
+                        <a class="empire-menu-nav__link" href="pages/contact.html">Contáctanos</a>
+                    </li>
+                    <!-- <li class="empire-menu-nav__list">
+                        <a class="empire-menu-nav__link" href="pages/pedidos.html">Pedidos</a>
+                    </li> -->
+                </ul>
+            </nav>
+            <div class="empire-menu-cart">
+                <a href="" class="empire-menu-cart__link">
+                    <img class="empire-menu-cart__img" src={% static "empireapp/images/icon-search.svg" %}
+                        alt="Icono Búsqueda">
+                </a>
+
+
+                <a id="empire-cart" class="empire-menu-cart__link cart--number">
+                    <span id="empire-cart__number" class="empire-cart__number">3</span>
+                    <img class="empire-menu-cart__img" src={% static "empireapp/images/icon-carrito.svg" %}
+                        alt="Icono Carrito de Compra">
+
+
+                    <div id="empire-cart-container" class="empire-cart-container">
+                        <!-- Productos en el carrito -->
+                        <section class="empire-details-content">
+                            <!-- Item 1 -->
+                            <div class="empire-details">
+                                <div class="empire-details-products">
+                                    <img class="empire-details-products__img" src={%
+                                        static "empireapp/images/products/laptops/01-macbook-air-15.png" %}
+                                        alt="MacBook Pro M2 MNEJ3 2022 LLA 13.3 inc">
+                                </div>
+                                <div class="empire-details-products-item">
+                                    <h3 class="empire-details-products-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3
+                                        inch</h3>
+                                    <ul class="empire-details-products-item-list">
+                                        <li class="empire-details-products-item-list__item">
+                                            <span>Marca</span><strong>Apple</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="empire-details">
+                                <div class="empire-details-products">
+                                    <img class="empire-details-products__img" src={%
+                                        static "empireapp/images/products/laptops/01-macbook-air-15.png" %}
+                                        alt="MacBook Pro M2 MNEJ3 2022 LLA 13.3 inc">
+                                </div>
+                                <div class="empire-details-products-item">
+                                    <h3 class="empire-details-products-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3
+                                        inch</h3>
+                                    <ul class="empire-details-products-item-list">
+                                        <li class="empire-details-products-item-list__item">
+                                            <span>Marca</span><strong>Apple</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="empire-details">
+                                <div class="empire-details-products">
+                                    <img class="empire-details-products__img" src={%
+                                        static "empireapp/images/products/laptops/01-macbook-air-15.png" %}
+                                        alt="MacBook Pro M2 MNEJ3 2022 LLA 13.3 inc">
+                                </div>
+                                <div class="empire-details-products-item">
+                                    <h3 class="empire-details-products-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3
+                                        inch</h3>
+                                    <ul class="empire-details-products-item-list">
+                                        <li class="empire-details-products-item-list__item">
+                                            <span>Marca</span><strong>Apple</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Precio -->
+                        <section class="empire-details-price">
+                            <div class="empire-details-products-value">
+                                <h2 class="empire-details-products-value__price" id="idPrecio">$ 1.299</h2>
+                                <span class="empire-details-products-value__last-price">$ 1.699</span>
+                                <div class="empire-details-products-value-btn">
+                                    <a href="pages/pago.html">
+                                        <button class="empire-details-products-value-btn--add"> Ir a pagar</button>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </section>
+                    </div>
+                </a>
+
+
+                <a id="empire-usuario" class="empire-menu-cart__link usuario">
+                    <img class="empire-menu-cart__img" src={% static "empireapp/images/icon-user.svg" %}
+                        alt="Icono Usuario">
+                </a>
+                <div id="empire-usuario-container" class="empire-usuario-container">
+                    <div class="empire-usuario-login">
+                        <label>Rut</label>
+                        <input class="empire-usuario-login-input" type="text" placeholder="12345678-9" required>
+                        <label>Contraseña</label>
+                        <input class="empire-usuario-login-input" type="password" placeholder="***********" required>
+                    </div>
+
+                    <a href="">¿Olvidaste la contraseña?</a>
+                    <a href="../trabajo-V452.2/pages/dashboard/home.html">
+                        <button id="btn-Login" class="empire-btn-login">Iniciar sesión</button>
+                    </a>
+                    <a href="pages/registrarse.html">
+                        <button class="empire-btn-registro">Crear cuenta</button>
+                    </a>
+                </div>
+
+
+            </div>
+        </section>
+
+        {% block contenedor %}
+    </header>
+    <div class="empire-hero">
+        <a class="empire-hero__link" href="">
+            <img class="empire-hero__banner" src={% static "empireapp/images/banner-desktop-01.png" %} alt="BANNER">
+        </a>
+    </div>
+    <main class="empire-main">
+        <section class="empire-featured">
+            <a href="pages/products.html#smartphone" class="empire-featured-item">
+                <img class="empire-featured-item__img" src="{% static " empireapp/images/smartphone-image.png" %}"
+                    alt="Smart-Phone">
+                <h4 class="empire-featured-item__title">Smath Phone</h4>
+            </a>
+            <a href="pages/products.html#laptop" class="empire-featured-item">
+                <img class="empire-featured-item__img" src="{% static " empireapp/images/laptop-image.png" %}"
+                    alt="Laptop">
+                <h4 class="empire-featured-item__title">Laptop</h4>
+            </a>
+            <a href="pages/products.html#camaras" class="empire-featured-item">
+                <img class="empire-featured-item__img" src="{% static " empireapp/images/camera-image.png" %}"
+                    alt="Cámaras">
+                <h4 class="empire-featured-item__title">Cámaras</h4>
+            </a>
+
+
+            <a href="pages/products.html#gaming" class="empire-featured-item">
+                <img class="empire-featured-item__img" src="{% static " empireapp/images/gaming-image.png" %}"
+                    alt="Gaming">
+                <h4 class="empire-featured-item__title">Gaming</h4>
+            </a>
+            <a href="pages/products.html#smartwatch" class="empire-featured-item">
+                <img class="empire-featured-item__img" src="{% static " empireapp/images/smart-watch.png" %}"
+                    alt="Smart-Watch">
+                <h4 class="empire-featured-item__title">Smart-Watch</h4>
+            </a>
+            <a href="pages/products.html#accesorios" class="empire-featured-item">
+                <img class="empire-featured-item__img" src="{% static " empireapp/images/accessories-image.png" %}"
+                    alt="Accesorios">
+                <h4 class="empire-featured-item__title">Accesorios</h4>
+            </a>
+        </section>
+        <section class="empire-sale">
+            <div class="empire-sale-all">
+                <h3 class="empire-sale-all__title">Descuentos Increíbles</h3>
+                <a class="empire-sale-all__link" href="pages/products.html">Ver todos los productos >></a>
+            </div>
+            <div class="empire-sale-slider">
+                <a href="pages/detalle-producto-apple-macbook.html" class="empire-sale-slider-item">
+                    <small class="empire-sale-slider-item__dscto">-30%</small>
+                    <img class="empire-sale-slider-item__img" src="{% static "
+                        empireapp/images/products/laptops/01-macbook-air-15.png" %}" alt="teclado-NPET-K10">
+                    <h4 class="empire-sale-slider-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3 inch</h4>
+                    <div class="empire-sale-slider-item-price">
+                        <small class="empire-sale-slider-item-price__dscto">$1.299.000</small>
+                        <small class="empire-sale-slider-item-price__value">$999.990</small>
+                    </div>
+                </a>
+                <a href="" class="empire-sale-slider-item">
+                    <small class="empire-sale-slider-item__dscto">-50%</small>
+                    <img class="empire-sale-slider-item__img" src="{% static " empireapp/images/mouse-logitech.png" %}"
+                        alt="mouse-logitech">
+                    <h4 class="empire-sale-slider-item__title">Logitech G502 Gaming Mouse</h4>
+                    <div class="empire-sale-slider-item-price">
+                        <small class="empire-sale-slider-item-price__dscto">$38.00</small>
+                        <small class="empire-sale-slider-item-price__value">$19.00</small>
+                    </div>
+                </a>
+                <a href="" class="empire-sale-slider-item">
+                    <small class="empire-sale-slider-item__dscto">-20%</small>
+                    <img class="empire-sale-slider-item__img" src="{% static "
+                        empireapp/images/apple-watch-series-7.png" %}" alt="apple-watch-series-7.png">
+                    <h4 class="empire-sale-slider-item__title">Apple Watch Series 7 (GPS, 41MM)</h4>
+                    <div class="empire-sale-slider-item-price">
+                        <small class="empire-sale-slider-item-price__dscto">$289.00</small>
+                        <small class="empire-sale-slider-item-price__value">$231.20</small>
+                    </div>
+
+                </a>
+                <a href="" class="empire-sale-slider-item">
+                    <small class="empire-sale-slider-item__dscto">-25%</small>
+                    <img class="empire-sale-slider-item__img" src="{% static "
+                        empireapp/images/apple-2022-macbook-air-m2.png" %}" alt="apple-2022-macbook-air-m2">
+                    <h4 class="empire-sale-slider-item__title">Apple 2022 MacBook Air M2 Chip (8GB RAM, 256GB SSD)</h4>
+                    <div class="empire-sale-slider-item-price">
+                        <small class="empire-sale-slider-item-price__dscto">$950.22</small>
+                        <small class="empire-sale-slider-item-price__value">$712.66</small>
+                    </div>
+                </a>
+                <a href="" class="empire-sale-slider-item">
+                    <small class="empire-sale-slider-item__dscto">-17%</small>
+                    <img class="empire-sale-slider-item__img" src="{% static "
+                        empireapp/images/samsung-titan-smart-watch.png" %}" alt="samsung-titan-smart-watch">
+                    <h4 class="empire-sale-slider-item__title">Samsung Titan smart watch</h4>
+                    <div class="empire-sale-slider-item-price">
+                        <small class="empire-sale-slider-item-price__dscto">$120.00</small>
+                        <small class="empire-sale-slider-item-price__value">$96.60</small>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    {% endblock contenedor %}
+    <footer class="empire-footer">
+        <div class="empire-footer-container">
+            <div class="empire-footer-info">
+                <h3 class="empire-footer-info__title">Company</h3>
+                <a class="empire-footer-info__link" href="#">Home</a>
+                <a class="empire-footer-info__link" href="pages/products.html">Productos</a>
+                <a class="empire-footer-info__link" href="pages/blog.html">Blog</a>
+                <a class="empire-footer-info__link" href="pages/contact.html">Contacto</a>
+            </div>
+            <div class="empire-footer-info">
+                <h3 class="empire-footer-info__title">Info</h3>
+                <a class="empire-footer-info__link" href="pages/works.html">Trabaja con nosotros</a>
+                <a class="empire-footer-info__link" href="pages/blog.html">Nuestra promesa</a>
+                <a class="empire-footer-info__link" href="pages/faq.html">FAQ</a>
+            </div>
+            <div class="empire-footer-info">
+                <h3 class="empire-footer-info__title">Contáctanos</h3>
+                <p class="empire-footer-info__desc">
+                    <img src="{% static "empireapp/images/footer/footer-icon-location.svg" %}"
+                        alt="Icon Location Footer" />
+                    Mall Plaza del Trébol, Talcahuano
+                </p>
+                <p class="empire-footer-info__desc"><img src="{% static "empireapp/images/footer/footer-icon-email.svg"%}" alt="Icon Email"> info@empire-electronics.cl</p>
+                <p class="empire-footer-info__desc"><img src="{% static "empireapp/images/footer/footer-icon-phone.svg"%}" alt="Icon Phone">+569 987654321</p>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>
