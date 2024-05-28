@@ -7,8 +7,8 @@ def index(request):
 def productos(request):
     return render(request, "empireapp/pages/productos.html")
 
-def detalle_producto(request):
-    return render(request, "empireapp/pages/detalle-producto.html")
+def detalleProducto(request):
+    return render(request, "empireapp/pages/detalleProducto.html")
 
 def contacto(request):
     return render(request, "empireapp/pages/contact.html")
@@ -18,3 +18,6 @@ def blog(request):
 
 def about(request):
     return render(request, "empireapp/pages/about.html")
+
+def registrarse(request):
+    return render(request, "empireapp/pages/registrarse.html")

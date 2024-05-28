@@ -1,4 +1,588 @@
 {% extends "../index.html" %}
+{% load static %}
 {% block contenedor %}
-    <h1>saf</h1>
+<main class="empire-main">
+    <nav class="empire-breadcrumbs" aria-label="breadcrumb">
+        <ol class="empire-breadcrumbs-list">
+            <li class="empire-breadcrumbs-list__item"><a class="empire-breadcrumbs-list__link" href="{% url "index" %}">Home ></a></li>
+            <li class="empire-breadcrumbs-list__item active" aria-current="page">Productos</li>
+        </ol>
+    </nav>
+    <!-- PRODUCTS CATEGORY -->
+    <section class="empire-category">
+        <nav class="empire-category-nav">
+            <ul class="empire-category-nav-list">
+                <li class="empire-category-nav-list__item active">
+                    <a class="empire-category-nav-list__link" href="#smartphone">
+                        <img class="empire-category-nav-list__img"
+                            src="{% static "empireapp/images/products/icon-products-mobile.svg" %}"
+                            alt="Smartphones Icon" />Smartphones
+                    </a>
+                </li>
+                <li class="empire-category-nav-list__item">
+                    <a class="empire-category-nav-list__link" href="#laptop">
+                        <img class="empire-category-nav-list__img"
+                            src="{% static "empireapp/images/products/icon-products-monitor.svg" %}" alt="Smartphones Icon" />Laptop
+                    </a>
+                </li>
+                <li class="empire-category-nav-list__item">
+                    <a class="empire-category-nav-list__link" href="#camaras">
+                        <img class="empire-category-nav-list__img"
+                            src="{% static "empireapp/images/products/icon-products-camera.svg" %}" alt="Camera Icon" />Cámaras
+                    </a>
+                </li>
+                <li class="empire-category-nav-list__item">
+                    <a class="empire-category-nav-list__link" href="#gaming">
+                        <img class="empire-category-nav-list__img"
+                            src="{% static "empireapp/images/products/icon-products-game.svg" %}" alt="Gaming Icon" />Gaming
+                    </a>
+                </li>
+
+                <li class="empire-category-nav-list__item">
+                    <a class="empire-category-nav-list__link" href="#smartwatch">
+                        <img class="empire-category-nav-list__img"
+                            src="{% static "empireapp/images/products/icon-products-watch-status.svg" %}"
+                            alt="Wearable Icon" />Smart-Watch
+                    </a>
+                </li>
+
+                <li class="empire-category-nav-list__item">
+                    <a class="empire-category-nav-list__link" href="#accesorios">
+                        <img class="empire-category-nav-list__img"
+                            src="{% static "empireapp/images/products/icon-products-devices.svg" %}" alt="Accesorios Icon" />Accesorios
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Smartphones -->
+        <section class="empire-products">
+            <h2 class="empire-products__title">SmartPhones</h2>
+            <div id="smartphone" class="empire-products-content">
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="{% static "empireapp/images/products/smartphone/Apple-IPhone-15-Pro-128Gb.webp" %}"
+                            alt="Apple iPhone 15 Pro 128Gb" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
+                    <p class="empire-products-content-body__desc">Apple iPhone 15 Pro 128Gb
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 1.099.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="{% static "empireapp/images/products/smartphone/smartphone-01.avif" %}" alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>HUAWEI</strong></span>
+                    <p class="empire-products-content-body__desc">Smartphone HUAWEI Nova 11i 8+128GB Verde + Freebuds SE
+                        de Regalo
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 184.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="{% static "empireapp/images/products/smartphone/iphone-12.webp" %}" alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
+                    <p class="empire-products-content-body__desc">Apple iPhone 11 64GB
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 389.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/smartphone/samsung-01.webp" alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>SAMSUNG</strong></span>
+                    <p class="empire-products-content-body__desc">Celular Samsung Galaxy A55 5G 256GB
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 449.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/smartphone/huawei-nova-11.avif" alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>HUAWEI</strong></span>
+                    <p class="empire-products-content-body__desc">HUAWEI Smartphone Nova 11 8+256GB Celular Dorado +
+                        WATCH GT Cyber de Regalo
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 329.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/smartphone/Samsung-Galaxy-S23-Ultra.webp"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>SAMSUNG</strong></span>
+                    <p class="empire-products-content-body__desc">Celular Samsung Galaxy S23 Ultra 512GB
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 1.649.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/smartphone/Iphone-13-Medianoche-128gb-Reacondicionado.webp"
+                            alt="Iphone-13-Medianoche-128gb-Reacondicionado" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
+                    <p class="empire-products-content-body__desc">Apple Iphone 13 Medianoche 128gb Reacondicionado
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 489.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/smartphone/Apple-IPhone-15-Pro-128Gb.webp"
+                            alt="Apple iPhone 15 Pro 128Gb" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
+                    <p class="empire-products-content-body__desc">Apple iPhone 15 Pro 128Gb
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 1.099.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Laptop -->
+        <section class="empire-products">
+            <h2 class="empire-products__title">Laptops</h2>
+            <div id="laptop" class="empire-products-content">
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/laptops/Apple-MacBook-Pro-16-M3-Pro.jpeg"
+                            alt="Apple MacBook Pro 16 (M3 Pro (CPU 12 Nucleos GPU 18n), 18GB RAM, 512GB SSD) Negro Espacial" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
+                    <p class="empire-products-content-body__desc">Apple MacBook Pro 16" (M3 Pro (CPU 12 Nucleos GPU
+                        18n), 18GB RAM, 512GB SSD) Negro Espacial
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 2.899.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/laptops/Macbook-Air-8GB-RAM-256GB-SSD-15.webp"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
+                    <p class="empire-products-content-body__desc">Apple MacBook Pro 16" (M3 Pro (CPU 12 Nucleos GPU
+                        18n), 18GB RAM, 512GB SSD) Negro Espacial
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 1.579.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/laptops/HP-Victus-16-d0511la.jpeg"
+                            alt="Notebook Victus 16-d0511la Intel Core i5 8GB RMA 512GB SSD 161." />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>HP</strong></span>
+                    <p class="empire-products-content-body__desc">Notebook Victus 16-d0511la Intel Core i5 8GB RMA 512GB
+                        SSD 161.
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 1.019.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/laptops/HP-240-G9-Celeron-N4500.webp"
+                            alt="Notebook HP 240 G9 Celeron N4500 N4500 8GB SSD 256GB W11H" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>HP</strong></span>
+                    <p class="empire-products-content-body__desc">Notebook HP 240 G9 Celeron N4500 N4500 8GB SSD 256GB
+                        W11H
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 224.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/laptops/HP-Gamer-Victus-15-FA1005LA.webp"
+                            alt="Notebook HP Gamer Victus 15-FA1005LA Intel Core i5-12450H 8GB RAM 512GB SSD RTX 2050 4GB 15,6" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>HP</strong></span>
+                    <p class="empire-products-content-body__desc">Notebook HP Gamer Victus 15-FA1005LA Intel Core
+                        i5-12450H 8GB RAM 512GB SSD RTX 2050 4GB 15,6" 144Hz
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 919.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/laptops/HP-250-G9-i3-1215U-16GB.webp"
+                            alt="Notebook HP 250 G9 i3-1215U 16GB Ram 512 GB SSD 15 Pulgadas Win 11 Pro" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>HP</strong></span>
+                    <p class="empire-products-content-body__desc">Notebook HP 250 G9 i3-1215U 16GB Ram 512 GB SSD 15
+                        Pulgadas Win 11 Pro
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 469.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img"
+                            src="../assets/images/products/laptops/Macbook-Air-8GB-RAM-256GB-SSD-15.webp"
+                            alt="Macbook Air 8GB RAM 256GB SSD 15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
+                    <p class="empire-products-content-body__desc">Macbook Air 8GB RAM 256GB SSD 15 " Apple
+                    </p>
+                    <p class="empire-products-content-body__price"><strong>$ 1.579.990</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Cámaras -->
+        <section class="empire-products">
+            <h2 class="empire-products__title">Cámaras</h2>
+            <div id="camaras" class="empire-products-content">
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Gaming -->
+        <section class="empire-products">
+            <h2 class="empire-products__title">Games</h2>
+            <div id="gaming" class="empire-products-content">
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Smart Watch -->
+        <section class="empire-products">
+            <h2 class="empire-products__title">Smart-Watch</h2>
+            <div id="smartwatch" class="empire-products-content">
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Accesorios -->
+        <section class="empire-products">
+            <h2 class="empire-products__title">Accesorios</h2>
+            <div id="accesorios" class="empire-products-content">
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+                <div class="empire-products-content-body__item">
+                    <a class="empire-products-content-body__link" href="">
+                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                            alt="apple-macbook-air-15" />
+                    </a>
+                    <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
+                    <p class="empire-products-content-body__desc">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</p>
+                    <p class="empire-products-content-body__price"><strong>$ 000.000</strong></p>
+                    <button class="empire-products-content-body__add"> Agregar</button>
+                </div>
+            </div>
+        </section>
+    </section>
+</main>
 {% endblock contenedor %}
