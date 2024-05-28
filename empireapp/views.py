@@ -8,13 +8,13 @@ def productos(request):
     return render(request, "empireapp/pages/productos.html")
 
 def detalle_producto(request):
-    return render(request, "empireapp/detalle-producto.html")
+    return render(request, "empireapp/pages/detalle-producto.html")
 
 def contacto(request):
-    return render(request, "empireapp/contact.html")
+    return render(request, "empireapp/pages/contact.html")
 
 def blog(request):
-    return render(request, "empireapp/blog.html")
+    return render(request, "empireapp/pages/blog.html")
 
 def about(request):
-    return render(request, "empireapp/about.html")
+    return render(request, "empireapp/pages/about.html")
