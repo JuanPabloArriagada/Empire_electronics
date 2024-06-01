@@ -1,4 +1,201 @@
 {% extends "../index.html" %}
+{% load static %}
 {% block contenedor %}
-    <h1>saf</h1>
+<main class="empire-main">
+    <nav class="empire-breadcrumbs" aria-label="breadcrumb">
+        <ol class="empire-breadcrumbs-list">
+            <li class="empire-breadcrumbs-list__item"><a class="empire-breadcrumbs-list__link" href="{% url "index" %}">Home ></a></li>
+            <li class="empire-breadcrumbs-list__item active" aria-current="page">Blog</li>
+        </ol>
+    </nav>
+    <section class="empire-blog">
+        <article class="empire-blog-card-container">
+
+            <a href="" class="empire-blog-card__link">
+                <div class="empire-blog-card">
+                    <img class="empire-blog-card__img" src="{% static "empireapp/images/blog/blog-meta-01.png" %}" alt="Meta 01"/>
+                    <div class="empire-blog-card-body">
+                        <div class="empire-blog-card-body-data">
+                            <div class="empire-blog-card-body-data__date">
+                                <img class="empire-blog-card-body-data__date__img" src="{% static "empireapp/images/icon-calendar.svg" %}" alt="Calendario">
+                                <p class="empire-blog-card-body-data__date__desc">8 de agosto de 2023</p>
+                            </div>
+                            <div class="empire-blog-card-body-data__time">
+                                <img class="empire-blog-card-body-data__date__img" src="{% static "empireapp/images/icon-timer.svg" %}" alt="Reloj">
+                                <p class="empire-blog-card-body-data__date__desc">3 min read</p>
+                            </div>
+                        </div>
+                        <h2 class="empire-blog-card-body__title">Título del Post</h2>
+                        <p class="empire-blog-card-body__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde reiciendis cumque ex vel.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="empire-blog-card__link">
+                <div class="empire-blog-card">
+                    <img class="empire-blog-card__img" src="{% static "empireapp/images/blog/blog-mobile-01.png" %}" alt="Meta 01"/>
+                    <div class="empire-blog-card-body">
+                        <div class="empire-blog-card-body-data">
+                            <div class="empire-blog-card-body-data__date">
+                                <img class="empire-blog-card-body-data__date__img" src="{% static "empireapp/images/icon-calendar.svg" %}" alt="Calendario">
+                                <p class="empire-blog-card-body-data__date__desc">8 de agosto de 2023</p>
+                            </div>
+                            <div class="empire-blog-card-body-data__time">
+                                <img class="empire-blog-card-body-data__date__img" src="{% static "empireapp/images/icon-timer.svg" %}" alt="Reloj">
+                                <p class="empire-blog-card-body-data__date__desc">3 min read</p>
+                            </div>
+                        </div>
+                        <h2 class="empire-blog-card-body__title">Título del Post</h2>
+                        <p class="empire-blog-card-body__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde reiciendis cumque ex vel</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="empire-blog-card__link">
+                <div class="empire-blog-card">
+                    <img class="empire-blog-card__img" src="{% static "empireapp/images/blog/blog-gaming-01.png" %}" alt="Gaming"/>
+                    <div class="empire-blog-card-body">
+                        <div class="empire-blog-card-body-data">
+                            <div class="empire-blog-card-body-data__date">
+                                <img class="empire-blog-card-body-data__date__img" src="{% static "empireapp/images/icon-calendar.svg" %}" alt="Calendario">
+                                <p class="empire-blog-card-body-data__date__desc">8 de agosto de 2023</p>
+                            </div>
+                            <div class="empire-blog-card-body-data__time">
+                                <img class="empire-blog-card-body-data__date__img" src="{% static "empireapp/images/icon-timer.svg" %}" alt="Reloj">
+                                <p class="empire-blog-card-body-data__date__desc">3 min read</p>
+                            </div>
+                        </div>
+                        <h2 class="empire-blog-card-body__title">Título del Post</h2>
+                        <p class="empire-blog-card-body__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde reiciendis cumque ex vel</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" class="empire-blog-card__link">
+                <div class="empire-blog-card">
+                    <img class="empire-blog-card__img" src="{% static "empireapp/images/blog/blog-5g-01.png" %}" alt="Gaming"/>
+                    <div class="empire-blog-card-body">
+                        <div class="empire-blog-card-body-data">
+                            <div class="empire-blog-card-body-data__date">
+                                <img class="empire-blog-card-body-data__date__img" src="{% static "empireapp/images/icon-calendar.svg" %}" alt="Calendario">
+                                <p class="empire-blog-card-body-data__date__desc">8 de agosto de 2023</p>
+                            </div>
+                            <div class="empire-blog-card-body-data__time">
+                                <img class="empire-blog-card-body-data__date__img" src="{% static "empireapp/images/icon-timer.svg" %}" alt="Reloj">
+                                <p class="empire-blog-card-body-data__date__desc">3 min read</p>
+                            </div>
+                        </div>
+                        <h2 class="empire-blog-card-body__title">Título del Post</h2>
+                        <p class="empire-blog-card-body__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde reiciendis cumque ex vel.</p>
+                    </div>
+                </div>
+            </a>
+
+            <div class="empire-blog-post-container">
+                <h3 class="empire-blog-post__title">Post Recientes</h3>
+                <a href="" class="empire-blog-post__card">
+                    <img class="empire-blog-post__img" src="{% static "empireapp/images/blog/blog-post-image-01.png" %}" alt="">
+                    <div class="empire-blog-post-body-content">
+                        <h3 class="empire-blog-post-body-content__title">Encryption Keeps Kids Safe Online</h3>
+                        <p class="empire-blog-post-body-content__desc">Policymakers are proposing laws that will weaken encryption. The EARN IT Act, STOP CSAM Act</p>
+                        <div class="empire-blog-post-body-content__date">
+                            <img class="empire-blog-post-body-content__date__img" src="{% static "empireapp/images/icon-calendar.svg" %}" alt="Calendario">
+                            <p class="empire-blog-post-body-content__date__desc">8 de agosto de 2023</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="empire-blog-post__card">
+                    <img class="empire-blog-post__img" src="{% static "empireapp/images/blog/blog-post-image-02.png" %}" alt="">
+                    <div class="empire-blog-post-body-content">
+                        <h3 class="empire-blog-post-body-content__title">Encryption Keeps Kids Safe Online</h3>
+                        <p class="empire-blog-post-body-content__desc">Policymakers are proposing laws that will weaken encryption. The EARN IT Act, STOP CSAM Act</p>
+                        <div class="empire-blog-post-body-content__date">
+                            <img class="empire-blog-post-body-content__date__img" src="{% static "empireapp/images/icon-calendar.svg" %}" alt="Calendario">
+                            <p class="empire-blog-post-body-content__date__desc">8 de agosto de 2023</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="empire-blog-post__card">
+                    <img class="empire-blog-post__img" src="{% static "empireapp/images/blog/blog-post-image-03.png" %}" alt="">
+                    <div class="empire-blog-post-body-content">
+                        <h3 class="empire-blog-post-body-content__title">Encryption Keeps Kids Safe Online</h3>
+                        <p class="empire-blog-post-body-content__desc">Policymakers are proposing laws that will weaken encryption. The EARN IT Act, STOP CSAM Act</p>
+                        <div class="empire-blog-post-body-content__date">
+                            <img class="empire-blog-post-body-content__date__img" src="{% static "empireapp/images/icon-calendar.svg" %}" alt="Calendario">
+                            <p class="empire-blog-post-body-content__date__desc">8 de agosto de 2023</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="empire-blog-post__card">
+                    <img class="empire-blog-post__img" src="{% static "empireapp/images/blog/blog-post-image-04.png" %}" alt="">
+                    <div class="empire-blog-post-body-content">
+                        <h3 class="empire-blog-post-body-content__title">Encryption Keeps Kids Safe Online</h3>
+                        <p class="empire-blog-post-body-content__desc">Policymakers are proposing laws that will weaken encryption. The EARN IT Act, STOP CSAM Act</p>
+                        <div class="empire-blog-post-body-content__date">
+                            <img class="empire-blog-post-body-content__date__img" src="{% static "empireapp/images/icon-calendar.svg" %}" alt="Calendario">
+                            <p class="empire-blog-post-body-content__date__desc">8 de agosto de 2023</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </article>
+        <aside class="empire-blog-video-container">
+            <h3 class="empire-blog-video__title">Videos</h3>
+            <a href="" class="empire-blog-video-card">
+                <img class="empire-blog-video-card__img" src="{% static "empireapp/images/blog/videos-card-01.png" %}" alt="">
+                <div class="empire-blog-video-card-body">
+                    <img class="empire-blog-video-card-body__play" src="{% static "empireapp/images/blog/icon-video-play.svg" %}" alt="Play button"/>
+                    <div class="empire-blog-video-card-body-content">
+                        <p class="empire-blog-video-card-body-content__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laboriosam</p>
+                    </div>
+                </div>
+            </a>
+            <a href="" class="empire-blog-video-card">
+                <img class="empire-blog-video-card__img" src="{% static "empireapp/images/blog/videos-card-02.png" %}" alt="">
+                <div class="empire-blog-video-card-body">
+                    <img class="empire-blog-video-card-body__play" src="{% static "empireapp/images/blog/icon-video-play.svg" %}" alt="Play button"/>
+                    <div class="empire-blog-video-card-body-content">
+                        <p class="empire-blog-video-card-body-content__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laboriosam</p>
+                    </div>
+                </div>
+            </a>
+            <a href="" class="empire-blog-video-card">
+                <img class="empire-blog-video-card__img" src="{% static "empireapp/images/blog/videos-card-03.png" %}" alt="">
+                <div class="empire-blog-video-card-body">
+                    <img class="empire-blog-video-card-body__play" src="{% static "empireapp/images/blog/icon-video-play.svg" %}" alt="Play button"/>
+                    <div class="empire-blog-video-card-body-content">
+                        <p class="empire-blog-video-card-body-content__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laboriosam</p>
+                    </div>
+                </div>
+            </a>
+            <a href="" class="empire-blog-video-card">
+                <img class="empire-blog-video-card__img" src="{% static "empireapp/images/blog/videos-card-04.png" %}" alt="">
+                <div class="empire-blog-video-card-body">
+                    <img class="empire-blog-video-card-body__play" src="{% static "empireapp/images/blog/icon-video-play.svg" %}" alt="Play button"/>
+                    <div class="empire-blog-video-card-body-content">
+                        <p class="empire-blog-video-card-body-content__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laboriosam</p>
+                    </div>
+                </div>
+            </a>
+            <a href="" class="empire-blog-video-card">
+                <img class="empire-blog-video-card__img" src="{% static "empireapp/images/blog/videos-card-05.png" %}" alt="">
+                <div class="empire-blog-video-card-body">
+                    <img class="empire-blog-video-card-body__play" src="{% static "empireapp/images/blog/icon-video-play.svg" %}" alt="Play button"/>
+                    <div class="empire-blog-video-card-body-content">
+                        <p class="empire-blog-video-card-body-content__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laboriosam</p>
+                    </div>
+                </div>
+            </a>
+            <a href="" class="empire-blog-video-card">
+                <img class="empire-blog-video-card__img" src="{% static "empireapp/images/blog/videos-card-06.png" %}" alt="">
+                <div class="empire-blog-video-card-body">
+                    <img class="empire-blog-video-card-body__play" src="{% static "empireapp/images/blog/icon-video-play.svg" %}" alt="Play button"/>
+                    <div class="empire-blog-video-card-body-content">
+                        <p class="empire-blog-video-card-body-content__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores laboriosam</p>
+                    </div>
+                </div>
+            </a>
+        </aside>
+    </section>
+</main>
 {% endblock contenedor %}

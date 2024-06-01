@@ -1,4 +1,51 @@
 {% extends "../index.html" %}
+{% load static %}
 {% block contenedor %}
-    <h1>saf</h1>
+<main class="empire-main">
+    <nav class="empire-breadcrumbs" aria-label="breadcrumb">
+        <ol class="empire-breadcrumbs-list">
+            <li class="empire-breadcrumbs-list__item"><a class="empire-breadcrumbs-list__link" href="{% url "index" %}">Home ></a>
+            </li>
+            <li class="empire-breadcrumbs-list__item"><a class="empire-breadcrumbs-list__link" href="{% url "productos" %}">Productos
+                    ></a></li>
+            <li class="empire-breadcrumbs-list__item active" aria-current="page">Accesorios</li>
+        </ol>
+    </nav>
+    <section class="empire-details">
+        <div class="empire-details-products">
+            <img class="empire-details-products__img" src="{% static "empireapp/images/products/laptops/01-macbook-air-15.png" %}"
+                alt="MacBook Pro M2 MNEJ3 2022 LLA 13.3 inc">
+        </div>
+        <div class="empire-details-products-item">
+            <h3 class="empire-details-products-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3 inch</h3>
+            <ul class="empire-details-products-item-list">
+                <li class="empire-details-products-item-list__item"><span>Marca</span><strong>Apple</strong></li>
+                <li class="empire-details-products-item-list__item"><span>Modelo</span><strong>Macbook Pro</strong>
+                </li>
+                <li class="empire-details-products-item-list__item"><span>Pantalla</span><strong>13.3 "</strong>
+                </li>
+                <li class="empire-details-products-item-list__item"><span>Disco Duro</span><strong>256 GB</strong>
+                </li>
+                <li class="empire-details-products-item-list__item"><span>Modelo CPU</span><strong>Intel Core
+                        I5</strong></li>
+            </ul>
+        </div>
+        <div class="empire-details-products-value">
+            <h2 class="empire-details-products-value__price">$ 1.299</h2>
+            <span class="empire-details-products-value__last-price">$ 1.699</span>
+            <div class="empire-details-products-value-btn">
+                <a href="">
+                    <button class="empire-details-products-value-btn--add"> Comprar</button>
+                </a>
+
+                <!-- SIMULACION DE CARRITO DE COMPRAS -->
+                <a href="">
+                    <button class="empire-details-products-value-btn--cart"> Agregar al carrito</button>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+</main>
 {% endblock contenedor %}

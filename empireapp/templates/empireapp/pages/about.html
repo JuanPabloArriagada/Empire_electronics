@@ -1,4 +1,40 @@
 {% extends "../index.html" %}
+{% load static %}
 {% block contenedor %}
-    <h1>saf</h1>
+<nav class="empire-breadcrumbs" aria-label="breadcrumb">
+    <ol class="empire-breadcrumbs-list">
+        <li class="empire-breadcrumbs-list__item"><a class="empire-breadcrumbs-list__link" href="{% url "index" %}">Home ></a></li>
+        <li class="empire-breadcrumbs-list__item active" aria-current="page">About</li>
+    </ol>
+</nav>
+<div class="empire-hero">
+    <div class="empire-hero__link">
+        <img class="empire-hero__banner" src="{% static "empireapp/images/about/about-image.jpg" %}" alt="BANNER">
+    </div>
+</div>
+<main class="empire-about">
+    <div class="empire-about-body">
+        <p class="empire-about-body__description"><strong>Empire Electronics </strong> es una tienda en línea innovadora que ofrece una amplia selección de dispositivos digitales, disponibles para su compra tanto en efectivo como en opciones de pago a plazos. Encarnando el lema "Únete hoy a la revolución digital", el sitio web no solo brinda una experiencia de compra fluida, sino que también cuenta con una cautivadora sección de blog llena de reseñas perspicaces, artículos y videos sobre tecnología de vanguardia y dispositivos digitales. Los usuarios pueden interactuar activamente con el contenido a través de comentarios y una sección de preguntas y respuestas, fomentando una comunidad dinámica de entusiastas de la tecnología.</p>
+        <h3 class="empire-about-body__title">Significado de Empire Electronics</h3>
+        <p class="empire-about-body__description">El nombre "Empire Electronics" combina inteligentemente dos idiomas (inglés y alemán), significando un hogar de la tecnología que proporciona todos los productos y servicios tecnológicos esenciales, convirtiéndolo en un destino único para personas aficionadas a la tecnología que buscan los gadgets más recientes y emocionantes.</p>
+        <h3 class="empire-about-body__title">Algunas de las características impresionantes de Empire Electronics:</h3>
+        <ul class="empire-about-body-list">
+            <li class="empire-about-body-list__item">Diversos dispositivos digitales para comprar en efectivo o a plazos.
+            </li>
+            <li class="empire-about-body-list__item">Un blog con reseñas y artículos sobre la última tecnología y gadgets.
+            </li>
+            <li class="empire-about-body-list__item">Comentarios de usuarios y sección de preguntas y respuestas para la interacción comunitaria.
+            </li>
+            <li class="empire-about-body-list__item">Representa un "hogar" con toda la tecnología necesaria para los aficionados a la tecnología.
+            </li>
+            <li class="empire-about-body-list__item">Interfaz fácil de usar para una excelente experiencia de usuario.
+            </li>
+            <li class="empire-about-body-list__item">Diseño consistente y visualmente atractivo.
+            </li>
+            <li class="empire-about-body-list__item">Un centro para que los entusiastas de la tecnología se conecten y compartan ideas.
+            </li>
+            <li class="empire-about-body-list__item">Ayuda a los usuarios a tomar decisiones de compra informadas.</li>
+        </ul>
+    </div>
+</main>
 {% endblock contenedor %}

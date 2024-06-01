@@ -1,4 +1,42 @@
 {% extends "../index.html" %}
+{% load static %}
 {% block contenedor %}
-    <h1>saf</h1>
+<main class="empire-contact">
+    <nav class="empire-breadcrumbs" aria-label="breadcrumb">
+        <ol class="empire-breadcrumbs-list">
+            <li class="empire-breadcrumbs-list__item"><a class="empire-breadcrumbs-list__link" href="{% url "index" %}">Home ></a></li>
+            <li class="empire-breadcrumbs-list__item active" aria-current="page">Contáctanos</li>
+        </ol>
+    </nav>
+    <section class="empire-contact-info">
+        <div class="empire-contact-info-card">
+            <img class="empire-contact-info-card__icon" src="{% static "empireapp/images/contact/icon-location.svg" %}" alt="Icono de ubicación">
+            <h3 class="empire-contact-info-card__title">Dirección</h3>
+            <p class="empire-contact-info-card__desc">Nivel 2, pasillo Paris, Mall Plaza del Trébol, Talcahuano</p>
+        </div>
+        <div class="empire-contact-info-card">
+            <img class="empire-contact-info-card__icon" src="{% static "empireapp/images/contact/icon-mail.svg" %}" alt="Icono de ubicación">
+            <h3 class="empire-contact-info-card__title">Email</h3>
+            <p class="empire-contact-info-card__desc">info@empireelectronics.cl</p>
+        </div>
+        <div class="empire-contact-info-card">
+            <img class="empire-contact-info-card__icon" src="{% static "empireapp/images/contact/icon-phone.svg" %}" alt="Icono de ubicación">
+            <h3 class="empire-contact-info-card__title">Teléfono</h3>
+            <p class="empire-contact-info-card__desc">+569 987654321</p>
+        </div>
+    </section>
+    <section class="empire-contact-message">
+        <div class="empire-contact-message-info">
+            <h2 class="empire-contact-message-info__title">Contáctanos</h2>
+            <p class="empire-contact-message-info__desc">
+                Estamos aquí para ayudarte en cada paso del camino. Ya sea que tengas una pregunta, necesites soporte técnico o simplemente quieras compartir tus comentarios, nuestro equipo dedicado está listo para escuchar y brindar asistencia rápida.</p>
+        </div>
+        <form class="empire-contact-message-form">
+            <input class="empire-contact-message-form__input" type="input" name="empire-name" value="" placeholder="* Nombre" required>
+            <input class="empire-contact-message-form__input" type="email" name="empire-mail" value="" placeholder="* Email" required>
+            <textarea class="empire-contact-message-form__textarea" rows="5" cols="" placeholder="* Ingrese  su mensaje" required></textarea>
+            <button class="empire-contact-message-form__btn" type="submit">Enviar</button>
+        </form>
+    </section>
+</main>
 {% endblock contenedor %}

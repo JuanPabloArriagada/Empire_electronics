@@ -1,6 +1,12 @@
 {% extends "../index.html" %}
 {% load static %}
 {% block contenedor %}
+<div class="empire-hero">
+    <div class="empire-hero__link">
+        <img class="empire-hero__banner" src="{% static "empireapp/images/banner-products-desktop.jpg" %}"
+            alt="Imagen de productos en Empire">
+    </div>
+</div>
 <main class="empire-main">
     <nav class="empire-breadcrumbs" aria-label="breadcrumb">
         <ol class="empire-breadcrumbs-list">
@@ -96,7 +102,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/smartphone/samsung-01.webp" alt="apple-macbook-air-15" />
+                            src="{% static "empireapp/images/products/smartphone/samsung-01.webp" %}" alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>SAMSUNG</strong></span>
                     <p class="empire-products-content-body__desc">Celular Samsung Galaxy A55 5G 256GB
@@ -107,7 +113,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/smartphone/huawei-nova-11.avif" alt="apple-macbook-air-15" />
+                            src="{% static "empireapp/images/products/smartphone/huawei-nova-11.avif" %}" alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>HUAWEI</strong></span>
                     <p class="empire-products-content-body__desc">HUAWEI Smartphone Nova 11 8+256GB Celular Dorado +
@@ -119,7 +125,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/smartphone/Samsung-Galaxy-S23-Ultra.webp"
+                            src="{% static "empireapp/images/products/smartphone/Samsung-Galaxy-S23-Ultra.webp" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>SAMSUNG</strong></span>
@@ -131,7 +137,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/smartphone/Iphone-13-Medianoche-128gb-Reacondicionado.webp"
+                            src="{% static "empireapp/images/products/smartphone/Iphone-13-Medianoche-128gb-Reacondicionado.webp" %}"
                             alt="Iphone-13-Medianoche-128gb-Reacondicionado" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
@@ -143,7 +149,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/smartphone/Apple-IPhone-15-Pro-128Gb.webp"
+                            src="{% static "empireapp/images/products/smartphone/Apple-IPhone-15-Pro-128Gb.webp" %}"
                             alt="Apple iPhone 15 Pro 128Gb" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
@@ -161,7 +167,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/laptops/Apple-MacBook-Pro-16-M3-Pro.jpeg"
+                            src="{% static "empireapp/images/products/laptops/Apple-MacBook-Pro-16-M3-Pro.jpeg" %}"
                             alt="Apple MacBook Pro 16 (M3 Pro (CPU 12 Nucleos GPU 18n), 18GB RAM, 512GB SSD) Negro Espacial" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
@@ -174,7 +180,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/laptops/Macbook-Air-8GB-RAM-256GB-SSD-15.webp"
+                            src="{% static "empireapp/images/products/laptops/Macbook-Air-8GB-RAM-256GB-SSD-15.webp" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
@@ -187,7 +193,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/laptops/HP-Victus-16-d0511la.jpeg"
+                            src="{% static "empireapp/images/products/laptops/HP-Victus-16-d0511la.jpeg" %}"
                             alt="Notebook Victus 16-d0511la Intel Core i5 8GB RMA 512GB SSD 161." />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>HP</strong></span>
@@ -200,7 +206,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/laptops/HP-240-G9-Celeron-N4500.webp"
+                            src="{% static "empireapp/images/products/laptops/HP-240-G9-Celeron-N4500.webp" %}"
                             alt="Notebook HP 240 G9 Celeron N4500 N4500 8GB SSD 256GB W11H" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>HP</strong></span>
@@ -213,7 +219,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/laptops/HP-Gamer-Victus-15-FA1005LA.webp"
+                            src="{% static "empireapp/images/products/laptops/HP-Gamer-Victus-15-FA1005LA.webp" %}"
                             alt="Notebook HP Gamer Victus 15-FA1005LA Intel Core i5-12450H 8GB RAM 512GB SSD RTX 2050 4GB 15,6" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>HP</strong></span>
@@ -226,7 +232,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/laptops/HP-250-G9-i3-1215U-16GB.webp"
+                            src="{% static "empireapp/images/products/laptops/HP-250-G9-i3-1215U-16GB.webp" %}"
                             alt="Notebook HP 250 G9 i3-1215U 16GB Ram 512 GB SSD 15 Pulgadas Win 11 Pro" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>HP</strong></span>
@@ -240,7 +246,7 @@
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
                         <img class="empire-products-content-body__img"
-                            src="../assets/images/products/laptops/Macbook-Air-8GB-RAM-256GB-SSD-15.webp"
+                            src="{% static "empireapp/images/products/laptops/Macbook-Air-8GB-RAM-256GB-SSD-15.webp" %}"
                             alt="Macbook Air 8GB RAM 256GB SSD 15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>APPLE</strong></span>
@@ -257,7 +263,7 @@
             <div id="camaras" class="empire-products-content">
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -268,7 +274,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -279,7 +285,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -290,7 +296,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -301,7 +307,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -312,7 +318,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -323,7 +329,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -340,7 +346,7 @@
             <div id="gaming" class="empire-products-content">
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -351,7 +357,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -362,7 +368,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -373,7 +379,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -384,7 +390,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -395,7 +401,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -406,7 +412,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -423,7 +429,7 @@
             <div id="smartwatch" class="empire-products-content">
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -434,7 +440,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -445,7 +451,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -456,7 +462,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -467,7 +473,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -478,7 +484,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -489,7 +495,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -506,7 +512,7 @@
             <div id="accesorios" class="empire-products-content">
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -517,7 +523,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -528,7 +534,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -539,7 +545,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -550,7 +556,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -561,7 +567,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
@@ -572,7 +578,7 @@
                 </div>
                 <div class="empire-products-content-body__item">
                     <a class="empire-products-content-body__link" href="">
-                        <img class="empire-products-content-body__img" src="../assets/images/products/no-imagen.jpeg"
+                        <img class="empire-products-content-body__img" src="{% static "empireapp/images/products/no-imagen.jpeg" %}"
                             alt="apple-macbook-air-15" />
                     </a>
                     <span class="empire-products-content-body__trade"><strong>MARCA</strong></span>
