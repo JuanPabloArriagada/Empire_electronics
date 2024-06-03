@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
+#PAGES
 def index(request):
     return render(request, "empireapp/index.html")
 
@@ -21,3 +22,16 @@ def about(request):
 
 def registrarse(request):
     return render(request, "empireapp/pages/registrarse.html")
+
+#DASHBOARD
+def home(request):
+    return render(request, "empireapp/pages/dashboard/home.html")
+
+def inventory(request):
+    return render(request, "empireapp/pages/dashboard/inventory.html")
+
+def products(request):
+    return render(request, "empireapp/pages/dashboard/products.html")
+
+def sales(request):
+    return render(request, "empireapp/pages/dashboard/sales.html")
