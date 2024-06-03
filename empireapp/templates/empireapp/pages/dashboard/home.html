@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,17 +7,17 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Sales</title>
-	<link rel="stylesheet" href="{% static "empireapp/pages/dashboard/css/normalize.css" %}">
-	<link rel="stylesheet" href="{% static "empireapp/pages/dashboard/css/sweetalert2.css" %}">
-	<link rel="stylesheet" href="{% static "empireapp/pages/dashboard/css/material.min.css" %}">
-	<link rel="stylesheet" href="{% static "empireapp/pages/dashboard/css/material-design-iconic-font.min.css" %}">
-	<link rel="stylesheet" href="{% static "empireapp/pages/dashboard/css/jquery.mCustomScrollbar.css" %}">
-	<link rel="stylesheet" href="{% static "empireapp/pages/dashboard/css/main.css" %}">
-	<script src="{% static "empireapp/pages/dashboard/js/jquery-1.11.2.min.js" %}"></script>
-	<script src="{% static "js/material.min.js" %}"></script>
-	<script src="{% static "js/sweetalert2.min.js" %}"></script>
-	<script src="{% static "js/jquery.mCustomScrollbar.concat.min.js" %}"></script>
-	<script src="{% static "js/main.js" %}"></script>
+	<link rel="stylesheet" href="{% static "empireapp/assets/css/normalize.css" %}">
+	<link rel="stylesheet" href="{% static "empireapp/assets/css/sweetalert2.css" %}">
+	<link rel="stylesheet" href="{% static "empireapp/assets/css/material.min.css" %}">
+	<link rel="stylesheet" href="{% static "empireapp/assets/css/material-design-iconic-font.min.css" %}">
+	<link rel="stylesheet" href="{% static "empireapp/assets/css/jquery.mCustomScrollbar.css" %}">
+	<link rel="stylesheet" href="{% static "empireapp/assets/css/main.css" %}">
+	<script src="{% static "empireapp/assets/js/jquery-1.11.2.min.js" %}"></script>
+	<script src="{% static "empireapp/assets/js/material.min.js" %}"></script>
+	<script src="{% static "empireapp/assets/js/sweetalert2.min.js" %}"></script>
+	<script src="{% static "empireapp/assets/js/jquery.mCustomScrollbar.concat.min.js" %}"></script>
+	<script src="{% static "empireapp/assets/js/main.js" %}"></script>
 </head>
 
 <body>
@@ -89,7 +90,7 @@
 			<nav class="full-width">
 				<ul class="full-width list-unstyle menu-principal">
 					<li class="full-width">
-						<a href="home.html" class="full-width">
+						<a href={% url "home" %} class="full-width">
 							<div class="navLateral-body-cl">
 								<i class="zmdi zmdi-view-dashboard"></i>
 							</div>
@@ -100,7 +101,7 @@
 					</li>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
-						<a href="products.html" class="full-width">
+						<a href={% url "products" %} class="full-width">
 							<div class="navLateral-body-cl">
 								<i class="zmdi zmdi-washing-machine"></i>
 							</div>
@@ -111,7 +112,7 @@
 					</li>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
-						<a href="sales.html" class="full-width">
+						<a href={% url "sales" %} class="full-width">
 							<div class="navLateral-body-cl">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
@@ -122,7 +123,7 @@
 					</li>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
-						<a href="inventory.html" class="full-width">
+						<a href={% url "inventory" %} class="full-width">
 							<div class="navLateral-body-cl">
 								<i class="zmdi zmdi-store"></i>
 							</div>
