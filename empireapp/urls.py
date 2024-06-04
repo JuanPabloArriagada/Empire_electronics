@@ -1,9 +1,10 @@
 from django.urls import path
 
-from empireapp.views import index, productos, detalleProducto, contacto, blog, about, registrarse, home, inventory, products, sales
+from empireapp.views import index, productos, detalleProducto, contacto, blog, about, registrarse, carrito, home, inventory, products, sales
 
 #URLS DE APLICACION
 urlpatterns = [
+    #PAGINA
     path('', index, name='index'), 
     path('productos/', productos, name="productos"),
     path('detalleProducto/', detalleProducto, name="detalleProducto"),
@@ -11,6 +12,8 @@ urlpatterns = [
     path('blog/', blog, name="blog"),
     path('about/', about, name="about"),
     path('registrarse/', registrarse, name="registrarse"),
+    path('carrito/', carrito, name="carrito"),
+    #ADMIN
     path('home/', home, name="home"),
     path('inventory/', inventory, name="inventory"),
     path('products/', products, name="products"),

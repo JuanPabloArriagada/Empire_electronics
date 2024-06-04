@@ -23,6 +23,9 @@ def about(request):
 def registrarse(request):
     return render(request, "empireapp/pages/registrarse.html")
 
+def carrito(request):
+    return render(request, "empireapp/pages/carrito.html")
+
 #DASHBOARD
 def home(request):
     return render(request, "empireapp/pages/dashboard/home.html")

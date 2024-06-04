@@ -1,4 +1,9 @@
-{% extends "../index.html.html" %}
+{% extends "../index.html" %}
+{% load static %}
 {% block contenedor %}
-
+<div class = "empire-icon-carrito">
+    <img src="{% static "empireapp/images/bag.png" %}" alt="bag">
+    <img src="{% static "empireapp/images/truck.png" %}" alt="truck">
+    <img src="{% static "empireapp/images/money.jpg" %}" alt="money">
+</div>
 {% endblock contenedor %}
