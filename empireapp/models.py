@@ -24,8 +24,9 @@ class Marca(models.TextChoices):
     HUAWEI = 'HUAWEI', 'Huawei'
 
 class Procesador(models.Model):
+    modelo=models.CharField(max_length=50, primary_key=True, null=False)
     marca = models.CharField(max_length=50, null=False)
-    generacion = models.CharField(max_length=50, null=False, primary_key=True)
+    generacion = models.CharField(max_length=50, null=False)
 
 class Laptops(models.Model):
     id = models.AutoField(primary_key=True, unique=True, null=False)
