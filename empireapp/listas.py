@@ -1,22 +1,22 @@
 TIPO_ESTADO_PRODUCTO = [
-  ('disponible', 'DISPONIBLE'),
-  ('agotado', 'AGOTADO')
+    ('disponible', 'DISPONIBLE'),
+    ('agotado', 'AGOTADO')
 ]
 
 TIPO_ESTADO_PEDIDO = [
-  ('sin confirmar', 'SIN CONFIRMAR'),
-  ('en preparacion', 'EN PREPARACION'),
-  ('enviado', 'ENVIADO'),
-  ('entregado', 'ENTREGADO'),
-  ('devuelto', 'DEVUELTO'),
-  ('rechazado', 'RECHAZADO'),
-  ('cancelado', 'CANCELADO')
+    ('sin confirmar', 'SIN CONFIRMAR'),
+    ('en preparacion', 'EN PREPARACION'),
+    ('enviado', 'ENVIADO'),
+    ('entregado', 'ENTREGADO'),
+    ('devuelto', 'DEVUELTO'),
+    ('rechazado', 'RECHAZADO'),
+    ('cancelado', 'CANCELADO')
 ]
 
 TIPO_PAGO = [
-  ('debito', 'DEBITO'),
-  ('credito', 'CREDITO'),
-  ('transferencia', 'TRANSFERENCIA')
+    ('debito', 'DEBITO'),
+    ('credito', 'CREDITO'),
+    ('transferencia', 'TRANSFERENCIA')
 ]
 
 TIPO_PULGADAS = [

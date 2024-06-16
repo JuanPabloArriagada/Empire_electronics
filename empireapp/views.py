@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import *
 
 # Create your views here.
 #PAGES
@@ -38,3 +39,14 @@ def products(request):
 
 def sales(request):
     return render(request, "empireapp/pages/dashboard/sales.html")
+
+#VIEWS DE LOS FORMS
+def create_cliente(request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to='clientes')  # Replace with your success URL
+    else:
+        form = ClienteForm()
+    return render(request, 'template_name.html', {'form': form})
