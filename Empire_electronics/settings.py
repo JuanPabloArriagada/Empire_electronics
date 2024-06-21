@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'empireapp',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,9 @@ TEMPLATES = [
         },
     },
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 WSGI_APPLICATION = 'Empire_electronics.wsgi.application'
 
@@ -124,6 +129,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #RUTA DE ARCHIVOS SUBIDOS
-MEDIA_URL = 'media/'
+MEDIA_URL='media/'
 import os
-MEDIA__ROOT = os.path.join(BASE_DIR,'Empire_electronics/media')
+MEDIA_ROOT=os.path.join(BASE_DIR,'empireapp/media')

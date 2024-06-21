@@ -1,0 +1,34 @@
+{% extends "empireapp/pages/dashboard/home.html" %}
+{% block contenido %}
+<div class="container">
+    <div class='mt-4 mb-5'>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>RUT</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>FECHA DE NACIMIENTO</th>
+                    <th>CORREO</th>
+                    <th>TELÉFONO</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ cliente.rut }}</td>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.fecha_ncto }}</td>
+                    <td>{{ cliente.correo }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td>
+                        <a href="{% url 'modificarcliente' cliente.rut %}" role="button" class="btn btn-warning btn-sm text-light mx-1">Modificar</a>
+                        <a href="{% url 'eliminarcliente' cliente.rut %}" role="button" class="btn btn-danger btn-sm mx-1">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock contenido %}

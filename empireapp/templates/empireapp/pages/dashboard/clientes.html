@@ -1,4 +1,35 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
 {% block contenido %}
     <h1>Administrar usuarios</h1>
+    {% comment %} rut, nombre, apellido, telefono, correo, direccion, detalle {% endcomment %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>RUT</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>TELÉFONO</th>
+                <th>CORREO</th>
+                <th>DIRECCIÓN</th>
+                <th>DETALLE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in clientes %}
+            <tr>
+                <td>{{ c.rut }}</td>
+                <td>{{ c.nombre }}</td>
+                <td>{{ c.apellido }}</td>
+                <td>{{ c.telefono }}</td>
+                <td>{{ c.correo }}</td>
+                <td>{{ c.direccion }}</td>
+                <td>
+                    <a href="{% url 'detallecliente' c.rut %}" role="button" class="btn btn-info text-light shadow rounded">Ver detalle</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crearcliente' %}" role="button" class="btn btn-info text-light shadow rounded">CREAR CLIENTE</a>
+
 {% endblock contenido %}

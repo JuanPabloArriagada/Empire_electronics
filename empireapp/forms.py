@@ -6,7 +6,17 @@ class ClienteForm(forms.ModelForm):
 
     class Meta:
         model = Cliente
-        fields = ['rut','nombre', 'apellido','telefono', 'correo', 'direccion','numero_casa_depto','contraseña']
+        fields = ['rut','nombre', 'apellido','telefono', 'correo', 'direccion','fecha_ncto']
+
+class UpdateClienteForm(forms.ModelForm):
+    
+    
+    
+    fecha_ncto=forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+
+    class Meta:
+        model = Cliente
+        fields = ['rut','nombre', 'apellido','telefono', 'correo', 'direccion','fecha_ncto']
 
 
 class LaptopsForm(forms.ModelForm):

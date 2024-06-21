@@ -3,8 +3,8 @@ from .models import *
 
 # Register your models here.
 class AdmCliente(admin.ModelAdmin):
-    list_display = ['rut', 'nombre', 'apellido', 'telefono', 'correo', 'direccion', 'numero_casa_depto', 'contraseña']
-    list_editable = ['nombre', 'apellido', 'telefono', 'correo', 'direccion', 'numero_casa_depto', 'contraseña']
+    list_display = ['rut', 'nombre', 'apellido', 'telefono', 'correo', 'direccion','fecha_ncto']
+    list_editable = ['nombre', 'apellido', 'telefono', 'correo', 'direccion','fecha_ncto']
     list_display_links = None  # Evitar enlaces en la lista para permitir que los campos list_editable funcionen correctamente
 
 class AdmLaptops(admin.ModelAdmin):

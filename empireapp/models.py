@@ -1,17 +1,17 @@
+from datetime import date
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from .listas import *
 
 # Create your models here.
 class Cliente(models.Model):
-    rut = models.CharField(max_length=10, primary_key=True, null=False)
-    nombre = models.CharField(max_length=50, null=False)
-    apellido = models.CharField(max_length=50, null=False)
-    telefono = models.PositiveIntegerField(validators=[MinValueValidator(10000000), MaxValueValidator(99999999)], null=False)
-    correo = models.EmailField(null=False)
-    direccion = models.CharField(max_length=100, null=False)
-    numero_casa_depto = models.PositiveIntegerField(null=False)
-    contraseña = models.CharField(max_length=50, null= False)
+    rut = models.CharField(max_length=12, unique=True, primary_key=True)
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    correo = models.EmailField(max_length=100)
+    telefono = models.CharField(max_length=20)
+    fecha_ncto = models.DateField(default=date.today)
+    direccion = models.CharField(max_length=255)
     
     def __str__(self):
         return f"RUT:{self.rut} NOMBRE: {self.nombre} {self.apellido}"

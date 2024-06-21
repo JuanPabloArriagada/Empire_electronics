@@ -29,11 +29,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='cliente',
-            name='numero_casa_depto',
-            field=models.PositiveIntegerField(),
-        ),
-        migrations.AlterField(
-            model_name='cliente',
             name='telefono',
             field=models.PositiveIntegerField(validators=[django.core.validators.MinValueValidator(10000000), django.core.validators.MaxValueValidator(99999999)]),
         ),
