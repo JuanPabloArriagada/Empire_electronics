@@ -38,7 +38,6 @@ class Migration(migrations.Migration):
                 ('telefono', models.IntegerField(validators=[django.core.validators.MinValueValidator(10000000), django.core.validators.MaxValueValidator(99999999)])),
                 ('correo', models.EmailField(max_length=254)),
                 ('direccion', models.CharField(max_length=100)),
-                ('numero_casa_depto', models.IntegerField()),
                 ('contraseña', models.CharField(max_length=50)),
             ],
         ),

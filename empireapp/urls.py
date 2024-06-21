@@ -1,7 +1,6 @@
 from django.urls import path
 
-from empireapp.views import index, productos, detalleProducto, contacto, blog, about, registrarse, carrito, home, inventory, products, sales
-
+from empireapp.views import *
 #URLS DE APLICACION
 urlpatterns = [
     #PAGINA
@@ -18,4 +17,9 @@ urlpatterns = [
     path('inventory/', inventory, name="inventory"),
     path('products/', products, name="products"),
     path('sales/', sales, name="sales"),
+    path('clientes/', clientes, name="clientes"),
+    path('detallecliente/<id>', detallecliente, name="detallecliente"),
+    path('crearcliente/',crearcliente,name='crearcliente'),
+    path('modificarcliente/<id>',modificarcliente, name='modificarcliente'),
+    path('eliminarcliente/<id>', eliminarcliente, name='eliminarcliente'),
 ]
