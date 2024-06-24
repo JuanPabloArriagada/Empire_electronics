@@ -11,113 +11,62 @@
         </div>
     </section>
 
-    <div class="mdl-tabs__panel is-active" id="tabNewProduct">
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <div class="full-width panel mdl-shadow--2dp">
-                    <div class="full-width panel-tittle bg-primary text-center tittles">
-                        Nuevo Producto
-                    </div>
-                    <div class="full-width panel-content">
-                        <form>
-                            <div class="mdl-grid">
-                                <div
-                                    class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
-                                    <h5 class="text-condensedLight">Información Básica</h5>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text"
-                                            pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="Nombre" required>
-                                        <label class="mdl-textfield__label" for="Nombre">Nombre</label>
-                                        <span class="mdl-textfield__error">Nombre Inválido</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text"
-                                            pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="Categoria" required>
-                                        <label class="mdl-textfield__label" for="Categoria">Categoria</label>
-                                        <span class="mdl-textfield__error">Nombre Inválido</span>
-                                    </div>
-                                    <h5 class="text-condensedLight">Unidades y Precios</h5>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="number"
-                                            pattern="-?[0-9]*(\.[0-9]+)?" id="Unidades" required>
-                                        <label class="mdl-textfield__label" for="Unidades">Unidades</label>
-                                        <span class="mdl-textfield__error">Número Inválido</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text"
-                                            pattern="-?[0-9.]*(\.[0-9]+)?" id="Precio" required>
-                                        <label class="mdl-textfield__label" for="Precio">Precio</label>
-                                        <span class="mdl-textfield__error">Precio Inválido</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="number"
-                                            pattern="-?[0-9]*(\.[0-9]+)?" id="Descuento" required>
-                                        <label class="mdl-textfield__label" for="Descuento">%
-                                            Descuento</label>
-                                        <span class="mdl-textfield__error">Descuento Inválido</span>
-                                    </div>
-                                </div>
-                                <div
-                                    class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
-                                    <h5 class="text-condensedLight">Datos Proveedor</h5>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text"
-                                            pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="Proveedor" required>
-                                        <label class="mdl-textfield__label" for="Proveedor">Proveedor</label>
-                                        <span class="mdl-textfield__error">Nombre Inválido</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" id="Modelo" required>
-                                        <label class="mdl-textfield__label" for="Modelo">Modelo</label>
-                                        <span class="mdl-textfield__error">Modelo Inválido</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" id="Marca" required>
-                                        <label class="mdl-textfield__label" for="Marca">Marca</label>
-                                        <span class="mdl-textfield__error">Marca Inválida</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-center">
-                                <button
-                                    class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored bg-primary"
-                                    id="btnaddProduct" style="color: aliceblue;">
-                                    <i class="zmdi zmdi-plus"></i>
-                                </button>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="mdl-tabs__panel" id="tabListProducts">
-        <div class="full-width divider-menu-h"></div>
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Categoria</th>
-                            <th>Unidades</th>
-                            <th>Precio</th>
-                            <th>Descuento</th>
-                            <th>Proveedor</th>
-                            <th>Modelo</th>
-                            <th>Marca</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    </div>
-<script src="./js/model/Product.js"></script>
-<script src="./js/controller/products.js"></script>
-<script src="./js/dashboard.js"></script>
+        <a href= {% url "añadirlaptops" %}>AÑADIR Laptops</a>
+        <a href= {% url "añadircelulares" %}>AÑADIR Celulares</a>
+        <h2>Laptops</h2>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for laptop in laptops %}
+                <tr>
+                    <td>{{ laptop.marca }}</td>
+                    <td>{{ laptop.modelo }}</td>
+                    <td>{{ laptop.precio }}</td>
+                    <td>{{ laptop.stock }}</td>
+                    <td>
+                        <a href={% url 'editarproducto' 'laptop' laptop.id %}>Editar</a></td>
+                    <td>
+                        <button type="submit">Eliminar</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Celulares</h2>
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for celular in celulares %}
+            <tr>
+                <td>{{ celular.marca }}</td>
+                <td>{{ celular.modelo }}</td>
+                <td>{{ celular.precio }}</td>
+                <td>{{ celular.stock }}</td>
+                <td>
+                    <a href="{% url 'editarproducto' 'celular' celular.id %}">Editar</a></td>
+                <td>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock contenido %}

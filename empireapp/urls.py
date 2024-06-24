@@ -22,4 +22,7 @@ urlpatterns = [
     path('crearcliente/',crearcliente,name='crearcliente'),
     path('modificarcliente/<id>',modificarcliente, name='modificarcliente'),
     path('eliminarcliente/<id>', eliminarcliente, name='eliminarcliente'),
+    path('añadirlaptops/', añadirlaptops, name="añadirlaptops"),
+    path('añadircelulares/', añadircelulares, name="añadircelulares"),
+    path('editarproducto/<str:product_type>/<int:pk>', editarproducto, name="editarproducto"),
 ]

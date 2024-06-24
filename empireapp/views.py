@@ -34,9 +34,6 @@ def home(request):
 def inventory(request):
     return render(request, "empireapp/pages/dashboard/inventory.html")
 
-def products(request):
-    return render(request, "empireapp/pages/dashboard/products.html")
-
 def sales(request):
     return render(request, "empireapp/pages/dashboard/sales.html")
 
@@ -99,3 +96,71 @@ def eliminarcliente(request,id):
         """ messages.error(request, 'cliente Eliminado') """
         return redirect(to='clientes')
     return render(request, "empireapp/pages/dashboard/eliminarcliente.html", datos)
+
+#LAPTOPS
+def añadirlaptops(request):
+    form=LaptopsForm()
+
+    if request.method=="POST":
+        form=LaptopsForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            """ messages.success(request, 'Laptop agregada') """
+            return redirect(to="products")
+
+    datos={
+        "form":form
+    }
+    return render(request, "empireapp/pages/dashboard/añadirlaptops.html", datos)
+
+#CELULARES
+def añadircelulares(request):
+    form=CelularesForms()
+
+    if request.method=="POST":
+        form=CelularesForms(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            """ messages.success(request, 'Laptop agregada') """
+            return redirect(to="products")
+
+    datos={
+        "form":form
+    }
+    return render(request, "empireapp/pages/dashboard/añadircelulares.html",datos)
+
+
+def products(request):
+    laptops = Laptops.objects.all()
+    celulares = Celulares.objects.all()
+    
+    productos = {
+        'laptops': laptops,
+        'celulares': celulares
+    }
+    
+    print(productos)
+    return render(request,"empireapp/pages/dashboard/products.html", productos)
+
+
+
+def editarproducto(request, product_type, pk):
+    if product_type == 'laptop':
+        product = get_object_or_404(Laptops, id=pk)
+        form = UpdateLaptopsForm(request.POST or None, instance=product)
+    elif product_type == 'celular':
+        product = get_object_or_404(Celulares, id=pk)
+        form = UpdateCelularesForm(request.POST or None, instance=product)
+    else:
+        # Handle unknown product type
+        return redirect('products')
+
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        return redirect('products')
+
+    context = {
+        'form': form,
+        'product_type': product_type,
+    }
+    return render(request, "empireapp/pages/dashboard/editarproducto.html", context)

@@ -1,0 +1,29 @@
+{% extends "empireapp/pages/dashboard/home.html" %}
+{% block contenido %}
+    <section class="full-width header-well">
+        <div class="full-width header-well-icon">
+            <i class="zmdi zmdi-washing-machine"></i>
+        </div>
+        <div class="full-width header-well-text">
+            <p class="text-condensedLight">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+        </div>
+    </section>
+
+    <h1>Editar Producto</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {% if product_type == 'laptop' %}
+            {{ form_laptop.as_p }}
+
+        {% elif product_type == 'celular' %}
+            {{ form_celular.as_p }}
+
+        {% endif %}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a href="{% url 'products' %}">Volver a la lista de productos</a>
+{% endblock contenido %}
