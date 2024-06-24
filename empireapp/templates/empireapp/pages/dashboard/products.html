@@ -35,7 +35,9 @@
                     <td>
                         <a href={% url 'editarproducto' 'laptop' laptop.id %}>Editar</a></td>
                     <td>
-                        <button type="submit">Eliminar</button>
+                        <button type="submit">
+                            <a href="{% url 'eliminar_producto' 'laptop' laptop.id %}">Eliminar</a></td>
+                        </button>
                     </td>
                 </tr>
                 {% endfor %}
@@ -63,7 +65,9 @@
                 <td>
                     <a href="{% url 'editarproducto' 'celular' celular.id %}">Editar</a></td>
                 <td>
-                    
+                    <button type="submit">
+                        <a href="{% url 'eliminar_producto' 'celular' celular.id %}">Eliminar</a></td>
+                    </button>
                 </td>
             </tr>
             {% endfor %}

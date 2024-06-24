@@ -1,0 +1,17 @@
+{% extends "empireapp/pages/dashboard/home.html" %}
+{% block contenido %}
+    <section class="full-width header-well">
+        <!-- Contenido del encabezado, según tu diseño -->
+    </section>
+
+    <h2>Eliminar {{ product_type|capfirst }}</h2>
+
+    <p>¿Estás seguro que deseas eliminar {{ product_type|capfirst }} "{{ product }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar eliminación</button>
+        <a href="{% url 'products' %}">Cancelar</a>
+    </form>
+
+{% endblock contenido %}

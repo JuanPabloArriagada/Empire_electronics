@@ -164,3 +164,22 @@ def editarproducto(request, product_type, pk):
         'product_type': product_type,
     }
     return render(request, "empireapp/pages/dashboard/editarproducto.html", context)
+
+def eliminar_producto(request, product_type, pk):
+    if product_type == 'laptop':
+        product = get_object_or_404(Laptops, id=pk)
+    elif product_type == 'celular':
+        product = get_object_or_404(Celulares, id=pk)
+    else:
+        # Manejar caso de product_type desconocido o incorrecto
+        return redirect('products')  # Redirigir a la página de productos o donde corresponda
+
+    if request.method == 'POST':
+        product.delete()
+        return redirect('products')  # Redirigir a la página de productos después de eliminar
+
+    context = {
+        'product': product,
+        'product_type': product_type,
+    }
+    return render(request, "empireapp/pages/dashboard/eliminar_producto.html", context)

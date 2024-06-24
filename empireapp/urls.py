@@ -25,4 +25,5 @@ urlpatterns = [
     path('añadirlaptops/', añadirlaptops, name="añadirlaptops"),
     path('añadircelulares/', añadircelulares, name="añadircelulares"),
     path('editarproducto/<str:product_type>/<int:pk>', editarproducto, name="editarproducto"),
+    path('eliminar_producto/<str:product_type>/<int:pk>', eliminar_producto, name="eliminar_producto"),
 ]
