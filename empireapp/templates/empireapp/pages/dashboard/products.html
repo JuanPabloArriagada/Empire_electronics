@@ -1,4 +1,5 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
+{% load static %}
 {% block contenido %}
     <section class="full-width header-well">
         <div class="full-width header-well-icon">
@@ -18,6 +19,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Imagen</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Precio</th>
@@ -30,6 +32,7 @@
                 {% for laptop in laptops %}
                 <tr>
                     <td>{{ laptop.id }}</td>
+                    <td><img src={{laptop.imagen.url}} alt="foto" height="150"></td>
                     <td>{{ laptop.marca }}</td>
                     <td>{{ laptop.modelo }}</td>
                     <td>{{ laptop.precio }}</td>
@@ -50,6 +53,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Imagen</th>
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Precio</th>
@@ -62,6 +66,7 @@
             {% for celular in celulares %}
             <tr>
                 <td>{{ celular.id }}</td>
+                <td><img src={{celular.imagen.url}} alt="foto" height="150"></td>
                 <td>{{ celular.marca }}</td>
                 <td>{{ celular.modelo }}</td>
                 <td>{{ celular.precio }}</td>

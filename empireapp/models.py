@@ -25,6 +25,7 @@ class Marca(models.TextChoices):
 
 class Laptops(models.Model):
     id = models.AutoField(primary_key=True, unique=True, null=False)
+    imagen = models.ImageField(upload_to='laptops', null= True )
     marca = models.CharField(max_length=50, choices=Marca.choices, null=False)
     modelo = models.CharField(max_length=50, null=False)
     pulgadas = models.FloatField(null=False, choices=TIPO_PULGADAS)
@@ -42,6 +43,7 @@ class Laptops(models.Model):
 
 class Celulares(models.Model):
     id = models.AutoField(primary_key=True, unique=True, null=False)
+    imagen = models.ImageField(upload_to='celulares')
     marca = models.CharField(max_length=50, choices=Marca.choices, null=False)
     modelo = models.CharField(max_length=50, null=False)
     pulgadas = models.FloatField(null=False, choices=TIPO_PULGADAS)

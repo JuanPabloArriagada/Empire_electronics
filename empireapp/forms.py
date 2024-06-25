@@ -21,27 +21,27 @@ class UpdateClienteForm(forms.ModelForm):
 class LaptopsForm(forms.ModelForm):
     class Meta:
         model = Laptops
-        fields = ['marca', 'modelo', 'pulgadas', 'resolucion', 'memoria_ram', 'bateria', 'almacenamiento', 'tarjeta_video', 'procesador', 'precio', 'stock']
+        fields = ['imagen','marca', 'modelo', 'pulgadas', 'resolucion', 'memoria_ram', 'bateria', 'almacenamiento', 'tarjeta_video', 'procesador', 'precio', 'stock']
 
 class UpdateLaptopsForm(forms.ModelForm):
     
     class Meta:
         model = Laptops
-        fields = ['marca','modelo', 'pulgadas', 'resolucion', 'memoria_ram', 'bateria', 'almacenamiento', 'tarjeta_video', 'procesador', 'precio', 'stock']
+        fields = ['imagen','marca','modelo', 'pulgadas', 'resolucion', 'memoria_ram', 'bateria', 'almacenamiento', 'tarjeta_video', 'procesador', 'precio', 'stock']
 
 
 #CELULARES FORMS
 class CelularesForms(forms.ModelForm):
     class Meta:
         model = Celulares
-        fields = ['marca', 'modelo', 'pulgadas', 'resolucion', 'bateria', 'almacenamiento', 'camara', 'precio', 'stock']
+        fields = ['imagen','marca', 'modelo', 'pulgadas', 'resolucion', 'bateria', 'almacenamiento', 'camara', 'precio', 'stock']
 
 
 class UpdateCelularesForm(forms.ModelForm):
     
     class Meta:
         model = Celulares
-        fields = ['marca', 'modelo', 'pulgadas', 'resolucion', 'bateria', 'almacenamiento', 'camara', 'precio', 'stock']
+        fields = ['imagen','marca', 'modelo', 'pulgadas', 'resolucion', 'bateria', 'almacenamiento', 'camara', 'precio', 'stock']
 
 
 #CARRITO
