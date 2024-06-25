@@ -17,6 +17,7 @@
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Precio</th>
@@ -28,6 +29,7 @@
             <tbody>
                 {% for laptop in laptops %}
                 <tr>
+                    <td>{{ laptop.id }}</td>
                     <td>{{ laptop.marca }}</td>
                     <td>{{ laptop.modelo }}</td>
                     <td>{{ laptop.precio }}</td>
@@ -47,6 +49,7 @@
     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Precio</th>
@@ -58,6 +61,7 @@
         <tbody>
             {% for celular in celulares %}
             <tr>
+                <td>{{ celular.id }}</td>
                 <td>{{ celular.marca }}</td>
                 <td>{{ celular.modelo }}</td>
                 <td>{{ celular.precio }}</td>
