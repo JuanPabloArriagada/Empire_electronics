@@ -1,6 +1,6 @@
 from django.urls import path
-
 from empireapp.views import *
+
 #URLS DE APLICACION
 urlpatterns = [
     #PAGINA

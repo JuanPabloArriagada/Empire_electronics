@@ -1,6 +1,8 @@
+import os
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import *
-
+from os import  remove
+from django.conf import settings
 # Create your views here.
 #PAGES
 def index(request):
@@ -113,6 +115,7 @@ def añadirlaptops(request):
     }
     return render(request, "empireapp/pages/dashboard/añadirlaptops.html", datos)
 
+
 #CELULARES
 def añadircelulares(request):
     form=CelularesForms()
@@ -168,13 +171,17 @@ def editarproducto(request, product_type, pk):
 def eliminar_producto(request, product_type, pk):
     if product_type == 'laptop':
         product = get_object_or_404(Laptops, id=pk)
+            
     elif product_type == 'celular':
         product = get_object_or_404(Celulares, id=pk)
+        
     else:
         # Manejar caso de product_type desconocido o incorrecto
         return redirect('products')  # Redirigir a la página de productos o donde corresponda
 
     if request.method == 'POST':
+        if product.imagen:
+            remove(os.path.join(str(settings.MEDIA_ROOT).replace('/media','')+product.imagen.url))
         product.delete()
         return redirect('products')  # Redirigir a la página de productos después de eliminar
 
