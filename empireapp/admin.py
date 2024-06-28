@@ -14,16 +14,7 @@ class AdmLaptops(admin.ModelAdmin):
 class AdmCelulares(admin.ModelAdmin):
     list_display = ['pulgadas', 'resolucion', 'bateria', 'almacenamiento', 'camara']
 
-class AdmCart(admin.ModelAdmin):
-    list_display = ['id', 'user', 'created_at']
-    list_filter = ['created_at']
-    search_fields = ['user__rut', 'user__nombre', 'user__apellido']
-
-class AdmCartItem(admin.ModelAdmin):
-    list_display = ['cart', 'producto', 'quantity']
 
 admin.site.register(Cliente, AdmCliente)
 admin.site.register(Laptops, AdmLaptops)
 admin.site.register(Celulares, AdmCelulares)
-admin.site.register(Cart, AdmCart)
-admin.site.register(CartItem, AdmCartItem)

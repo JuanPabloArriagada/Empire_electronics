@@ -1,5 +1,5 @@
+
 import uuid
-from django.conf import settings
 from django.db import models
 from .listas import *
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
@@ -117,13 +117,14 @@ class Celulares(Producto):
 
 #CARRITO
 User = get_user_model()
+
 class Cart(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Cart {self.id} for {self.user.rut}'
+        return f'Cart {self.id} for {self.user.email}'
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
@@ -131,4 +132,4 @@ class CartItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return f'{self.quantity} of {self.producto.rut}'
+        return f'{self.quantity} of {self.producto.nombre}'

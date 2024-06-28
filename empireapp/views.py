@@ -15,7 +15,13 @@ def index(request):
     return render(request, 'empireapp/index.html', {'form': form})
 
 def productos(request):
-    return render(request, "empireapp/pages/productos.html")
+    productos = Producto.objects.all()
+    
+    lista_productos = {
+        'productos': productos,
+    }
+    
+    return render(request, "empireapp/pages/productos.html",lista_productos)
 
 def detalleProducto(request):
     return render(request, "empireapp/pages/detalleProducto.html")

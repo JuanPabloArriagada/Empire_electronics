@@ -33,6 +33,6 @@ urlpatterns = [
     
     #CARRITO
     path('cart/', cart_detail, name='cart_detail'),
-    path('cart/add/<uuid:product_id>/', cart_add, name='cart_add'),
+    path('cart/add/<int:product_id>/', cart_add, name='cart_add'),
     path('cart/remove/<int:item_id>/', cart_remove, name='cart_remove'),
 ]

@@ -1,0 +1,31 @@
+{% extends "../empireapp/index.html" %}
+{% load static %}
+{% block contenedor %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h2>Carrito de Compras</h2>
+    <ul>
+        {% for item in items %}
+            {% if item.laptop %}
+            <li><img class="empire-products-content-body__img" src="{{ producto.laptops.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" /></li>
+            <li>Marca: {{ item.marca }}</li>
+            <li>Modelo: {{ item.modelo }}</li>
+            <li>Modelo: {{ item.descripcion }}</li>
+            <li>: {{ item.tamanioaro }}</li>
+            {% else %}
+
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'productos' %}">Seguir Comprando</a>
+</body>
+</html>
+{% endblock contenedor %}
