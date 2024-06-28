@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 
 
 # Create your views here.
@@ -46,9 +47,23 @@ def registrarse(request):
         form = ClienteForm()
     return render(request, 'empireapp/pages/registrarse.html', {'form': form})
 
-def carrito(request):
-    return render(request, "empireapp/pages/carrito.html")
+@login_required
+def pedidos(request):
+    pedidos = Pedido.objects.filter(user=request.user)
+    return render(request, 'empireapp/pages/pedidos.html', {'pedidos': pedidos})
 
+def detallepedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)  
+    
+    productos = pedido.items.all()
+
+    context = {
+        'pedido': pedido,
+        'productos': productos,
+    }
+    print(Pedido)
+    print()
+    return render(request, 'empireapp/pages/detallepedido.html', context)
 #DASHBOARD
 def home(request):
     return render(request, "empireapp/pages/dashboard/home.html")
@@ -214,8 +229,27 @@ def eliminar_producto(request, product_type, pk):
 #CARRITO
 def cart_detail(request):
     cart, created = Cart.objects.get_or_create(user=request.user)
-    items = CartItem.objects.filter(cart=cart)
-    return render(request, 'cart/detail.html', {'cart': cart, 'items': items})
+    items = CartItem.objects.filter(cart=cart).select_related('producto')
+    
+    total = sum(item.producto.precio * item.quantity for item in items)
+    
+    if request.method == 'POST':
+        with transaction.atomic():
+            
+            pedido = Pedido.objects.create(
+                user=request.user,
+                total=total,
+                estado='pendiente'
+            )
+            for item in items:
+                pedido.items.add(item)
+            
+            print(pedido)
+            # Vaciar el carrito después de completar el pedido
+            """ cart.cartitem_set.all().delete()
+            cart.delete() """
+        return redirect('pedidos')
+    return render(request, 'cart/detail.html', {'cart': cart, 'items': items, 'total': total})
 
 @login_required
 def cart_add(request, product_id):
@@ -234,3 +268,24 @@ def cart_remove(request, item_id):
     item = get_object_or_404(CartItem, id=item_id)
     item.delete()
     return redirect('cart_detail')
+
+@login_required
+def cart_update(request, item_id):
+    item = get_object_or_404(CartItem, id=item_id)
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+
+        if action == 'incrementar':
+            item.quantity += 1
+            item.save()
+        elif action == 'decrementar':
+            if item.quantity > 1:
+                item.quantity -= 1
+                item.save()
+            else:
+                # Si la cantidad es 1 y se intenta decrementar, eliminar el producto del carrito
+                item.delete()
+
+    return redirect('cart_detail')
+

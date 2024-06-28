@@ -12,6 +12,8 @@ urlpatterns = [
     path('blog/', blog, name="blog"),
     path('about/', about, name="about"),
     path('registrarse/', registrarse, name="registrarse"),
+    path('pedidos/', pedidos, name="pedidos"),
+    path('detallepedido/<int:pedido_id>/', detallepedido, name='detallepedido'),
     #ADMIN
     path('home/', home, name="home"),
     path('inventory/', inventory, name="inventory"),
@@ -35,4 +37,5 @@ urlpatterns = [
     path('cart/', cart_detail, name='cart_detail'),
     path('cart/add/<int:product_id>/', cart_add, name='cart_add'),
     path('cart/remove/<int:item_id>/', cart_remove, name='cart_remove'),
+    path('cart/update/<int:item_id>/', cart_update, name='cart_update'),
 ]

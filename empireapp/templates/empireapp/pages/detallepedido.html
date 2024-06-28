@@ -1,16 +1,13 @@
-{% extends "../empireapp/index.html" %}
+{% extends "../index.html" %}
 {% block contenedor %}
-{% load static %}
 {% load custom_filters %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
-    <h2>Carrito de Compras</h2>
+<h1>Detalle del Pedido #{{ pedido.id }}</h1>
+    
+    <p><strong>Fecha de Pedido:</strong> {{ pedido.fecha_pedido }}</p>
+    <p><strong>Total:</strong> {{ pedido.total }}</p>
+    <p><strong>Estado:</strong> {{ pedido.estado }}</p>
+
+    <h2>Productos en el Pedido:</h2>
     <ul>
         {% for item in items %}
             {% if item.producto.laptops %}
@@ -27,10 +24,9 @@
                 <li>Precio: {{ item.producto.precio|currency }}</li>
                 <li>Cantidad: 
                     <form action="{% url 'cart_update' item.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" name="action" value="decrementar">-</button>
-                        <span>{{ item.quantity }}</span>
-                        <button type="submit" name="action" value="incrementar">+</button>
+                    {% csrf_token %}
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                        <button type="submit">Actualizar</button>
                     </form>
                 </li>
             
@@ -46,34 +42,12 @@
                 <li>Precio: {{ item.producto.precio|currency }}</li>
                 <li>Cantidad:
                     <form action="{% url 'cart_update' item.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" name="action" value="decrementar">-</button>
-                        <span>{{ item.quantity }}</span>
-                        <button type="submit" name="action" value="incrementar">+</button>
+                    {% csrf_token %}
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                        <button type="submit">Actualizar</button>
                     </form>
                 </li>
             {% endif %}
         {% endfor %}
     </ul>
-
-    <h3>Total del Carrito: {{ total|currency }}</h3>
-
-    <form action="{% url 'cart_detail' %}" method="post">
-        {% csrf_token %}
-        <!-- Aquí puedes añadir campos para el pago, como tarjeta de crédito, dirección de envío, etc. -->
-        <label for="card_number">Número de Tarjeta:</label>
-        <input type="text" id="card_number" name="card_number" required>
-        
-        <label for="expiry_date">Fecha de Expiración:</label>
-        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
-        
-        <label for="cvv">CVV:</label>
-        <input type="text" id="cvv" name="cvv" required>
-        
-        <button type="submit">Pagar</button>
-    </form>
-
-    <a href="{% url 'productos' %}">Seguir Comprando</a>
-</body>
-</html>
 {% endblock contenedor %}

@@ -50,3 +50,6 @@ class CartAddProductForm(forms.ModelForm):
     class Meta:
         model = CartItem
         fields = ['quantity']
+
+class CartUpdateProductForm(forms.Form):
+    quantity = forms.IntegerField(min_value=1)

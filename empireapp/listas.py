@@ -26,13 +26,13 @@ TIPO_PULGADAS = [
 ]
 
 TIPO_ALMACENAMIENTO_LAPTOPS = [
-    ('SSD', '128 GB SSD'),
-    ('SSD', '256 GB SSD'),
-    ('SSD', '512 GB SSD'),
-    ('SSD', '1 TB SSD'),
-    ('HDD', '256 GB HDD'),
-    ('HDD', '512 GB HDD'),
-    ('HDD', '1 TB HDD'),
+    ('128 GB SSD', '128 GB SSD'),
+    ('256 GB SSD', '256 GB SSD'),
+    ('512 GB SSD', '512 GB SSD'),
+    ('1 TB SSD', '1 TB SSD'),
+    ('256 GB HDD', '256 GB HDD'),
+    ('512 GB HDD', '512 GB HDD'),
+    ('1 TB HDD', '1 TB HDD'),
     # Agrega más opciones según sea necesario
 ]
 
