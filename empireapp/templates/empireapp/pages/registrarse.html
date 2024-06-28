@@ -1,7 +1,12 @@
 {% extends "../index.html" %}
 {% block contenedor %}
 <main class="empire-main">
-    <form id="formulario_registro" class="empire-registro-container was-validated">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrarse</button>
+    </form>
+    {% comment %} <form id="formulario_registro" class="empire-registro-container was-validated">
 
         <div class="empire-registro-head">
             <h1 style="text-align: center"> Registro </h1>
@@ -115,6 +120,6 @@
         <a href="index.html">
             <button class="empire-registro-form">Registrarse</button>
         </a>
-    </form>
+    </form> {% endcomment %}
 </main>
 {% endblock contenedor %}

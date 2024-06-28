@@ -1,0 +1,15 @@
+{% extends "../index.html" %}
+{% load static %}
+{% block contenedor %}
+<div class = "empire-icon-carrito">
+    <h2>Carrito de Compras</h2>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.producto.nombre }} - {{ item.quantity }} - {{ item.producto.precio }} 
+                <a href="{% url 'cart_remove' item.id %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Seguir Comprando</a>
+</div>
+{% endblock contenedor %}

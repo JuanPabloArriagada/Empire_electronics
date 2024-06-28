@@ -33,49 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
     numberCart.addEventListener("click", toggleContenedor);
 });
 
-/** CONTRASEÑA **/
-function verificarContraseñas() {
-    // Obtener los elementos del formulario
-    const form = document.getElementById('formulario_registro');
-    const password1 = document.getElementById('contraseña_cliente');
-    const password2 = document.getElementById('contraseña_clienteV');
-    const errorElement = document.getElementById('id_lbl_contraseñaV');
-
-    // Verifica si `form`, `password1`, `password2` o `errorElement` son `null` o `undefined`
-    if (!form || !password1 || !password2 || !errorElement) {
-        console.error('Algunos elementos del DOM no se pudieron encontrar.');
-        return;
-    }
-
-    // Función para verificar si las contraseñas coinciden
-    function verificarYActuar(event) {
-        // Prevenir el envío del formulario inicialmente
-        event.preventDefault();
-
-        if (password1.value !== password2.value) {
-            // Si las contraseñas no coinciden, mostrar mensaje de error
-            errorElement.style.display = 'block';
-        } else {
-            // Si las contraseñas coinciden, ocultar el mensaje de error
-            errorElement.style.display = 'none';
-            // Proceder a enviar el formulario
-            form.submit();
-        }
-    }
-
-    // Agregar evento 'submit' al formulario para verificar las contraseñas
-    form.addEventListener('submit', verificarYActuar);
-
-    // También ocultar el mensaje de error si los valores de las contraseñas cambian
-    function ocultarError() {
-        errorElement.style.display = 'none';
-    }
-
-    password1.addEventListener('input', ocultarError);
-    password2.addEventListener('input', ocultarError);
-}
-
-
 
 // Función para cargar las comunas desde el archivo JSON
 // Ruta del archivo JSON

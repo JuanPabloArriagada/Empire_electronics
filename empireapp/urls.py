@@ -1,5 +1,6 @@
 from django.urls import path
 from empireapp.views import *
+from django.contrib.auth import views as auth_views
 
 #URLS DE APLICACION
 urlpatterns = [
@@ -11,7 +12,6 @@ urlpatterns = [
     path('blog/', blog, name="blog"),
     path('about/', about, name="about"),
     path('registrarse/', registrarse, name="registrarse"),
-    path('carrito/', carrito, name="carrito"),
     #ADMIN
     path('home/', home, name="home"),
     path('inventory/', inventory, name="inventory"),
@@ -26,4 +26,13 @@ urlpatterns = [
     path('añadircelulares/', añadircelulares, name="añadircelulares"),
     path('editarproducto/<str:product_type>/<int:pk>', editarproducto, name="editarproducto"),
     path('eliminar_producto/<str:product_type>/<int:pk>', eliminar_producto, name="eliminar_producto"),
+    
+    #LOGIN Y LOGOUT
+    path('login/', auth_views.LoginView.as_view(template_name='index.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='index'), name='logout'),
+    
+    #CARRITO
+    path('cart/', cart_detail, name='cart_detail'),
+    path('cart/add/<uuid:product_id>/', cart_add, name='cart_add'),
+    path('cart/remove/<int:item_id>/', cart_remove, name='cart_remove'),
 ]

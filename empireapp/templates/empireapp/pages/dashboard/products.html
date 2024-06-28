@@ -14,7 +14,7 @@
 
         <a href= {% url "añadirlaptops" %}>AÑADIR Laptops</a>
         <a href= {% url "añadircelulares" %}>AÑADIR Celulares</a>
-        <h2>Laptops</h2>
+        <h2>PRODUCTOS</h2>
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
             <thead>
                 <tr>
@@ -22,6 +22,7 @@
                     <th>Imagen</th>
                     <th>Marca</th>
                     <th>Modelo</th>
+                    <th>Estado</th>
                     <th>Precio</th>
                     <th>Stock</th>
                     <th>Editar</th>
@@ -29,57 +30,38 @@
                 </tr>
             </thead>
             <tbody>
-                {% for laptop in laptops %}
+                {% for producto in productos %}
                 <tr>
-                    <td>{{ laptop.id }}</td>
-                    <td><img src={{laptop.imagen.url}} alt="foto" height="150"></td>
-                    <td>{{ laptop.marca }}</td>
-                    <td>{{ laptop.modelo }}</td>
-                    <td>{{ laptop.precio }}</td>
-                    <td>{{ laptop.stock }}</td>
+                    <td>{{ producto.id }}</td>
+                        {% if producto.laptops  %}
+                            <td><img src={{producto.laptops.imagen.url}} alt="foto" height="150"></td>
+                        {% elif producto.celulares %}
+                            <td><img src={{producto.celulares.imagen.url}} alt="foto" height="150"></td>
+                        {% endif %}
+                    <td>{{ producto.marca }}</td>
+                    <td>{{ producto.modelo }}</td>
+                    <td>{{ producto.estado }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.stock }}</td>
                     <td>
-                        <a href={% url 'editarproducto' 'laptop' laptop.id %}>Editar</a></td>
+                        {% if producto.laptops  %}
+                            <a href="{% url 'editarproducto' 'laptop' producto.id %}">Editar</a>
+                        {% elif producto.celulares %}
+                            <a href="{% url 'editarproducto' 'celular' producto.id %}">Editar</a>
+                        {% endif %}
                     <td>
-                        <button type="submit">
-                            <a href="{% url 'eliminar_producto' 'laptop' laptop.id %}">Eliminar</a></td>
-                        </button>
+                        {% if producto.laptops %}
+                            <button type="submit">
+                                <a href="{% url 'eliminar_producto' 'laptop' producto.id %}">Eliminar</a></td>
+                            </button>
+                        {% elif producto.celulares %}
+                            <button type="submit">
+                                <a href="{% url 'eliminar_producto' 'celular' producto.id %}">Eliminar</a></td>
+                            </button>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <h2>Celulares</h2>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Imagen</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for celular in celulares %}
-            <tr>
-                <td>{{ celular.id }}</td>
-                <td><img src={{celular.imagen.url}} alt="foto" height="150"></td>
-                <td>{{ celular.marca }}</td>
-                <td>{{ celular.modelo }}</td>
-                <td>{{ celular.precio }}</td>
-                <td>{{ celular.stock }}</td>
-                <td>
-                    <a href="{% url 'editarproducto' 'celular' celular.id %}">Editar</a></td>
-                <td>
-                    <button type="submit">
-                        <a href="{% url 'eliminar_producto' 'celular' celular.id %}">Eliminar</a></td>
-                    </button>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 {% endblock contenido %}

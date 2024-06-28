@@ -39,9 +39,11 @@
                 </a>
 
                 <!-- SIMULACION DE CARRITO DE COMPRAS -->
-                <a href="">
-                    <button class="empire-details-products-value-btn--cart"> Agregar al carrito</button>
-                </a>
+                <form action="{% url 'cart_add' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="quantity" value="1" class="btn btn-green fw-semibold text-dark"><i class="fas fa-cart-plus fa-lg"></i>
+                        Añadir Al Carro</button>
+                </form>
 
             </div>
 

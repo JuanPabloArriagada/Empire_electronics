@@ -75,7 +75,10 @@
 
 
                 <a id="empire-cart" class="empire-menu-cart__link cart--number">
-                    <span id="empire-cart__number" class="empire-cart__number">3</span>
+                    <span id="empire-cart__number" class="empire-cart__number">
+                        {% if cart_item_count > 0 %}
+                        {{cart_item_count}}
+                        {% endif %}</span>
                     <img class="empire-menu-cart__img" src="{% static "empireapp/images/icon-carrito.svg" %}"
                         alt="Icono Carrito de Compra">
 
@@ -85,51 +88,11 @@
                         <section class="empire-details-content">
                             <!-- Item 1 -->
                             <div class="empire-details">
-                                <div class="empire-details-products">
-                                    <img class="empire-details-products__img" src="{%static 'empireapp/images/products/laptops/01-macbook-air-15.png' %}"
-                                        alt="MacBook Pro M2 MNEJ3 2022 LLA 13.3 inc">
-                                </div>
-                                <div class="empire-details-products-item">
-                                    <h3 class="empire-details-products-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3
-                                        inch</h3>
-                                    <ul class="empire-details-products-item-list">
-                                        <li class="empire-details-products-item-list__item">
-                                            <span>Marca</span><strong>Apple</strong>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Item 2 -->
-                            <div class="empire-details">
-                                <div class="empire-details-products">
-                                    <img class="empire-details-products__img" src="{% static "empireapp/images/products/laptops/01-macbook-air-15.png" %}"
-                                        alt="MacBook Pro M2 MNEJ3 2022 LLA 13.3 inc">
-                                </div>
-                                <div class="empire-details-products-item">
-                                    <h3 class="empire-details-products-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3
-                                        inch</h3>
-                                    <ul class="empire-details-products-item-list">
-                                        <li class="empire-details-products-item-list__item">
-                                            <span>Marca</span><strong>Apple</strong>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Item 3 -->
-                            <div class="empire-details">
-                                <div class="empire-details-products">
-                                    <img class="empire-details-products__img" src="{% static "empireapp/images/products/laptops/01-macbook-air-15.png" %}"
-                                        alt="MacBook Pro M2 MNEJ3 2022 LLA 13.3 inc">
-                                </div>
-                                <div class="empire-details-products-item">
-                                    <h3 class="empire-details-products-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3
-                                        inch</h3>
-                                    <ul class="empire-details-products-item-list">
-                                        <li class="empire-details-products-item-list__item">
-                                            <span>Marca</span><strong>Apple</strong>
-                                        </li>
-                                    </ul>
-                                </div>
+                                {% for item in items %}
+                                    <li>{{ item.producto.nombre }} - {{ item.quantity }} - {{ item.producto.precio }} 
+                                        <a href="{% url 'cart_remove' item.id %}">Eliminar</a>
+                                    </li>
+                                {% endfor %}
                             </div>
                         </section>
                         <!-- Precio -->
@@ -138,7 +101,7 @@
                                 <h2 class="empire-details-products-value__price" id="idPrecio">$ 1.299</h2>
                                 <span class="empire-details-products-value__last-price">$ 1.699</span>
                                 <div class="empire-details-products-value-btn">
-                                    <a href="{% url "carrito" %}">
+                                    <a href="{% url "cart_detail" %}">
                                         <button class="empire-details-products-value-btn--add"> Ir a pagar</button>
                                     </a>
 
@@ -149,27 +112,51 @@
                     </div>
                 </a>
 
-
+                
                 <a id="empire-usuario" class="empire-menu-cart__link usuario">
                     <img class="empire-menu-cart__img" src="{% static "empireapp/images/icon-user.svg" %}"
                         alt="Icono Usuario">
                 </a>
                 <div id="empire-usuario-container" class="empire-usuario-container">
-                    <div class="empire-usuario-login">
-                        <label>Rut</label>
-                        <input class="empire-usuario-login-input" type="text" placeholder="12345678-9" required>
-                        <label>Contraseña</label>
-                        <input class="empire-usuario-login-input" type="password" placeholder="***********" required>
-                    </div>
-
-                    <a href="">¿Olvidaste la contraseña?</a>
+                    {% if user.is_authenticated %}
+                        <!-- Mostrar información de usuario autenticado si es necesario -->
+                        <p>Bienvenido, {{ user.nombre  }}</p>
+                            
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Cerrar sesión</button>
+                        </form>
+                        {% else %}
+                        <!-- Formulario de inicio de sesión -->
+                        <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Iniciar Sesión</button>
+                        </form>
+                        <a href="{% url 'registrarse' %}">Registrarse</a>
+                    {% endif %}
+                </div>
+                {% comment %} <div id="empire-usuario-container" class="empire-usuario-container">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}">
+                            <button class="empire-btn-logout">Cerrar sesión</button>
+                        </a>
+                    {% else %}
+                        <div class="empire-usuario-login">
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="empire-btn-login">Iniciar Sesión</button>
+                            </form>
+                        </div>
+                        <a href="{% url "registrarse" %}">
+                            <button class="empire-btn-registro">Crear cuenta</button>
+                        </a>
+                    {% endif %}
                     <a href="{% url "home" %}">
                         <button id="btn-Login" class="empire-btn-login">Iniciar sesión</button>
-                    </a>
-                    <a href="{% url "registrarse" %}">
-                        <button class="empire-btn-registro">Crear cuenta</button>
-                    </a>
-                </div>
+                    </a> 
+                </div> {% endcomment %}
 
 
             </div>

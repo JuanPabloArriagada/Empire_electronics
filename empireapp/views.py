@@ -3,10 +3,16 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .forms import *
 from os import  remove
 from django.conf import settings
+from django.contrib.auth import login
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 #PAGES
 def index(request):
-    return render(request, "empireapp/index.html")
+    form = AuthenticationForm()
+    return render(request, 'empireapp/index.html', {'form': form})
 
 def productos(request):
     return render(request, "empireapp/pages/productos.html")
@@ -24,7 +30,15 @@ def about(request):
     return render(request, "empireapp/pages/about.html")
 
 def registrarse(request):
-    return render(request, "empireapp/pages/registrarse.html")
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+    else:
+        form = ClienteForm()
+    return render(request, 'empireapp/pages/registrarse.html', {'form': form})
 
 def carrito(request):
     return render(request, "empireapp/pages/carrito.html")
@@ -34,7 +48,12 @@ def home(request):
     return render(request, "empireapp/pages/dashboard/home.html")
 
 def inventory(request):
-    return render(request, "empireapp/pages/dashboard/inventory.html")
+    productos = Producto.objects.all()
+    
+    lista_productos = {
+        'productos': productos,
+    }
+    return render(request, "empireapp/pages/dashboard/inventory.html", lista_productos)
 
 def sales(request):
     return render(request, "empireapp/pages/dashboard/sales.html")
@@ -118,10 +137,10 @@ def añadirlaptops(request):
 
 #CELULARES
 def añadircelulares(request):
-    form=CelularesForms()
+    form=CelularesForm()
 
     if request.method=="POST":
-        form=CelularesForms(data=request.POST, files=request.FILES)
+        form=CelularesForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             """ messages.success(request, 'Laptop agregada') """
@@ -134,26 +153,21 @@ def añadircelulares(request):
 
 
 def products(request):
-    laptops = Laptops.objects.all()
-    celulares = Celulares.objects.all()
+    productos = Producto.objects.all()
     
-    productos = {
-        'laptops': laptops,
-        'celulares': celulares
+    lista_productos = {
+        'productos': productos,
     }
     
-    print(productos)
-    return render(request,"empireapp/pages/dashboard/products.html", productos)
-
-
+    return render(request, "empireapp/pages/dashboard/products.html", lista_productos)
 
 def editarproducto(request, product_type, pk):
     if product_type == 'laptop':
         product = get_object_or_404(Laptops, id=pk)
-        form = UpdateLaptopsForm(request.POST or None, instance=product)
+        form = LaptopsForm(request.POST or None, instance=product)
     elif product_type == 'celular':
         product = get_object_or_404(Celulares, id=pk)
-        form = UpdateCelularesForm(request.POST or None, instance=product)
+        form = CelularesForm(request.POST or None, instance=product)
     else:
         # Handle unknown product type
         return redirect('products')
@@ -190,3 +204,27 @@ def eliminar_producto(request, product_type, pk):
         'product_type': product_type,
     }
     return render(request, "empireapp/pages/dashboard/eliminar_producto.html", context)
+
+#CARRITO
+def cart_detail(request):
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    items = CartItem.objects.filter(cart=cart)
+    return render(request, 'cart/detail.html', {'cart': cart, 'items': items})
+
+@login_required
+def cart_add(request, product_id):
+    product = get_object_or_404(Producto, id=product_id)
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    form = CartAddProductForm(request.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+        item, created = CartItem.objects.get_or_create(cart=cart, producto=product)
+        item.quantity += cd['quantity']
+        item.save()
+    return redirect('cart_detail')
+
+@login_required
+def cart_remove(request, item_id):
+    item = get_object_or_404(CartItem, id=item_id)
+    item.delete()
+    return redirect('cart_detail')

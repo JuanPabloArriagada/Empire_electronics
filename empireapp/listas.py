@@ -1,6 +1,6 @@
 TIPO_ESTADO_PRODUCTO = [
     ('disponible', 'DISPONIBLE'),
-    ('agotado', 'AGOTADO')
+    ('no disponible', 'NO DISPONIBLE')
 ]
 
 TIPO_ESTADO_PEDIDO = [
@@ -47,6 +47,7 @@ TIPO_ALMACENAMIENTO_CELULAR = [
 TIPO_TARJETA_VIDEO = [
     ('NVIDIA', 'NVIDIA'),
     ('AMD', 'AMD'),
+    ('N/A', 'N/A'),
     # Agrega más opciones según sea necesario
 ]
 
