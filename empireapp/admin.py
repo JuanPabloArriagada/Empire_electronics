@@ -14,7 +14,18 @@ class AdmLaptops(admin.ModelAdmin):
 class AdmCelulares(admin.ModelAdmin):
     list_display = ['pulgadas', 'resolucion', 'bateria', 'almacenamiento', 'camara']
 
+class AdmCart(admin.ModelAdmin):
+    list_display = '__all__'
+
+class AdmPedido(admin.ModelAdmin):
+    list_display = '__all__'
+
+class AdmPedidoItem(admin.ModelAdmin):
+    list_display = '__all__'
 
 admin.site.register(Cliente, AdmCliente)
 admin.site.register(Laptops, AdmLaptops)
 admin.site.register(Celulares, AdmCelulares)
+admin.site.register(Cart)
+admin.site.register(Pedido)
+admin.site.register(PedidoItem)

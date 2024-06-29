@@ -9,7 +9,7 @@
 
     <h2>Productos en el Pedido:</h2>
     <ul>
-        {% for item in items %}
+        {% for item in productos %}
             {% if item.producto.laptops %}
                 <img class="empire-products-content-body__img" src="{{ item.producto.laptops.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
                 <li>Marca: {{ item.producto.marca }}</li>
@@ -22,13 +22,7 @@
                 <li>Tarjeta de video: {{ item.producto.laptops.tarjeta_video }}</li>
                 <li>Procesador: {{ item.producto.laptops.procesador }}</li>
                 <li>Precio: {{ item.producto.precio|currency }}</li>
-                <li>Cantidad: 
-                    <form action="{% url 'cart_update' item.id %}" method="post">
-                    {% csrf_token %}
-                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
-                        <button type="submit">Actualizar</button>
-                    </form>
-                </li>
+                <li>Cantidad: {{ item.cantidad }} </li>
             
             {% elif item.producto.celulares %}
                 <img class="empire-products-content-body__img" src="{{ item.producto.celulares.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
@@ -40,13 +34,7 @@
                 <li>Almacenamiento: {{ item.producto.celulares.almacenamiento }}</li>
                 <li>Camara: {{ item.producto.celulares.camara }}</li>
                 <li>Precio: {{ item.producto.precio|currency }}</li>
-                <li>Cantidad:
-                    <form action="{% url 'cart_update' item.id %}" method="post">
-                    {% csrf_token %}
-                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
-                        <button type="submit">Actualizar</button>
-                    </form>
-                </li>
+                <li>Cantidad: {{ item.cantidad }} </li>
             {% endif %}
         {% endfor %}
     </ul>

@@ -12,8 +12,7 @@ from django.db import transaction
 # Create your views here.
 #PAGES
 def index(request):
-    form = AuthenticationForm()
-    return render(request, 'empireapp/index.html', {'form': form})
+    return render(request, 'empireapp/index.html')
 
 def productos(request):
     productos = Producto.objects.all()
@@ -53,17 +52,10 @@ def pedidos(request):
     return render(request, 'empireapp/pages/pedidos.html', {'pedidos': pedidos})
 
 def detallepedido(request, pedido_id):
-    pedido = get_object_or_404(Pedido, id=pedido_id)  
+    detalle_pedido = PedidoItem.objects.filter(pedido_id = pedido_id)
+    pedido = get_object_or_404(Pedido, id=pedido_id)
     
-    productos = pedido.items.all()
-
-    context = {
-        'pedido': pedido,
-        'productos': productos,
-    }
-    print(Pedido)
-    print()
-    return render(request, 'empireapp/pages/detallepedido.html', context)
+    return render(request, 'empireapp/pages/detallepedido.html', {'productos': detalle_pedido, 'pedido':pedido})
 #DASHBOARD
 def home(request):
     return render(request, "empireapp/pages/dashboard/home.html")
@@ -235,19 +227,24 @@ def cart_detail(request):
     
     if request.method == 'POST':
         with transaction.atomic():
-            
+            # Crear el objeto Pedido
             pedido = Pedido.objects.create(
                 user=request.user,
                 total=total,
                 estado='pendiente'
             )
-            for item in items:
-                pedido.items.add(item)
             
-            print(pedido)
+            # Iterar sobre los items del carrito y agregarlos al pedido
+            for item in items:
+                pedido_item = PedidoItem.objects.create(
+                    pedido=pedido,
+                    producto=item.producto,
+                    cantidad=item.quantity
+                )
+            
             # Vaciar el carrito después de completar el pedido
-            """ cart.cartitem_set.all().delete()
-            cart.delete() """
+            cart.cartitem_set.all().delete()
+            cart.delete()
         return redirect('pedidos')
     return render(request, 'cart/detail.html', {'cart': cart, 'items': items, 'total': total})
 
@@ -267,6 +264,7 @@ def cart_add(request, product_id):
 def cart_remove(request, item_id):
     item = get_object_or_404(CartItem, id=item_id)
     item.delete()
+    print(item)
     return redirect('cart_detail')
 
 @login_required
@@ -288,4 +286,3 @@ def cart_update(request, item_id):
                 item.delete()
 
     return redirect('cart_detail')
-

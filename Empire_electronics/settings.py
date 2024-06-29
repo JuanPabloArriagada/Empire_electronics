@@ -29,8 +29,8 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'empireapp.Cliente'
 
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -69,6 +69,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'empireapp.context_processors.cart_item_count',
+                'django.template.context_processors.request',
+                'empireapp.context_processors.login_form',
             ],
         },
     },

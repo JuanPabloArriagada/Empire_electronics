@@ -118,46 +118,18 @@
                 </a>
                 <div id="empire-usuario-container" class="empire-usuario-container">
                     {% if user.is_authenticated %}
-                        <!-- Mostrar información de usuario autenticado si es necesario -->
-                        <p>Bienvenido, {{ user.nombre  }}</p>
-                            
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button type="submit">Cerrar sesión</button>
                         </form>
-                        {% else %}
-                        <!-- Formulario de inicio de sesión -->
+                    {% else %}
                         <form method="post" action="{% url 'login' %}">
                             {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit">Iniciar Sesión</button>
+                            {{ login_form.as_p }}
+                            <button type="submit">Iniciar sesión</button>
                         </form>
-                        <a href="{% url 'registrarse' %}">Registrarse</a>
                     {% endif %}
                 </div>
-                {% comment %} <div id="empire-usuario-container" class="empire-usuario-container">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'logout' %}">
-                            <button class="empire-btn-logout">Cerrar sesión</button>
-                        </a>
-                    {% else %}
-                        <div class="empire-usuario-login">
-                            <form method="post">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <button type="submit" class="empire-btn-login">Iniciar Sesión</button>
-                            </form>
-                        </div>
-                        <a href="{% url "registrarse" %}">
-                            <button class="empire-btn-registro">Crear cuenta</button>
-                        </a>
-                    {% endif %}
-                    <a href="{% url "home" %}">
-                        <button id="btn-Login" class="empire-btn-login">Iniciar sesión</button>
-                    </a> 
-                </div> {% endcomment %}
-
-
             </div>
         </section>
 
