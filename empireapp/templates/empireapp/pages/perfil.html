@@ -1,0 +1,33 @@
+{% extends "../index.html" %}
+{% load static %}
+{% block contenedor %}
+<h2>Modificar Mi Información Personal </h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.rut.label_tag }}
+    {{ form.rut.value }}
+    <br>
+    {{ form.nombre.label_tag }}
+    {{ form.nombre }}
+    <br>
+    {{ form.apellido.label_tag }}
+    {{ form.apellido }}
+    <br>
+    {{ form.correo.label_tag }}
+    {{ form.correo }}
+    <br>
+    {{ form.telefono.label_tag }}
+    {{ form.telefono }}
+    <br>
+    {{ form.fecha_ncto.label_tag }}
+    {{ form.fecha_ncto }}
+    <br>
+    {{ form.direccion.label_tag }}
+    {{ form.direccion }}
+    <br>
+    {{ form.password.label_tag }}
+    {{ form.password }}
+    <br>
+    <button type="submit">Guardar cambios</button>
+</form>
+{% endblock contenedor %}

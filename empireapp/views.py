@@ -37,6 +37,19 @@ def index(request):
 
     return render(request, 'empireapp/index.html', context)
 
+@login_required
+def perfil(request):
+    if request.method == 'POST':
+        form = UpdateClienteForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            # Redirecciona al perfil o a donde desees después de guardar los cambios
+            return redirect('perfil')  
+    else:
+        form = UpdateClienteForm(instance=request.user)
+    
+    return render(request, 'empireapp/pages/perfil.html', {'form': form})
+
 def productos(request):
     productos = Producto.objects.all()
     
@@ -95,7 +108,6 @@ def crear_admin(request):
     
     return render(request, 'empireapp/pages/dashboard/crear_admin.html', {'form': form})
 @user_passes_test(is_admin)
-
 def home(request):
     return render(request, "empireapp/pages/dashboard/home.html")
 

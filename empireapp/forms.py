@@ -1,6 +1,7 @@
 from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.models import Group
 
 #CLIENTE FORMS
 class ClienteForm(UserCreationForm):
@@ -11,11 +12,33 @@ class ClienteForm(UserCreationForm):
         fields = ['rut','nombre', 'apellido', 'correo', 'telefono','fecha_ncto' , 'direccion']
 
 class UpdateClienteForm(UserChangeForm):
-    fecha_ncto=forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    fecha_ncto = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    password = forms.CharField(label='Contraseña', strip=False, required=False, widget=forms.PasswordInput)
 
     class Meta(UserChangeForm.Meta):
         model = Cliente
         fields = ('rut', 'nombre', 'apellido', 'correo', 'telefono', 'fecha_ncto', 'direccion')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['rut'].disabled = True  # Deshabilita el campo rut
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        if password:
+            # Validación adicional si es necesario
+            # Puedes agregar validaciones personalizadas para la contraseña aquí
+            pass  # Por ejemplo, longitud mínima, caracteres especiales, etc.
+        return password
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        password = self.cleaned_data['password']
+        if password:
+            instance.set_password(password)
+        if commit:
+            instance.save()
+        return instance
 
 #ADMIN FORM
 class AdminCreationForm(forms.ModelForm):

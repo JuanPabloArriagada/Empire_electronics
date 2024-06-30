@@ -14,6 +14,7 @@ urlpatterns = [
     path('registrarse/', registrarse, name="registrarse"),
     path('pedidos/', pedidos, name="pedidos"),
     path('detallepedido/<int:pedido_id>/', detallepedido, name='detallepedido'),
+    path('perfil/', perfil, name='perfil'),
     #ADMIN
     path('home/', home, name="home"),
     path('inventory/', inventory, name="inventory"),
