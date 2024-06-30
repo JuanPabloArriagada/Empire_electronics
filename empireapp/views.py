@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.db.models import Sum
 
 
 # Create your views here.
@@ -69,7 +70,34 @@ def inventory(request):
     return render(request, "empireapp/pages/dashboard/inventory.html", lista_productos)
 
 def sales(request):
-    return render(request, "empireapp/pages/dashboard/sales.html")
+    pedidos = Pedido.objects.annotate(
+        total_productos=Sum('items__cantidad')
+    ).select_related('user')
+    if request.method == 'POST':
+        pedido_id = request.POST.get('pedido_id')
+        nuevo_estado = request.POST.get('estado')
+        pedido = get_object_or_404(Pedido, id=pedido_id)
+        if nuevo_estado and nuevo_estado in dict(TIPO_ESTADO_PEDIDO):
+            pedido.estado = nuevo_estado
+            pedido.save()
+            return redirect('sales')
+
+    context = {
+        'pedidos': pedidos,
+        'tipo_estado_pedido': TIPO_ESTADO_PEDIDO,
+    }
+    return render(request, "empireapp/pages/dashboard/sales.html", context)
+
+def detalle_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    detalle_pedido = PedidoItem.objects.filter(pedido_id=pedido_id).select_related('producto')
+    
+    context = {
+        'pedido': pedido,
+        'detalle_pedido': detalle_pedido
+    }
+    return render(request, 'empireapp/pages/dashboard/detalle_pedido.html', context)
+
 
 def clientes(request):
     clientes = Cliente.objects.all()

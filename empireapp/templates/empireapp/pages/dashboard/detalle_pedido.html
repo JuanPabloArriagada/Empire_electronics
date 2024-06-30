@@ -1,0 +1,48 @@
+{% extends "empireapp/pages/dashboard/home.html" %}
+{% block contenido %}
+<div class="container">
+    <h1>Detalle del Pedido {{ pedido.id }}</h1>
+
+    <div class="cliente-info">
+        <h2>Información del Cliente</h2>
+        <ul>
+            <li>Nombre: {{ pedido.user.nombre }} {{ pedido.user.apellido }}</li>
+            <li>Correo: {{ pedido.user.correo }}</li>
+            <li>Teléfono: {{ pedido.user.telefono }}</li>
+            <li>Dirección: {{ pedido.user.direccion }}</li>
+        </ul>
+    </div>
+
+    <div class="productos-info">
+        <h2>Productos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in detalle_pedido %}
+                    <tr>
+                        <td>{{ item.producto.id }}</td>
+                        <td>{{ item.producto.marca }}</td>
+                        <td>{{ item.producto.modelo }}</td>
+                        <td>{{ item.cantidad }}</td>
+                        <td>{{ item.producto.precio }}</td>
+                        <td>{{ item.producto.precio|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="total-info">
+        <h2>Total: {{ pedido.total|floatformat:2 }}</h2>
+    </div>
+</div>
+{% endblock contenido %}

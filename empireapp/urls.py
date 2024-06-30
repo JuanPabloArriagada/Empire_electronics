@@ -28,6 +28,7 @@ urlpatterns = [
     path('añadircelulares/', añadircelulares, name="añadircelulares"),
     path('editarproducto/<str:product_type>/<int:pk>', editarproducto, name="editarproducto"),
     path('eliminar_producto/<str:product_type>/<int:pk>', eliminar_producto, name="eliminar_producto"),
+    path('detalle_pedido/<int:pedido_id>/', detalle_pedido, name='detalle_pedido'),
     
     #LOGIN Y LOGOUT
     path('login/', auth_views.LoginView.as_view(template_name='index.html'), name='login'),

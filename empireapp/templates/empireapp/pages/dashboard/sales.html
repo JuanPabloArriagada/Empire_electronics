@@ -19,67 +19,38 @@
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric">Fecha</th>
                         <th>Cliente</th>
-                        <th>Productos</th>
+                        <th>Cantidad productos</th>
                         <th>Pago</th>
                         <th>Total</th>
                         <th>Estado</th>
-                        <th>Dirección</th>
+                        <th>detalle</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">11/04/2024</td>
-                        <td>Valentina Luna</td>
-                        <td>3</td>
-                        <td>Crédito</td>
-                        <td>$590.990</td>
-                        <td><select class="mdl-textfield--floating-label">
-                            <option value="" disabled="" selected="">Preparando</option>
-                            <option value="">Enviado</option>
-                            <option value="">Completado</option>
-                            <option value="">Cancelado</option>
-                        </select></td>
-                        <td>Los Clarines 2246, Renca, Santiago, Chile</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">11/04/2016</td>
-                        <td>Santiago Rivera</td>
-                        <td>1</td>
-                        <td>Débito</td>
-                        <td>$39.990</td>
-                        <td><select class="mdl-textfield--floating-label">
-                            <option value="" disabled="" selected="">Preparando</option>
-                            <option value="">Enviado</option>
-                            <option value="">Completado</option>
-                            <option value="">Cancelado</option>
-                        </select></td>							<td>Manuel Rodriguez 1423, Rancagua, Chile</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">11/04/2016</td>
-                        <td>Isabella Martinez</td>
-                        <td>2</td>
-                        <td>Crédito</td>
-                        <td>$159.990</td>
-                        <td><select class="mdl-textfield--floating-label">
-                            <option value="" disabled="" selected="">Preparando</option>
-                            <option value="">Enviado</option>
-                            <option value="">Completado</option>
-                            <option value="">Cancelado</option>
-                        </select></td>							<td>Salas 25, Concepción, Chile</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">11/04/2016</td>
-                        <td>Mateo Herrera</td>
-                        <td>5</td>
-                        <td>Crédito</td>
-                        <td>$1.199.990</td>
-                        <td><select class="mdl-textfield--floating-label">
-                            <option value="" disabled="" selected="">Preparando</option>
-                            <option value="">Enviado</option>
-                            <option value="">Completado</option>
-                            <option value="">Cancelado</option>
-                        </select></td>							<td>Pichipelluco 1423, Puerto Montt, Chile</td>
-                    </tr>
+                    {% for pedido in pedidos %}
+                        <tr>
+                            <td>{{ pedido.fecha_pedido }}</td>
+                            <td>{{ pedido.user.nombre }} {{ pedido.user.apellido }}</td>
+                            <td>{{ pedido.total_productos }}</td>
+                            <td>{{ pedido.total }}</td>
+                            <td>{{ pedido.total }}</td>
+                            <td>
+                                <form method="post" action="{% url 'sales' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
+                                    <select name="estado">
+                                        {% for key, value in tipo_estado_pedido %}
+                                            <option value="{{ key }}" {% if pedido.estado == key %}selected{% endif %}>{{ value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit">Actualizar</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="{% url 'detalle_pedido' pedido.id %}">Ver Detalle</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
