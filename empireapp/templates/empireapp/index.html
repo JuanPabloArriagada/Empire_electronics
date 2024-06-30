@@ -128,6 +128,9 @@
                             {{ login_form.as_p }}
                             <button type="submit">Iniciar sesión</button>
                         </form>
+                        <button type="button">
+                            <a href={% url "registrarse" %}> registrarse</a>
+                        </button>
                     {% endif %}
                 </div>
             </div>

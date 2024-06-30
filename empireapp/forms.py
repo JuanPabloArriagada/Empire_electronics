@@ -17,6 +17,23 @@ class UpdateClienteForm(UserChangeForm):
         model = Cliente
         fields = ('rut', 'nombre', 'apellido', 'correo', 'telefono', 'fecha_ncto', 'direccion')
 
+#ADMIN FORM
+class AdminCreationForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+    
+    class Meta:
+        model = User
+        fields = ['rut', 'correo', 'password']
+    
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+        user.is_staff = True
+        if commit:
+            user.save()
+        return user
+
+
 
 #PRODUCTO FORM
 class ProductoForm(forms.ModelForm):

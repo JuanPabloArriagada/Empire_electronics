@@ -8,6 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.db.models import Sum
+from django.contrib.auth.decorators import user_passes_test
 
 
 # Create your views here.
@@ -58,9 +59,26 @@ def detallepedido(request, pedido_id):
     
     return render(request, 'empireapp/pages/detallepedido.html', {'productos': detalle_pedido, 'pedido':pedido})
 #DASHBOARD
+def is_admin(user):
+    return user.is_staff
+
+@user_passes_test(is_admin)
+def crear_admin(request):
+    if request.method == 'POST':
+        form = AdminCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redirigir a la página deseada después de crear el admin
+    else:
+        form = AdminCreationForm()
+    
+    return render(request, 'empireapp/pages/dashboard/crear_admin.html', {'form': form})
+@user_passes_test(is_admin)
+
 def home(request):
     return render(request, "empireapp/pages/dashboard/home.html")
 
+@user_passes_test(is_admin)
 def inventory(request):
     productos = Producto.objects.all()
     
@@ -69,6 +87,7 @@ def inventory(request):
     }
     return render(request, "empireapp/pages/dashboard/inventory.html", lista_productos)
 
+@user_passes_test(is_admin)
 def sales(request):
     pedidos = Pedido.objects.annotate(
         total_productos=Sum('items__cantidad')
@@ -88,6 +107,7 @@ def sales(request):
     }
     return render(request, "empireapp/pages/dashboard/sales.html", context)
 
+@user_passes_test(is_admin)
 def detalle_pedido(request, pedido_id):
     pedido = get_object_or_404(Pedido, id=pedido_id)
     detalle_pedido = PedidoItem.objects.filter(pedido_id=pedido_id).select_related('producto')
@@ -98,7 +118,7 @@ def detalle_pedido(request, pedido_id):
     }
     return render(request, 'empireapp/pages/dashboard/detalle_pedido.html', context)
 
-
+@user_passes_test(is_admin)
 def clientes(request):
     clientes = Cliente.objects.all()
     datos = {
@@ -106,6 +126,7 @@ def clientes(request):
     }
     return render(request, "empireapp/pages/dashboard/clientes.html", datos)
 
+@user_passes_test(is_admin)
 def detallecliente(request, id):
     cliente=get_object_or_404(Cliente, rut=id)
     datos={
@@ -113,6 +134,7 @@ def detallecliente(request, id):
     }
     return render(request, "empireapp/pages/dashboard/detallecliente.html", datos)
 
+@user_passes_test(is_admin)
 def crearcliente(request):
     form=ClienteForm()
 
@@ -128,6 +150,7 @@ def crearcliente(request):
     }
     return render(request, "empireapp/pages/dashboard/crearcliente.html", datos)
 
+@user_passes_test(is_admin)
 def modificarcliente(request,id):
     cliente=get_object_or_404(Cliente,rut=id)
 
@@ -146,6 +169,7 @@ def modificarcliente(request,id):
         
     return render(request, "empireapp/pages/dashboard/modificarcliente.html", datos)
 
+@user_passes_test(is_admin)
 def eliminarcliente(request,id):
     cliente=get_object_or_404(Cliente,rut=id)
 
@@ -160,6 +184,7 @@ def eliminarcliente(request,id):
     return render(request, "empireapp/pages/dashboard/eliminarcliente.html", datos)
 
 #LAPTOPS
+@user_passes_test(is_admin)
 def añadirlaptops(request):
     form=LaptopsForm()
 
@@ -177,6 +202,7 @@ def añadirlaptops(request):
 
 
 #CELULARES
+@user_passes_test(is_admin)
 def añadircelulares(request):
     form=CelularesForm()
 
@@ -193,6 +219,7 @@ def añadircelulares(request):
     return render(request, "empireapp/pages/dashboard/añadircelulares.html",datos)
 
 
+@user_passes_test(is_admin)
 def products(request):
     productos = Producto.objects.all()
     
@@ -202,6 +229,7 @@ def products(request):
     
     return render(request, "empireapp/pages/dashboard/products.html", lista_productos)
 
+@user_passes_test(is_admin)
 def editarproducto(request, product_type, pk):
     if product_type == 'laptop':
         product = get_object_or_404(Laptops, id=pk)
@@ -223,6 +251,7 @@ def editarproducto(request, product_type, pk):
     }
     return render(request, "empireapp/pages/dashboard/editarproducto.html", context)
 
+@user_passes_test(is_admin)
 def eliminar_producto(request, product_type, pk):
     if product_type == 'laptop':
         product = get_object_or_404(Laptops, id=pk)
