@@ -14,7 +14,28 @@ from django.contrib.auth.decorators import user_passes_test
 # Create your views here.
 #PAGES
 def index(request):
-    return render(request, 'empireapp/index.html')
+    cart_item_count = 0
+    items = []
+    total = 0
+
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        cart_items = CartItem.objects.filter(cart=cart).select_related('producto')
+        cart_item_count = cart_items.count()
+        items = cart_items
+        total = sum(item.producto.precio * item.quantity for item in items)
+    else:
+        cart = None
+
+    context = {
+        'cart_item_count': cart_item_count,
+        'cart': cart,
+        'items': items,
+        'total': total,
+        'login_form': AuthenticationForm()
+    }
+
+    return render(request, 'empireapp/index.html', context)
 
 def productos(request):
     productos = Producto.objects.all()

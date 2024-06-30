@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load custom_filters %}
 <!DOCTYPE html>
 <html lang="es-ES">
 
@@ -86,23 +86,37 @@
                         <!-- Productos en el carrito -->
                         <section class="empire-details-content">
                             <!-- Item 1 -->
-                            <div class="empire-details">
-                                {% for item in items %}
-                                    <li>{{ item.producto.nombre }} - {{ item.quantity }} - {{ item.producto.precio }} 
-                                        <a href="{% url 'cart_remove' item.id %}">Eliminar</a>
-                                    </li>
-                                {% endfor %}
-                            </div>
+                            {% for item in items %}
+                                <div class="empire-details">
+                                    {% if item.producto.laptops %}
+                                        <img class="empire-products-content-body__img" src="{{ item.producto.laptops.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
+                                    {% elif item.producto.celulares %}
+                                        <img class="empire-products-content-body__img" src="{{ item.producto.celulares.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
+                                    {% endif %}
+                                        <ul>
+                                            <li>Modelo: {{ item.producto.modelo }} </li>
+                                            <li>Cantidad:
+                                                <form action="{% url 'cart_update' item.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button type="submit" name="action" value="decrementar">-</button>
+                                                    <span>{{ item.quantity }}</span>
+                                                    <button type="submit" name="action" value="incrementar">+</button>
+                                                </form> 
+                                            </li>
+                                            <li>Precio:  {{ item.producto.precio }} </li>
+                                        </ul>
+                                </div>
+                            {% endfor %}
                         </section>
                         <!-- Precio -->
                         <section class="empire-details-price">
                             <div class="empire-details-products-value">
-                                <h2 class="empire-details-products-value__price" id="idPrecio">$ 1.299</h2>
-                                <span class="empire-details-products-value__last-price">$ 1.699</span>
+                                <h3>Total del Carrito: {{ total|currency }}</h3>
                                 <div class="empire-details-products-value-btn">
                                     <a href="{% url "cart_detail" %}">
                                         <button class="empire-details-products-value-btn--add"> Ir a pagar</button>
                                     </a>
+
 
                                 </div>
 
