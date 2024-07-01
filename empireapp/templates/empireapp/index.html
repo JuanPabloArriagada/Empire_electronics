@@ -131,8 +131,20 @@
                         alt="Icono Usuario">
                 </a>
                 <div id="empire-usuario-container" class="empire-usuario-container">
-                    {% if user.is_authenticated %}
+                    {% if user.is_staff %}
                         <h5> Bienvenido {{user.nombre}} <span> </span> {{user.apellido}}</h5>
+                        <li class="empire-menu-nav__list">
+                            <button type="button">
+                                <a href="{% url "home" %}">Panel de Admin</a>
+                            </button>
+                        </li>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Cerrar sesión</button>
+                        </form>
+                    {% elif user.is_authenticated %}
+                        <h5> Bienvenido {{user.nombre}} <span> </span> {{user.apellido}}</h5>
+
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button type="submit">Cerrar sesión</button>
