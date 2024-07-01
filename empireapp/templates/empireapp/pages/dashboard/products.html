@@ -18,6 +18,7 @@
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
             <thead>
                 <tr>
+                    <th>Tipo Producto</th>
                     <th>ID</th>
                     <th>Imagen</th>
                     <th>Marca</th>
@@ -32,9 +33,15 @@
             <tbody>
                 {% for producto in productos %}
                 <tr>
+                    {% if producto.laptops %}
+                        <td> Laptops </td>
+                    {% elif producto.celulares %}
+                        <td> Celulares </td>
+                    {% endif %}
+                    <td>{{ producto.instance }}</td>
                     <td>{{ producto.id }}</td>
                         {% if producto.laptops  %}
-                            <td><img src={{producto.laptops.imagen.url}} alt="foto" height="150"></td>
+                            <td><img src={{producto.laptops.imagen.url}} alt="foto" width= "150" height="150"></td>
                         {% elif producto.celulares %}
                             <td><img src={{producto.celulares.imagen.url}} alt="foto" height="150"></td>
                         {% endif %}
