@@ -1,0 +1,15 @@
+{% extends "../empireapp/index.html" %}
+{% block contenedor %}
+{% load static %}
+{% load custom_filters %}
+<div class="d-flex justify-content-center align-items-center">
+    <div class="empire-login-container">
+        <h2 class="text-center">Iniciar sesión</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+    </div>
+</div>
+{% endblock contenedor %}

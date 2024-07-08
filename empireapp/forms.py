@@ -1,19 +1,51 @@
 from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.contrib.auth.models import Group
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+from datetime import date
+
 
 #CLIENTE FORMS
 class ClienteForm(UserCreationForm):
-    rut=forms.CharField(max_length=10, error_messages={"required":"Ingrese rut sin puntos y con guión ej.:12345678-9"}, help_text="Debe ingresar rut")
+    rut = forms.CharField(
+        max_length=10,
+        error_messages={"required": "Ingrese rut sin puntos y con guión ej.: 12345678-9"},
+        help_text="Debe ingresar rut"
+    )
+    correo = forms.EmailField(validators=[validate_email])
+    telefono = forms.IntegerField()
+    fecha_ncto = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
 
     class Meta(UserCreationForm.Meta):
         model = Cliente
-        fields = ['rut','nombre', 'apellido', 'correo', 'telefono','fecha_ncto' , 'direccion']
+        fields = ['rut', 'nombre', 'apellido', 'correo', 'telefono', 'fecha_ncto', 'direccion']
+
+    def clean_rut(self):
+        rut = self.cleaned_data.get('rut')
+        if int(rut) <= 10000000 and int(rut) >= 999999999:
+            raise ValidationError("El RUT debe estar entre 10000000 y 99999999.")
+        return rut
+
+    def clean_telefono(self):
+        telefono = self.cleaned_data.get('telefono')
+        if int(telefono) <= 10000000 and int(telefono) >= 999999999:
+            raise ValidationError("El teléfono debe estar entre 10000000 y 99999999.")
+        return telefono
+
+    def clean_fecha_ncto(self):
+        fecha_ncto = self.cleaned_data.get('fecha_ncto')
+        today = date.today()
+        age = today.year - fecha_ncto.year - ((today.month, today.day) < (fecha_ncto.month, fecha_ncto.day))
+        if age < 15:
+            raise ValidationError("Debe tener al menos 15 años.")
+        return fecha_ncto
 
 class UpdateClienteForm(UserChangeForm):
     fecha_ncto = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     password = forms.CharField(label='Contraseña', strip=False, required=False, widget=forms.PasswordInput)
+    correo = forms.EmailField(validators=[validate_email])
+    telefono = forms.IntegerField()
 
     class Meta(UserChangeForm.Meta):
         model = Cliente
@@ -30,6 +62,20 @@ class UpdateClienteForm(UserChangeForm):
             # Puedes agregar validaciones personalizadas para la contraseña aquí
             pass  # Por ejemplo, longitud mínima, caracteres especiales, etc.
         return password
+
+    def clean_telefono(self):
+        telefono = self.cleaned_data.get('telefono')
+        if not (10000000 <= telefono <= 99999999):
+            raise ValidationError("El teléfono debe estar entre 10000000 y 99999999.")
+        return telefono
+
+    def clean_fecha_ncto(self):
+        fecha_ncto = self.cleaned_data.get('fecha_ncto')
+        today = date.today()
+        age = today.year - fecha_ncto.year - ((today.month, today.day) < (fecha_ncto.month, fecha_ncto.day))
+        if age < 15:
+            raise ValidationError("Debe tener al menos 15 años.")
+        return fecha_ncto
 
     def save(self, commit=True):
         instance = super().save(commit=False)

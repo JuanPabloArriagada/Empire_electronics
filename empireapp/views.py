@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import *
-from os import  remove
+from os import remove
 from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
@@ -9,10 +9,12 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.db.models import Sum
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
-#PAGES
+@login_required
 def index(request):
     cart_item_count = 0
     items = []
@@ -50,6 +52,7 @@ def perfil(request):
     
     return render(request, 'empireapp/pages/perfil.html', {'form': form})
 
+@login_required
 def productos(request):
     productos = Producto.objects.all()
     
@@ -59,18 +62,23 @@ def productos(request):
     
     return render(request, "empireapp/pages/productos.html",lista_productos)
 
+@login_required
 def detalleProducto(request):
     return render(request, "empireapp/pages/detalleProducto.html")
 
+@login_required
 def contacto(request):
     return render(request, "empireapp/pages/contact.html")
 
+@login_required
 def blog(request):
     return render(request, "empireapp/pages/blog.html")
 
+@login_required
 def about(request):
     return render(request, "empireapp/pages/about.html")
 
+@login_required
 def registrarse(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
@@ -87,16 +95,19 @@ def pedidos(request):
     pedidos = Pedido.objects.filter(user=request.user)
     return render(request, 'empireapp/pages/pedidos.html', {'pedidos': pedidos})
 
+@login_required
 def detallepedido(request, pedido_id):
     detalle_pedido = PedidoItem.objects.filter(pedido_id = pedido_id)
     pedido = get_object_or_404(Pedido, id=pedido_id)
     
     return render(request, 'empireapp/pages/detallepedido.html', {'productos': detalle_pedido, 'pedido':pedido})
-#DASHBOARD
+
+# DASHBOARD
 def is_admin(user):
     return user.is_staff
 
 @user_passes_test(is_admin)
+@login_required
 def crear_admin(request):
     if request.method == 'POST':
         form = AdminCreationForm(request.POST)
@@ -107,11 +118,14 @@ def crear_admin(request):
         form = AdminCreationForm()
     
     return render(request, 'empireapp/pages/dashboard/crear_admin.html', {'form': form})
+
 @user_passes_test(is_admin)
+@login_required
 def home(request):
     return render(request, "empireapp/pages/dashboard/home.html")
 
 @user_passes_test(is_admin)
+@login_required
 def inventory(request):
     productos = Producto.objects.all()
     
@@ -121,6 +135,7 @@ def inventory(request):
     return render(request, "empireapp/pages/dashboard/inventory.html", lista_productos)
 
 @user_passes_test(is_admin)
+@login_required
 def sales(request):
     pedidos = Pedido.objects.annotate(
         total_productos=Sum('items__cantidad')
@@ -141,6 +156,7 @@ def sales(request):
     return render(request, "empireapp/pages/dashboard/sales.html", context)
 
 @user_passes_test(is_admin)
+@login_required
 def detalle_pedido(request, pedido_id):
     pedido = get_object_or_404(Pedido, id=pedido_id)
     detalle_pedido = PedidoItem.objects.filter(pedido_id=pedido_id).select_related('producto')
@@ -152,6 +168,7 @@ def detalle_pedido(request, pedido_id):
     return render(request, 'empireapp/pages/dashboard/detalle_pedido.html', context)
 
 @user_passes_test(is_admin)
+@login_required
 def clientes(request):
     clientes = Cliente.objects.all()
     datos = {
@@ -160,6 +177,7 @@ def clientes(request):
     return render(request, "empireapp/pages/dashboard/clientes.html", datos)
 
 @user_passes_test(is_admin)
+@login_required
 def detallecliente(request, id):
     cliente=get_object_or_404(Cliente, rut=id)
     datos={
@@ -168,6 +186,7 @@ def detallecliente(request, id):
     return render(request, "empireapp/pages/dashboard/detallecliente.html", datos)
 
 @user_passes_test(is_admin)
+@login_required
 def crearcliente(request):
     form=ClienteForm()
 
@@ -184,6 +203,7 @@ def crearcliente(request):
     return render(request, "empireapp/pages/dashboard/crearcliente.html", datos)
 
 @user_passes_test(is_admin)
+@login_required
 def modificarcliente(request,id):
     cliente=get_object_or_404(Cliente,rut=id)
 
@@ -203,6 +223,7 @@ def modificarcliente(request,id):
     return render(request, "empireapp/pages/dashboard/modificarcliente.html", datos)
 
 @user_passes_test(is_admin)
+@login_required
 def eliminarcliente(request,id):
     cliente=get_object_or_404(Cliente,rut=id)
 
@@ -210,14 +231,19 @@ def eliminarcliente(request,id):
         "cliente":cliente
     }
 
-    if request.method=="POST":
-        cliente.delete()
-        """ messages.error(request, 'cliente Eliminado') """
-        return redirect(to='clientes')
+    if request.method == 'POST':
+        try:
+            cliente.delete()
+            messages.success(request, 'Cliente eliminado correctamente.')
+        except ValidationError as e:
+            messages.error(request, f'Error al eliminar cliente: {str(e)}')
+
+        return redirect('clientes')
     return render(request, "empireapp/pages/dashboard/eliminarcliente.html", datos)
 
-#LAPTOPS
+# LAPTOPS
 @user_passes_test(is_admin)
+@login_required
 def añadirlaptops(request):
     form=LaptopsForm()
 
@@ -234,8 +260,9 @@ def añadirlaptops(request):
     return render(request, "empireapp/pages/dashboard/añadirlaptops.html", datos)
 
 
-#CELULARES
+# CELULARES
 @user_passes_test(is_admin)
+@login_required
 def añadircelulares(request):
     form=CelularesForm()
 
@@ -253,6 +280,7 @@ def añadircelulares(request):
 
 
 @user_passes_test(is_admin)
+@login_required
 def products(request):
     productos = Producto.objects.all()
     
@@ -263,6 +291,7 @@ def products(request):
     return render(request, "empireapp/pages/dashboard/products.html", lista_productos)
 
 @user_passes_test(is_admin)
+@login_required
 def editarproducto(request, product_type, pk):
     if product_type == 'laptop':
         product = get_object_or_404(Laptops, id=pk)
@@ -285,20 +314,24 @@ def editarproducto(request, product_type, pk):
     return render(request, "empireapp/pages/dashboard/editarproducto.html", context)
 
 @user_passes_test(is_admin)
+@login_required
 def eliminar_producto(request, product_type, pk):
     if product_type == 'laptop':
         product = get_object_or_404(Laptops, id=pk)
-            
     elif product_type == 'celular':
         product = get_object_or_404(Celulares, id=pk)
-        
     else:
         # Manejar caso de product_type desconocido o incorrecto
         return redirect('products')  # Redirigir a la página de productos o donde corresponda
 
+    # Verificar si el producto está en algún pedido
+    if PedidoItem.objects.filter(producto=product).exists():
+        messages.error(request, 'No se puede eliminar este producto porque está asociado a un pedido.')
+        return redirect('products')  # Redirigir a la página de productos o donde corresponda
+
     if request.method == 'POST':
         if product.imagen:
-            remove(os.path.join(str(settings.MEDIA_ROOT).replace('/media','')+product.imagen.url))
+            remove(os.path.join(str(settings.MEDIA_ROOT).replace('/media', '') + product.imagen.url))
         product.delete()
         return redirect('products')  # Redirigir a la página de productos después de eliminar
 
@@ -308,10 +341,15 @@ def eliminar_producto(request, product_type, pk):
     }
     return render(request, "empireapp/pages/dashboard/eliminar_producto.html", context)
 
-#CARRITO
+# CARRITO
+@login_required
 def cart_detail(request):
     cart, created = Cart.objects.get_or_create(user=request.user)
     items = CartItem.objects.filter(cart=cart).select_related('producto')
+    
+    if not items.exists():
+        messages.warning(request, 'No tienes ningún producto en tu carrito.')
+        return redirect('productos')
     
     total = sum(item.producto.precio * item.quantity for item in items)
     
@@ -326,11 +364,19 @@ def cart_detail(request):
             
             # Iterar sobre los items del carrito y agregarlos al pedido
             for item in items:
-                pedido_item = PedidoItem.objects.create(
-                    pedido=pedido,
-                    producto=item.producto,
-                    cantidad=item.quantity
-                )
+                # Verificar si hay suficiente stock disponible
+                if item.producto.stock >= item.quantity:
+                    pedido_item = PedidoItem.objects.create(
+                        pedido=pedido,
+                        producto=item.producto,
+                        cantidad=item.quantity
+                    )
+                    # Reducir la cantidad en el stock del producto
+                    item.producto.stock -= item.quantity
+                    item.producto.save()
+                else:
+                    messages.error(request, f'No hay suficiente stock disponible para {item.producto.nombre}.')
+                    return redirect('cart_detail')
             
             # Vaciar el carrito después de completar el pedido
             cart.cartitem_set.all().delete()
@@ -340,15 +386,25 @@ def cart_detail(request):
 
 @login_required
 def cart_add(request, product_id):
-    product = get_object_or_404(Producto, id=product_id)
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    form = CartAddProductForm(request.POST)
-    if form.is_valid():
-        cd = form.cleaned_data
-        item, created = CartItem.objects.get_or_create(cart=cart, producto=product)
-        item.quantity += cd['quantity']
-        item.save()
-    return redirect('cart_detail')
+    if request.user.is_authenticated:
+        product = get_object_or_404(Producto, id=product_id)
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        form = CartAddProductForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            item, created = CartItem.objects.get_or_create(cart=cart, producto=product)
+            item.quantity += cd['quantity']
+            item.save()
+
+        # Capturar la URL anterior del usuario
+        previous_url = request.META.get('HTTP_REFERER', '/')
+        
+        return HttpResponseRedirect(previous_url)
+    else:
+        messages.warning(request, 'Necesitas iniciar sesión para agregar productos al carrito.')
+        previous_url = request.META.get('HTTP_REFERER', '/')
+        
+        return HttpResponseRedirect(previous_url)
 
 @login_required
 def cart_remove(request, item_id):
@@ -365,8 +421,11 @@ def cart_update(request, item_id):
         action = request.POST.get('action')
 
         if action == 'incrementar':
-            item.quantity += 1
-            item.save()
+            if item.quantity < item.producto.stock:
+                item.quantity += 1
+                item.save()
+            else:
+                messages.error(request, 'No hay suficiente stock disponible')
         elif action == 'decrementar':
             if item.quantity > 1:
                 item.quantity -= 1
@@ -375,4 +434,6 @@ def cart_update(request, item_id):
                 # Si la cantidad es 1 y se intenta decrementar, eliminar el producto del carrito
                 item.delete()
 
-    return redirect('cart_detail')
+    previous_url = request.META.get('HTTP_REFERER', '/')
+        
+    return HttpResponseRedirect(previous_url)
