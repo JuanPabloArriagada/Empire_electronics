@@ -1,125 +1,15 @@
 {% extends "../index.html" %}
+{% load static %}
 {% block contenedor %}
 <main class="empire-main">
-    <form method="post">
+    <h2 class="page-title">Registrarse</h2>
+    <form method="post" class="register-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Registrarse</button>
+        <div class="form-group btn-container">
+            <button type="submit" class="btn-register">Registrarse</button>
+        </div>
     </form>
-    {% comment %} <form id="formulario_registro" class="empire-registro-container was-validated">
-
-        <div class="empire-registro-head">
-            <h1 style="text-align: center"> Registro </h1>
-            <p>Los campos marcados (*) deben ser llenados obligatoriamente.</p>
-        </div>
-
-        <section class="empire-registro">
-            <div class="empire-registro-persona">
-                <label>Rut *
-                    <span>Sin puntos ni guión</span></label>
-                <input class="form-control" type="text" id="rut_cliente" name="rut_cliente" placeholder="Ingresa tu Rut"
-                    minlength="9" maxlength="10" pattern="\d{8,9}-\d{1}" required>
-                <div id="id_lbl_rut" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-            </div>
-            <div class="empire-registro-persona">
-                <label>Nombre *</label>
-                <input class="form-control" type="text" id="nombre_cliente" name="nombre_cliente"
-                    placeholder="Ingresa tu Nombre" maxlength="30" required>
-                <div id="id_lbl_nombre" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-            </div>
-        </section>
-        <section class="empire-registro">
-            <div class="empire-registro-persona">
-                <label>Telefono *</label>
-                <input class="form-control" type="number" id="telefono_cliente" name="telefono_cliente"
-                    placeholder="Ingresa tu Telefeno" maxlength="9" required>
-                <div id="id_lbl_telefono" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-            </div>
-            <div class="empire-registro-persona">
-                <label>Email *</label>
-                <input class="form-control" type="email" id="email_cliente" name="email_cliente"
-                    placeholder="Ingresa tu Email" maxlength="50" required>
-                <div id="id_lbl_email" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-            </div>
-        </section>
-        <div>
-            <h1 style="text-align: center;"> Direccion </h1>
-        </div>
-        <section class="empire-registro">
-            <div class="empire-registro-persona">
-                <label>Ciudad *</label>
-                <input class="form-control" type="text" id="ciudad_cliente" name="ciudad_cliente"
-                    placeholder="Ingresa tu ciudad" maxlength="50" required>
-                <div id="id_lbl_ciudad" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-            </div>
-            <div class="empire-registro-persona">
-                <label>Comuna</label>
-                <div>
-                    <!-- Crearemos un select para mostrar las comunas -->
-                    <select id="comunas-select">
-                        <option value="">Selecciona una comuna</option>
-                        <!-- Las comunas se agregarán aquí -->
-                    </select>
-                </div>
-            </div>
-        </section>
-        <section class="empire-registro">
-            <div class="empire-registro-persona">
-                <label>Region</label>
-                <input class="form-control" type="text" id="region_cliente" name="region_cliente" disabled>
-                <div id="id_lbl_region" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-            </div>
-
-            <div class="empire-registro-persona">
-                <label>Numero casa/departamento *</label>
-                <input class="form-control" type="number" id="n_cd_cliente" name="n_cd_cliente"
-                    placeholder="Ingresa tu Numero casa/departamento" maxlength="5" required>
-                <div id="id_lbl_n_cd" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-            </div>
-        </section>
-        <section class="empire-registro">
-            <div class="empire-registro-persona">
-                <label>Direccion *</label>
-                <input class="form-control" type="text" id="direccion_cliente" name="direccion_cliente"
-                    placeholder="Ingresa tu Direccion" maxlength="70" required>
-                <div id="id_lbl_direccion" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-            </div>
-        </section>
-        <div>
-            <h1 style="text-align: center;"> Contraseña </h1>
-        </div>
-        <section class="empire-registro">
-            <div class="empire-registro-persona">
-                <label>Contraseña *</label>
-                <input class="form-control" type="password" id="contraseña_cliente" name="contraseña_cliente"
-                    placeholder="Ingresa tu contraseña" maxlength="20" required>
-                <div id="id_lbl_contraseña" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-                <div id="id_lbl_contraseñaV" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">Las contraseñas no coinciden</div>
-            </div>
-
-            <div class="empire-registro-persona">
-                <label>Confirmar Contraseña *</label>
-                <input class="form-control" type="password" id="contraseña_clienteV" name="contraseña_clienteV"
-                    placeholder="Confirma tu contraseña" maxlength="20" required>
-                <div id="id_lbl_contraseña" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">El campo es obligatorio</div>
-                <div id="id_lbl_contraseñaV" class="form-error form-error--active link link--sm link--bold color-alert"
-                    style="display:none">Las contraseñas no coinciden</div>
-            </div>
-        </section>
-        <a href="index.html">
-            <button class="empire-registro-form">Registrarse</button>
-        </a>
-    </form> {% endcomment %}
 </main>
-{% endblock contenedor %}
+<script src="{% static 'empireapp/js/rut.js' %}"></script>
+{% endblock %}

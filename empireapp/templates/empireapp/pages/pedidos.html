@@ -1,19 +1,21 @@
 {% extends "../index.html" %}
 {% block contenedor %}
-<h2>Mis Pedidos</h2>
-<ul>
+<h2 class="page-title">Mis Pedidos</h2>
+<ul class="order-list">
     {% for pedido in pedidos %}
-    <li>
-        <strong>Número de Pedido:</strong> {{ pedido.pk }}<br>
-        <strong>Fecha:</strong> {{ pedido.fecha_pedido }}<br>
-        <strong>Total:</strong> {{ pedido.total }}<br>
-        <strong>Estado:</strong> {{ pedido.estado }}<br>
-        <a href={% url 'detallepedido' pedido.id %}>Ver Detalles</a> <!-- Enlace opcional para ver detalles del pedido -->
-        <hr>
+    <li class="order-item">
+        <div class="order-header">
+            <strong>Número de Pedido:</strong> {{ pedido.pk }}
+        </div>
+        <div class="order-details">
+            <strong>Fecha:</strong> {{ pedido.fecha_pedido }}<br>
+            <strong>Total:</strong> {{ pedido.total }}<br>
+            <strong>Estado:</strong> {{ pedido.estado }}<br>
+        </div>
+        <a href="{% url 'detallepedido' pedido.id %}" class="order-link">Ver Detalles</a> <!-- Enlace opcional para ver detalles del pedido -->
     </li>
     {% empty %}
-    <li>No tienes pedidos realizados.</li>
+    <li class="order-item">No tienes pedidos realizados.</li>
     {% endfor %}
-    
 </ul>
 {% endblock contenedor %}
