@@ -5,6 +5,9 @@ from .listas import *
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class ClienteManager(BaseUserManager):
@@ -59,6 +62,16 @@ class Cliente(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f"RUT:{self.rut} NOMBRE: {self.nombre} {self.apellido}"
+    
+    def clean(self):
+        super().clean()
+        if self.pk and Pedido.objects.filter(user=self).exists():
+            raise ValidationError('No se puede eliminar el cliente porque tiene pedidos asociados.')
+
+@receiver(pre_delete, sender=Cliente)
+def prevent_delete_if_linked_to_pedido(sender, instance, **kwargs):
+    if Pedido.objects.filter(user=instance).exists():
+        raise ValidationError('No se puede eliminar el cliente porque tiene pedidos asociados.')
 
 class Marca(models.TextChoices):
     APPLE = 'APPLE', 'Apple'
@@ -76,12 +89,31 @@ class Producto(models.Model):
     estado = models.CharField(max_length=50, choices=TIPO_ESTADO_PRODUCTO)
 
 
+    estado = models.CharField(
+        max_length=50,
+        choices=TIPO_ESTADO_PRODUCTO,
+        default='disponible',  # Puedes establecer 'disponible' como valor por defecto
+        verbose_name=('Estado')
+    )
+
+    def save(self, *args, **kwargs):
+        if self.stock <= 0:
+            self.estado = 'no disponible'
+        else:
+            self.estado = 'disponible'
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = 'Producto'
         verbose_name_plural = 'Productos'
 
     def __str__(self):
         return f"ID: {self.id} MARCA: {self.marca} MODELO: {self.modelo} PRECIO: {self.precio} STOCK: {self.stock}"
+
+@receiver(pre_delete, sender=Producto)
+def prevent_delete_if_linked_to_pedido(sender, instance, **kwargs):
+    if PedidoItem.objects.filter(producto=instance).exists():
+        raise ValidationError('No se puede eliminar el producto porque está asociado a un pedido.')
 
 class Laptops(Producto):
     imagen = models.ImageField(upload_to='laptops', null=True)
