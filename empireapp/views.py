@@ -11,6 +11,7 @@ from django.db.models import Sum
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.db.models.deletion import ProtectedError
 
 
 # Create your views here.
@@ -222,23 +223,23 @@ def modificarcliente(request,id):
         
     return render(request, "empireapp/pages/dashboard/modificarcliente.html", datos)
 
-@user_passes_test(is_admin)
-@login_required
-def eliminarcliente(request,id):
-    cliente=get_object_or_404(Cliente,rut=id)
 
-    datos={
-        "cliente":cliente
+def eliminarcliente(request, id):
+    cliente = get_object_or_404(Cliente, rut=id)
+
+    datos = {
+        "cliente": cliente
     }
 
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             cliente.delete()
-            messages.success(request, 'Cliente eliminado correctamente.')
-        except ValidationError as e:
-            messages.error(request, f'Error al eliminar cliente: {str(e)}')
+            messages.success(request, 'Cliente eliminado exitosamente.')
+            return redirect('clientes')  # Ajusta 'clientes' según la URL a la que deseas redirigir después de eliminar
+        except ProtectedError:
+            messages.warning(request, 'No se puede eliminar este cliente porque tiene pedidos asociados.')
+            return redirect('clientes')  # O redirige a otra vista donde manejes el caso de cliente con pedidos
 
-        return redirect('clientes')
     return render(request, "empireapp/pages/dashboard/eliminarcliente.html", datos)
 
 # LAPTOPS

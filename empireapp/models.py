@@ -62,16 +62,7 @@ class Cliente(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f"RUT:{self.rut} NOMBRE: {self.nombre} {self.apellido}"
-    
-    def clean(self):
-        super().clean()
-        if self.pk and Pedido.objects.filter(user=self).exists():
-            raise ValidationError('No se puede eliminar el cliente porque tiene pedidos asociados.')
 
-@receiver(pre_delete, sender=Cliente)
-def prevent_delete_if_linked_to_pedido(sender, instance, **kwargs):
-    if Pedido.objects.filter(user=instance).exists():
-        raise ValidationError('No se puede eliminar el cliente porque tiene pedidos asociados.')
 
 class Marca(models.TextChoices):
     APPLE = 'APPLE', 'Apple'
@@ -110,10 +101,6 @@ class Producto(models.Model):
     def __str__(self):
         return f"ID: {self.id} MARCA: {self.marca} MODELO: {self.modelo} PRECIO: {self.precio} STOCK: {self.stock}"
 
-@receiver(pre_delete, sender=Producto)
-def prevent_delete_if_linked_to_pedido(sender, instance, **kwargs):
-    if PedidoItem.objects.filter(producto=instance).exists():
-        raise ValidationError('No se puede eliminar el producto porque está asociado a un pedido.')
 
 class Laptops(Producto):
     imagen = models.ImageField(upload_to='laptops', null=True)
@@ -167,7 +154,7 @@ class CartItem(models.Model):
         return f'cantidad: {self.quantity} de id: {self.producto.id} modelo:{self.producto.modelo}'
 
 class Pedido(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pedidos')
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='pedidos')
     total = models.DecimalField(max_digits=50, decimal_places=2)
     estado = models.CharField(max_length=20, choices=TIPO_ESTADO_PEDIDO, default='pendiente')
     fecha_pedido = models.DateTimeField(auto_now_add=True)
@@ -176,8 +163,8 @@ class Pedido(models.Model):
         return f'Pedido {self.pk} - Usuario: {self.user.correo}'
 
 class PedidoItem(models.Model):
-    pedido = models.ForeignKey(Pedido, related_name='items', on_delete=models.CASCADE)
-    producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
+    pedido = models.ForeignKey(Pedido, related_name='items', on_delete=models.PROTECT)
+    producto = models.ForeignKey('Producto', on_delete=models.PROTECT)
     cantidad = models.PositiveIntegerField(default=1)
 
     def __str__(self):

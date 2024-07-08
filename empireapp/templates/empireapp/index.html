@@ -204,61 +204,54 @@
                 <h4 class="empire-featured-item__title">Accesorios</h4>
             </a>
         </section>
-{% comment %}         <section class="empire-sale">
-            <div class="empire-sale-all">
-                <h3 class="empire-sale-all__title">Descuentos Increíbles</h3>
-                <a class="empire-sale-all__link" href="pages/products.html">Ver todos los productos >></a>
-            </div>
-            <div class="empire-sale-slider">
-                <a href="{% url "detalleProducto" %}" class="empire-sale-slider-item">
-                    <small class="empire-sale-slider-item__dscto">-30%</small>
-                    <img class="empire-sale-slider-item__img" src="{% static "empireapp/images/products/laptops/01-macbook-air-15.png" %}" alt="teclado-NPET-K10">
-                    <h4 class="empire-sale-slider-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3 inch</h4>
-                    <div class="empire-sale-slider-item-price">
-                        <small class="empire-sale-slider-item-price__dscto">$1.299.000</small>
-                        <small class="empire-sale-slider-item-price__value">$999.990</small>
-                    </div>
-                </a>
-                <a href="" class="empire-sale-slider-item">
-                    <small class="empire-sale-slider-item__dscto">-50%</small>
-                    <img class="empire-sale-slider-item__img" src="{% static "empireapp/images/mouse-logitech.png" %}"
-                        alt="mouse-logitech">
-                    <h4 class="empire-sale-slider-item__title">Logitech G502 Gaming Mouse</h4>
-                    <div class="empire-sale-slider-item-price">
-                        <small class="empire-sale-slider-item-price__dscto">$38.00</small>
-                        <small class="empire-sale-slider-item-price__value">$19.00</small>
-                    </div>
-                </a>
-                <a href="" class="empire-sale-slider-item">
-                    <small class="empire-sale-slider-item__dscto">-20%</small>
-                    <img class="empire-sale-slider-item__img" src="{% static "empireapp/images/apple-watch-series-7.png" %}" alt="apple-watch-series-7.png">
-                    <h4 class="empire-sale-slider-item__title">Apple Watch Series 7 (GPS, 41MM)</h4>
-                    <div class="empire-sale-slider-item-price">
-                        <small class="empire-sale-slider-item-price__dscto">$289.00</small>
-                        <small class="empire-sale-slider-item-price__value">$231.20</small>
-                    </div>
+        {% if messages %} 
 
-                </a>
-                <a href="" class="empire-sale-slider-item">
-                    <small class="empire-sale-slider-item__dscto">-25%</small>
-                    <img class="empire-sale-slider-item__img" src="{% static "empireapp/images/apple-2022-macbook-air-m2.png" %}" alt="apple-2022-macbook-air-m2">
-                    <h4 class="empire-sale-slider-item__title">Apple 2022 MacBook Air M2 Chip (8GB RAM, 256GB SSD)</h4>
-                    <div class="empire-sale-slider-item-price">
-                        <small class="empire-sale-slider-item-price__dscto">$950.22</small>
-                        <small class="empire-sale-slider-item-price__value">$712.66</small>
-                    </div>
-                </a>
-                <a href="" class="empire-sale-slider-item">
-                    <small class="empire-sale-slider-item__dscto">-17%</small>
-                    <img class="empire-sale-slider-item__img" src="{% static "empireapp/images/samsung-titan-smart-watch.png" %}" alt="samsung-titan-smart-watch">
-                    <h4 class="empire-sale-slider-item__title">Samsung Titan smart watch</h4>
-                    <div class="empire-sale-slider-item-price">
-                        <small class="empire-sale-slider-item-price__dscto">$120.00</small>
-                        <small class="empire-sale-slider-item-price__value">$96.60</small>
-                    </div>
-                </a>
-            </div>
-        </section> {% endcomment %}
+        {% for message in messages %}
+            {% if message.level == 25 %}
+              {% comment %}   <div class="alert alert-success alert-dismissible mt-3">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Operación Realizada: </strong>{{message}} 
+                </div> {% endcomment %}
+                <script>
+                    Swal.fire({
+                        title: 'Operación exitosa!',
+                        text: '{{message}}',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                      })
+                </script>
+            {% endif %}
+            {% if message.level == 30 %}
+               {% comment %}  <div class="alert alert-warning alert-dismissible mt-3">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>Alerta: </strong>{{message}} 
+                </div> {% endcomment %}
+                <script>
+                    Swal.fire({
+                        title: 'Alerta!',
+                        text: '{{message}}',
+                        icon: 'warning',
+                        confirmButtonText: 'Ok'
+                      })
+                </script>
+            {% endif %}
+            {% if message.level == 40 %}
+           {% comment %}  <div class="alert alert-danger alert-dismissible mt-3">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Importante: </strong>{{message}} 
+            </div> {% endcomment %}
+            <script>
+                Swal.fire({
+                    title: 'Importante!',
+                    text: '{{message}}',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                  })
+            </script>
+        {% endif %}
+        {% endfor %}
+
+{% endif %}
     </main>
     {% endblock contenedor %}
     <footer class="empire-footer">

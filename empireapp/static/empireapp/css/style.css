@@ -2837,7 +2837,7 @@ h1, h2 {
 /*DETALLE CLIENTE*/
 /* Contenedor principal */
 .client-detail-container {
-    max-width: 800px;
+    max-width: 1800px;
     margin: 40px auto;
     padding: 20px;
     background-color: #f9f9f9;
