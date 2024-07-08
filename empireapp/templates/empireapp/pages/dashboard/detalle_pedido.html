@@ -1,6 +1,11 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
 {% block contenido %}
-<div class="container">
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'empireapp/css/style.css' %}">
+</head>
+<div class="container-detalle-pedido">
     <h1>Detalle del Pedido {{ pedido.id }}</h1>
 
     <div class="cliente-info">

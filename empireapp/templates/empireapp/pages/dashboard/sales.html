@@ -1,13 +1,14 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
 {% block contenido %}
+
     <section class="full-width header-well">
         <div class="full-width header-well-icon">
             <i class="zmdi zmdi-shopping-cart"></i>
         </div>
         <div class="full-width header-well-text">
             <p class="text-condensedLight">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aut nulla accusantium minus corporis
-                accusamus fuga harum natus molestias necessitatibus.
+                Aquí podemos ver las compras que han hecho los clientes. Puedes actualizar el estado
+                de cada una al igual que ver los detalles de cada cliente.
             </p>
         </div>
     </section>
@@ -23,7 +24,7 @@
                         <th>Pago</th>
                         <th>Total</th>
                         <th>Estado</th>
-                        <th>detalle</th>
+                        <th>Detalle</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,19 +36,19 @@
                             <td>{{ pedido.total }}</td>
                             <td>{{ pedido.total }}</td>
                             <td>
-                                <form method="post" action="{% url 'sales' %}">
+                                <form method="post" action="{% url 'sales' %}" class="estado-form">
                                     {% csrf_token %}
                                     <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
-                                    <select name="estado">
+                                    <select name="estado" class="estado-select">
                                         {% for key, value in tipo_estado_pedido %}
                                             <option value="{{ key }}" {% if pedido.estado == key %}selected{% endif %}>{{ value }}</option>
                                         {% endfor %}
                                     </select>
-                                    <button type="submit">Actualizar</button>
+                                    <button type="submit" class="btn-actualizar">Actualizar</button>
                                 </form>
                             </td>
                             <td>
-                                <a href="{% url 'detalle_pedido' pedido.id %}">Ver Detalle</a>
+                                <a href="{% url 'detalle_pedido' pedido.id %}" class="btn-ver-detalle">Ver Detalle</a>
                             </td>
                         </tr>
                     {% endfor %}

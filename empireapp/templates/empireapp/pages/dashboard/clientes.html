@@ -1,10 +1,23 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
 {% block contenido %}
-<a href="{% url 'crearcliente' %}" role="button" class="btn btn-info text-light shadow rounded">CREAR CLIENTE</a>
-    <h1>Administrar usuarios</h1>
-    {% comment %} rut, nombre, apellido, telefono, correo, direccion, detalle {% endcomment %}
-    <h1> Clientes </h1>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+
+<section class="full-width header-well">
+    <div class="full-width header-well-icon">
+        <i class="zmdi zmdi-store"></i>
+    </div>
+    <div class="full-width header-well-text">
+        <p class="text-condensedLight">
+            Aquí puedes administrar a cada usuario. Se separa a los clientes
+            de los administradores para mostrarte los detalles de sus cuentas.<br>
+            Además puedes crear directamente a nuevos clientes.
+        </p>
+    </div>
+</section>
+<div class="manage-users-container">
+    <h1 class="manage-users-title">Administrar usuarios</h1>
+
+    <h2 class="table-title">Clientes</h2>
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive manage-users-table">
         <thead>
             <tr>
                 <th>RUT</th>
@@ -27,15 +40,18 @@
                         <td>{{ c.correo }}</td>
                         <td>{{ c.direccion }}</td>
                         <td>
-                            <a href="{% url 'detallecliente' c.rut %}" role="button" class="btn btn-info text-light shadow rounded">Ver detalle</a>
+                            <a href="{% url 'detallecliente' c.rut %}" role="button" class="manage-users-btn-detail">Ver detalle</a>
                         </td>
                     </tr>
                 {% endif %}
             {% endfor %}
         </tbody>
     </table>
-    <h1>Administradores</h1>
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+    <div class="center-button-cliente">
+        <a href="{% url 'crearcliente' %}" role="button" class="manage-users-btn">CREAR CLIENTE</a>
+    </div>
+    <h2 class="table-title">Administradores</h2>
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive manage-users-table">
         <thead>
             <tr>
                 <th>RUT</th>
@@ -50,19 +66,20 @@
         <tbody>
             {% for c in clientes %}
                 {% if c.is_staff %}
-                        <tr>
-                            <td>{{ c.rut }}</td>
-                            <td>{{ c.nombre }}</td>
-                            <td>{{ c.apellido }}</td>
-                            <td>{{ c.telefono }}</td>
-                            <td>{{ c.correo }}</td>
-                            <td>{{ c.direccion }}</td>
-                            <td>
-                                <a href="{% url 'detallecliente' c.rut %}" role="button" class="btn btn-info text-light shadow rounded">Ver detalle</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>{{ c.rut }}</td>
+                        <td>{{ c.nombre }}</td>
+                        <td>{{ c.apellido }}</td>
+                        <td>{{ c.telefono }}</td>
+                        <td>{{ c.correo }}</td>
+                        <td>{{ c.direccion }}</td>
+                        <td>
+                            <a href="{% url 'detallecliente' c.rut %}" role="button" class="manage-users-btn-detail">Ver detalle</a>
+                        </td>
+                    </tr>
                 {% endif %}
             {% endfor %}
         </tbody>
     </table>
+</div>
 {% endblock contenido %}

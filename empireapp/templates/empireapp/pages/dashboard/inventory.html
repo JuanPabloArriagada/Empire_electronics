@@ -1,125 +1,123 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
 {% block contenido %}
+
     <section class="full-width header-well">
         <div class="full-width header-well-icon">
             <i class="zmdi zmdi-store"></i>
         </div>
         <div class="full-width header-well-text">
             <p class="text-condensedLight">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aut nulla accusantium minus corporis
-                accusamus fuga harum natus molestias necessitatibus.
+                Aquí puedes ver el inventario de Empire Electronics, puedes revisar el Stock de tus productos editar la información de cada uno.
             </p>
         </div>
     </section>
-    <div class="full-width divider-menu-h"></div>
+    <div class="full-width inventory-divider-menu-h"></div>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-            <h2>PRODUCTOS DISPONIBLES</h2>
-                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Imagen</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Estado</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for producto in productos %}
-                            {% if producto.estado == 'disponible' %}
-                                <tr>
-                                    <td>{{ producto.id }}</td>
-                                        {% if producto.laptops  %}
-                                            <td><img src={{producto.laptops.imagen.url}} alt="foto" height="150"></td>
-                                        {% elif producto.celulares %}
-                                            <td><img src={{producto.celulares.imagen.url}} alt="foto" height="150"></td>
-                                        {% endif %}
-                                    <td>{{ producto.marca }}</td>
-                                    <td>{{ producto.modelo }}</td>
-                                    <td>{{ producto.estado }}</td>
-                                    <td>{{ producto.precio }}</td>
-                                    <td>{{ producto.stock }}</td>
-                                    <td>
-                                        {% if producto.laptops  %}
-                                            <a href="{% url 'editarproducto' 'laptop' producto.id %}">Editar</a>
-                                        {% elif producto.celulares %}
-                                            <a href="{% url 'editarproducto' 'celular' producto.id %}">Editar</a>
-                                        {% endif %}
-                                    <td>
-                                        {% if producto.laptops %}
-                                            <button type="submit">
-                                                <a href="{% url 'eliminar_producto' 'laptop' producto.id %}">Eliminar</a></td>
-                                            </button>
-                                        {% elif producto.celulares %}
-                                            <button type="submit">
-                                                <a href="{% url 'eliminar_producto' 'celular' producto.id %}">Eliminar</a></td>
-                                            </button>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <h2 class="inventory-title">PRODUCTOS DISPONIBLES</h2>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive inventory-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imagen</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Estado</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                        {% if producto.estado == 'disponible' %}
+                            <tr>
+                                <td>{{ producto.id }}</td>
+                                <td>
+                                    {% if producto.laptops %}
+                                        <img src="{{ producto.laptops.imagen.url }}" alt="foto">
+                                    {% elif producto.celulares %}
+                                        <img src="{{ producto.celulares.imagen.url }}" alt="foto">
+                                    {% endif %}
+                                </td>
+                                <td>{{ producto.marca }}</td>
+                                <td>{{ producto.modelo }}</td>
+                                <td>{{ producto.estado }}</td>
+                                <td>{{ producto.precio }}</td>
+                                <td>{{ producto.stock }}</td>
+                                <td>
+                                    {% if producto.laptops %}
+                                        <a href="{% url 'editarproducto' 'laptop' producto.id %}" class="inventory-btn-edit">Editar</a>
+                                    {% elif producto.celulares %}
+                                        <a href="{% url 'editarproducto' 'celular' producto.id %}" class="inventory-btn-edit">Editar</a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if producto.laptops %}
+                                        <a href="{% url 'eliminar_producto' 'laptop' producto.id %}" class="inventory-btn-delete">Eliminar</a>
+                                    {% elif producto.celulares %}
+                                        <a href="{% url 'eliminar_producto' 'celular' producto.id %}" class="inventory-btn-delete">Eliminar</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
         <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-            <h2>PRODUCTOS NO DISPONIBLES</h2>
-                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Imagen</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Estado</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for producto in productos %}
-                            {% if producto.estado == 'no disponible' %}
-                                <tr>
-                                    <td>{{ producto.id }}</td>
-                                        {% if producto.laptops  %}
-                                            <td><img src={{producto.laptops.imagen.url}} alt="foto" height="150"></td>
-                                        {% elif producto.celulares %}
-                                            <td><img src={{producto.celulares.imagen.url}} alt="foto" height="150"></td>
-                                        {% endif %}
-                                    <td>{{ producto.marca }}</td>
-                                    <td>{{ producto.modelo }}</td>
-                                    <td>{{ producto.estado }}</td>
-                                    <td>{{ producto.precio }}</td>
-                                    <td>{{ producto.stock }}</td>
-                                    <td>
-                                        {% if producto.laptops  %}
-                                            <a href="{% url 'editarproducto' 'laptop' producto.id %}">Editar</a>
-                                        {% elif producto.celulares %}
-                                            <a href="{% url 'editarproducto' 'celular' producto.id %}">Editar</a>
-                                        {% endif %}
-                                    <td>
-                                        {% if producto.laptops %}
-                                            <button type="submit">
-                                                <a href="{% url 'eliminar_producto' 'laptop' producto.id %}">Eliminar</a></td>
-                                            </button>
-                                        {% elif producto.celulares %}
-                                            <button type="submit">
-                                                <a href="{% url 'eliminar_producto' 'celular' producto.id %}">Eliminar</a></td>
-                                            </button>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <h2 class="inventory-title">PRODUCTOS NO DISPONIBLES</h2>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive inventory-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imagen</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Estado</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                        {% if producto.estado == 'no disponible' %}
+                            <tr>
+                                <td>{{ producto.id }}</td>
+                                <td>
+                                    {% if producto.laptops %}
+                                        <img src="{{ producto.laptops.imagen.url }}" alt="foto">
+                                    {% elif producto.celulares %}
+                                        <img src="{{ producto.celulares.imagen.url }}" alt="foto">
+                                    {% endif %}
+                                </td>
+                                <td>{{ producto.marca }}</td>
+                                <td>{{ producto.modelo }}</td>
+                                <td>{{ producto.estado }}</td>
+                                <td>{{ producto.precio }}</td>
+                                <td>{{ producto.stock }}</td>
+                                <td>
+                                    {% if producto.laptops %}
+                                        <a href="{% url 'editarproducto' 'laptop' producto.id %}" class="inventory-btn-edit">Editar</a>
+                                    {% elif producto.celulares %}
+                                        <a href="{% url 'editarproducto' 'celular' producto.id %}" class="inventory-btn-edit">Editar</a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if producto.laptops %}
+                                        <a href="{% url 'eliminar_producto' 'laptop' producto.id %}" class="inventory-btn-delete">Eliminar</a>
+                                    {% elif producto.celulares %}
+                                        <a href="{% url 'eliminar_producto' 'celular' producto.id %}" class="inventory-btn-delete">Eliminar</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock contenido %}

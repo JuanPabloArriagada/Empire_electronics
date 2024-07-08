@@ -1897,6 +1897,1144 @@ form button:hover,
     background-color: #0056b3;
 }
 
+/*DASHBOARD*/
+/*PRODUCTOS*/
+
+/* Estilos para la cabecera */
+.header-well {
+    background-color: #a6c5e4;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-well-icon {
+    font-size: 50px;
+    margin-right: 20px;
+}
+
+.header-well-text p {
+    font-size: 18px;
+}
+
+/* Enlaces de acción rápida */
+.action-links {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-action {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn-action:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para la tabla de productos */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.mdl-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.mdl-data-table th, .mdl-data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.mdl-data-table th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+.mdl-data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.mdl-data-table .product-image {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+}
+
+.image-container {
+    max-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mdl-data-table a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.mdl-data-table a:hover {
+    text-decoration: underline;
+}
+
+/* Botones de acción en la tabla */
+.table-actions .btn-table-action {
+    background-color: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.table-actions .btn-table-action:hover {
+    background-color: #2980b9;
+}
+
+/*AÑADIR PRODUCTOS*/
+/* Estilos para el header */
+.main-header {
+    background-color: #3f51b5;
+    color: white;
+    padding: 20px 0;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.main-header .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-header .main-nav ul li {
+    margin-right: 50px;
+}
+
+.main-header .main-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.main-header .main-nav ul li a:hover {
+    color: #2980b9;
+}
+
+/* Estilos para el footer */
+.main-footer {
+    background-color: #3f51b5;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.main-footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos para el contenedor del formulario */
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Estilos para el título de la página */
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* Estilos para el formulario */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form p {
+    margin-bottom: 15px;
+}
+
+.form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form input[type="text"],
+.form input[type="file"],
+.form input[type="number"],
+.form select,
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Estilos para el botón de envío */
+.btn-submit {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn-submit:hover {
+    background-color: #2980b9;
+}
+
+/*VENTAS*/
+/* Estilos para el formulario de estado */
+.estado-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.estado-select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Estilos para el botón 'Actualizar' */
+.btn-actualizar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.btn-actualizar:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el botón 'Ver Detalle' */
+.btn-ver-detalle {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.btn-ver-detalle:hover {
+    background-color: #27ae60;
+}
+
+table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*DETALLE_PEDIDO*/
+.container-detalle-pedido {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Titles */
+h1, h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Customer Info */
+.cliente-info {
+    margin-bottom: 40px;
+}
+
+.cliente-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cliente-info li {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Products Table */
+.productos-info table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.productos-info th, .productos-info td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.productos-info th {
+    background-color: #f2f2f2;
+}
+
+.productos-info td {
+    background-color: #fff;
+}
+
+/* Total Info */
+.total-info {
+    text-align: right;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}
+
+/*INVENTARIO*/
+/* Inventory Container */
+.inventory-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Inventory Titles */
+.inventory-title {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Inventory Section Header */
+.inventory-header-well {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.inventory-header-well-icon {
+    font-size: 50px;
+    color: #007bff;
+}
+
+.inventory-header-well-text p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Inventory Tables */
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.inventory-table th, .inventory-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: #f2f2f2;
+}
+
+.inventory-table td img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Inventory Buttons */
+.inventory-btn, .inventory-btn-edit, .inventory-btn-delete {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.inventory-btn-edit {
+    background-color: #28a745;
+}
+
+.inventory-btn-delete {
+    background-color: #dc3545;
+}
+
+.inventory-btn:hover, .inventory-btn-edit:hover, .inventory-btn-delete:hover {
+    background-color: #0056b3;
+}
+
+.inventory-btn-edit:hover {
+    background-color: #218838;
+}
+
+.inventory-btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Inventory Divider */
+.inventory-divider-menu-h {
+    height: 1px;
+    background-color: #e9ecef;
+    margin: 20px 0;
+}
+
+/*ELIMINAR PRODUCTO*/
+/* Contenedor principal */
+.delete-product-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la página */
+.delete-product-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Mensaje de confirmación */
+.delete-product-message {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Formulario */
+.delete-product-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botón de confirmación */
+.delete-product-form button {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.delete-product-form button:hover {
+    background-color: #c82333;
+}
+
+/* Enlace de cancelación */
+.delete-product-form a {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 200px;
+    text-align: center;
+}
+
+.delete-product-form a:hover {
+    background-color: #0056b3;
+}
+
+/*EDITAR PRODUCTO*/
+/* Contenedor principal */
+.edit-product-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la página */
+.edit-product-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 35px; 
+    font-weight: bold;
+}
+
+/* Formulario */
+.edit-product-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Campos del formulario */
+.edit-product-form .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.edit-product-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px; 
+    color: #555; 
+}
+
+.edit-product-form .form-group input,
+.edit-product-form .form-group select,
+.edit-product-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px; 
+}
+
+/* Ajustes de márgenes para un mejor orden */
+.edit-product-form .form-group input,
+.edit-product-form .form-group select,
+.edit-product-form .form-group textarea {
+    margin-bottom: 10px;
+}
+
+.edit-product-form .form-group input:focus,
+.edit-product-form .form-group select:focus,
+.edit-product-form .form-group textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Botón de guardar cambios */
+.edit-product-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 200px;
+}
+
+.edit-product-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Ajuste de alineación del formulario */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.form-group label,
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+}
+
+/* Estilo adicional para hacer el formulario más atractivo */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/*CLIENTES*/
+/* Contenedor principal */
+.manage-users-container {
+    max-width: 1200px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos de la página */
+.manage-users-title, .table-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Botones */
+.manage-users-btn, .manage-users-btn-detail {
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white !important;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.manage-users-btn:hover, .manage-users-btn-detail:hover {
+    background-color: #0056b3;
+}
+
+.center-button-cliente {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.center-button-cliente .btn {
+    width: 200px; /* Ajusta según sea necesario */
+}
+
+.manage-users-btn-detail {
+    background-color: #007bff;
+}
+
+.manage-users-btn-detail:hover {
+    background-color: #0056b3;
+}
+
+/* Inventory Tables */
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.inventory-table th, .inventory-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: #f2f2f2;
+}
+
+.inventory-table td img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/*CREAR CLIENTE*/
+/* Contenedor principal */
+.create-client-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la página */
+.create-client-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Formulario */
+.create-client-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Campos del formulario */
+.create-client-form .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.create-client-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.create-client-form .form-group input,
+.create-client-form .form-group select,
+.create-client-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+/* Botones */
+.create-client-form .btn-submit,
+.create-client-form .btn-danger {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    width: 48%;
+    margin-top: 20px;
+}
+
+.create-client-form .btn-submit {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.create-client-form .btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.create-client-form .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.create-client-form .btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Alineación de botones */
+.create-client-form .form-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+/*ELIMINAR CLIENTE*/
+/* Contenedor principal */
+.delete-client-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la página */
+.delete-client-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Botones */
+.delete-client-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 48%;
+}
+
+.delete-client-btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.delete-client-btn-danger:hover {
+    background-color: #c82333;
+}
+
+.delete-client-btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.delete-client-btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Alineación de botones */
+.delete-client-form-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+/* Modal */
+.modal-header {
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+    margin: 0;
+    line-height: 1.5;
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+    color: #333;
+    font-size: 16px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+.modal-footer .btn {
+    margin-left: 10px;
+}
+
+
+
+/*DETALLE CLIENTE*/
+/* Contenedor principal */
+.client-detail-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la página */
+.client-detail-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Tabla */
+.client-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.client-detail-table th, .client-detail-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.client-detail-table th {
+    background-color: #f2f2f2;
+}
+
+.client-detail-table td {
+    background-color: #ffffff;
+}
+
+/* Botones */
+.client-detail-actions .btn {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.client-detail-actions .btn-warning {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.client-detail-actions .btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.client-detail-actions .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.client-detail-actions .btn-danger:hover {
+    background-color: #c82333;
+}
+
+
+/*MODIFICAR CLIENTE*/
+/* Contenedor principal */
+.edit-client-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la página */
+.edit-client-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.edit-client-subtitle {
+    color: #555;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+.edit-client-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Campos del formulario */
+.edit-client-form .form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.edit-client-form .form-group label {
+    font-weight: bold;  /* Negrita para los labels */
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Botones */
+.edit-client-form .form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.edit-client-form .btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.edit-client-form .btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.edit-client-form .btn-success:hover {
+    background-color: #218838;
+}
+
+.edit-client-form .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    width: 150px;
+}
+
+.edit-client-form .btn-danger:hover {
+    background-color: #c82333;
+}
+
+
+/*CREAR ADMIN*/
+
+/* Contenedor principal */
+.create-admin-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+.create-admin-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Formulario */
+.create-admin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Campos del formulario */
+.create-admin-form .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.create-admin-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.create-admin-form .form-group input,
+.create-admin-form .form-group select,
+.create-admin-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Agregar sombra */
+    transition: border-color 0.3s, box-shadow 0.3s;  /* Transición suave */
+}
+
+.create-admin-form .form-group input:focus,
+.create-admin-form .form-group select:focus,
+.create-admin-form .form-group textarea:focus {
+    border-color: #007bff;  /* Color del borde cuando está enfocado */
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.25);  /* Sombra cuando está enfocado */
+}
+
+/* Botón de crear administrador */
+.create-admin-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 200px;
+}
+
+.create-admin-form button:hover {
+    background-color: #0056b3;
+}
+
+
 
 /** MEDIA QUERIES **/
 @media (max-width: 1200px) {
@@ -2056,5 +3194,75 @@ form button:hover,
 
     .btn-register {
         padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-well-text p {
+        font-size: 16px;
+    }
+
+    .mdl-data-table th, .mdl-data-table td {
+        padding: 10px;
+    }
+
+    .action-links .btn-action {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .form input[type="text"],
+    .form input[type="file"],
+    .form input[type="number"],
+    .form select,
+    .form textarea {
+        padding: 8px;
+    }
+
+    .btn-submit {
+        padding: 8px 16px;
+    }
+
+    .main-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-header .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-header .main-nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .inventory-table th, .inventory-table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .edit-client-container {
+        padding: 15px;
+    }
+
+    .edit-client-form .btn {
+        padding: 8px 16px;
+        font-size: 14px;
     }
 }
