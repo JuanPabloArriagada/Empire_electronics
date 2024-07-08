@@ -1,33 +1,43 @@
 {% extends "../index.html" %}
 {% load static %}
 {% block contenedor %}
-<h2>Modificar Mi Información Personal </h2>
-<form method="post">
+<h2 class="page-title">Modificar Mi Información Personal</h2>
+<form method="post" class="profile-form">
     {% csrf_token %}
-    {{ form.rut.label_tag }}
-    {{ form.rut.value }}
-    <br>
-    {{ form.nombre.label_tag }}
-    {{ form.nombre }}
-    <br>
-    {{ form.apellido.label_tag }}
-    {{ form.apellido }}
-    <br>
-    {{ form.correo.label_tag }}
-    {{ form.correo }}
-    <br>
-    {{ form.telefono.label_tag }}
-    {{ form.telefono }}
-    <br>
-    {{ form.fecha_ncto.label_tag }}
-    {{ form.fecha_ncto }}
-    <br>
-    {{ form.direccion.label_tag }}
-    {{ form.direccion }}
-    <br>
-    {{ form.password.label_tag }}
-    {{ form.password }}
-    <br>
-    <button type="submit">Guardar cambios</button>
+    <div class="form-group">
+        {{ form.rut.label_tag }}
+        <span class="form-value">{{ form.rut.value }}</span>
+    </div>
+    <div class="form-group">
+        {{ form.nombre.label_tag }}
+        {{ form.nombre }}
+    </div>
+    <div class="form-group">
+        {{ form.apellido.label_tag }}
+        {{ form.apellido }}
+    </div>
+    <div class="form-group">
+        {{ form.correo.label_tag }}
+        {{ form.correo }}
+    </div>
+    <div class="form-group">
+        {{ form.telefono.label_tag }}
+        {{ form.telefono }}
+    </div>
+    <div class="form-group">
+        {{ form.fecha_ncto.label_tag }}
+        {{ form.fecha_ncto }}
+    </div>
+    <div class="form-group">
+        {{ form.direccion.label_tag }}
+        {{ form.direccion }}
+    </div>
+    <div class="form-group">
+        {{ form.password.label_tag }}<span class="required">*</span>
+        <input type="password" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}" required class="required-field">
+    </div>
+    <div class="form-group btn-container">
+        <button type="submit" class="btn-save">Guardar cambios</button>
+    </div>
 </form>
 {% endblock contenedor %}

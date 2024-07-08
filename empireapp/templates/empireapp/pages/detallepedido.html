@@ -1,41 +1,46 @@
 {% extends "../index.html" %}
 {% block contenedor %}
 {% load custom_filters %}
-<h1>Detalle del Pedido #{{ pedido.id }}</h1>
-    
-    <p><strong>Fecha de Pedido:</strong> {{ pedido.fecha_pedido }}</p>
-    <p><strong>Total:</strong> {{ pedido.total }}</p>
-    <p><strong>Estado:</strong> {{ pedido.estado }}</p>
-
-    <h2>Productos en el Pedido:</h2>
-    <ul>
-        {% for item in productos %}
+<h1 class="page-title">Detalle del Pedido #{{ pedido.id }}</h1>
+    <div class="product-details-header">
+        <p><strong>Fecha de Pedido:</strong> {{ pedido.fecha_pedido }}</p>
+        <p><strong>Total:</strong> {{ pedido.total }}</p>
+        <p><strong>Estado:</strong> {{ pedido.estado }}</p>
+    </div>
+<h2 class="section-title">Productos en el Pedido:</h2>
+<ul class="product-list">
+    {% for item in productos %}
+    <li class="product-item">
+        {% if item.producto.laptops %}
+            <img class="product-image" src="{{ item.producto.laptops.imagen.url }}" alt="{{ item.producto.marca }} {{ item.producto.modelo }}" />
+        {% elif item.producto.celulares %}
+            <img class="product-image" src="{{ item.producto.celulares.imagen.url }}" alt="{{ item.producto.marca }} {{ item.producto.modelo }}" />
+        {% endif %}
+        <div class="product-details">
+            <p><strong>Marca:</strong> {{ item.producto.marca }}</p>
+            <p><strong>Modelo:</strong> {{ item.producto.modelo }}</p>
             {% if item.producto.laptops %}
-                <img class="empire-products-content-body__img" src="{{ item.producto.laptops.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
-                <li>Marca: {{ item.producto.marca }}</li>
-                <li>Modelo: {{ item.producto.modelo }}</li>
-                <li>Pulgadas: {{ item.producto.laptops.pulgadas }}</li>
-                <li>Resolucion: {{ item.producto.laptops.resolucion }}</li>
-                <li>Memoria Ram: {{ item.producto.laptops.memoria_ram }}</li>
-                <li>Bateria: {{ item.producto.laptops.bateria }}</li>
-                <li>Almacenamiento: {{ item.producto.laptops.almacenamiento }}</li>
-                <li>Tarjeta de video: {{ item.producto.laptops.tarjeta_video }}</li>
-                <li>Procesador: {{ item.producto.laptops.procesador }}</li>
-                <li>Precio: {{ item.producto.precio|currency }}</li>
-                <li>Cantidad: {{ item.cantidad }} </li>
-            
+                <p><strong>Pulgadas:</strong> {{ item.producto.laptops.pulgadas }}</p>
+                <p><strong>Resolución:</strong> {{ item.producto.laptops.resolucion }}</p>
+                <p><strong>Memoria Ram:</strong> {{ item.producto.laptops.memoria_ram }}</p>
+                <p><strong>Batería:</strong> {{ item.producto.laptops.bateria }}</p>
+                <p><strong>Almacenamiento:</strong> {{ item.producto.laptops.almacenamiento }}</p>
+                <p><strong>Tarjeta de video:</strong> {{ item.producto.laptops.tarjeta_video }}</p>
+                <p><strong>Procesador:</strong> {{ item.producto.laptops.procesador }}</p>
             {% elif item.producto.celulares %}
-                <img class="empire-products-content-body__img" src="{{ item.producto.celulares.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
-                <li>Marca: {{ item.producto.marca }}</li>
-                <li>Modelo: {{ item.producto.modelo }}</li>
-                <li>Pulgadas: {{ item.producto.celulares.pulgadas }}</li>
-                <li>Resolucion: {{ item.producto.celulares.resolucion }}</li>
-                <li>Bateria: {{ item.producto.celulares.bateria }}</li>
-                <li>Almacenamiento: {{ item.producto.celulares.almacenamiento }}</li>
-                <li>Camara: {{ item.producto.celulares.camara }}</li>
-                <li>Precio: {{ item.producto.precio|currency }}</li>
-                <li>Cantidad: {{ item.cantidad }} </li>
+                <p><strong>Pulgadas:</strong> {{ item.producto.celulares.pulgadas }}</p>
+                <p><strong>Resolución:</strong> {{ item.producto.celulares.resolucion }}</p>
+                <p><strong>Batería:</strong> {{ item.producto.celulares.bateria }}</p>
+                <p><strong>Almacenamiento:</strong> {{ item.producto.celulares.almacenamiento }}</p>
+                <p><strong>Cámara:</strong> {{ item.producto.celulares.camara }}</p>
             {% endif %}
-        {% endfor %}
-    </ul>
+            <p><strong>Precio:</strong> {{ item.producto.precio|currency }}</p>
+            <p><strong>Cantidad:</strong> {{ item.cantidad }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<div class="btn-back-container">
+    <a href="{% url 'pedidos' %}" class="btn-back">Volver a Pedidos</a>
+</div>
 {% endblock contenedor %}

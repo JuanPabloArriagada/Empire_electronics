@@ -7,73 +7,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'empireapp/css/style.css' %}">
 </head>
 <body>
-    <h2>Carrito de Compras</h2>
-    <ul>
-        {% for item in items %}
-            {% if item.producto.laptops %}
-                <img class="empire-products-content-body__img" src="{{ item.producto.laptops.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
-                <li>Marca: {{ item.producto.marca }}</li>
-                <li>Modelo: {{ item.producto.modelo }}</li>
-                <li>Pulgadas: {{ item.producto.laptops.pulgadas }}</li>
-                <li>Resolucion: {{ item.producto.laptops.resolucion }}</li>
-                <li>Memoria Ram: {{ item.producto.laptops.memoria_ram }}</li>
-                <li>Bateria: {{ item.producto.laptops.bateria }}</li>
-                <li>Almacenamiento: {{ item.producto.laptops.almacenamiento }}</li>
-                <li>Tarjeta de video: {{ item.producto.laptops.tarjeta_video }}</li>
-                <li>Procesador: {{ item.producto.laptops.procesador }}</li>
-                <li>Precio: {{ item.producto.precio|currency }}</li>
-                <li>Cantidad: 
-                    <form action="{% url 'cart_update' item.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" name="action" value="decrementar">-</button>
-                        <span>{{ item.quantity }}</span>
-                        <button type="submit" name="action" value="incrementar">+</button>
-                    </form>
-                </li>
-            
-            {% elif item.producto.celulares %}
-                <img class="empire-products-content-body__img" src="{{ item.producto.celulares.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
-                <li>Marca: {{ item.producto.marca }}</li>
-                <li>Modelo: {{ item.producto.modelo }}</li>
-                <li>Pulgadas: {{ item.producto.celulares.pulgadas }}</li>
-                <li>Resolucion: {{ item.producto.celulares.resolucion }}</li>
-                <li>Bateria: {{ item.producto.celulares.bateria }}</li>
-                <li>Almacenamiento: {{ item.producto.celulares.almacenamiento }}</li>
-                <li>Camara: {{ item.producto.celulares.camara }}</li>
-                <li>Precio: {{ item.producto.precio|currency }}</li>
-                <li>Cantidad:
-                    <form action="{% url 'cart_update' item.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" name="action" value="decrementar">-</button>
-                        <span>{{ item.quantity }}</span>
-                        <button type="submit" name="action" value="incrementar">+</button>
-                    </form>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <h2 class="page-title">Carrito de Compras</h2>
 
-    <h3>Total del Carrito: {{ total|currency }}</h3>
+    <div class="producto-carrito">
+        <ul>
+            {% for item in items %}
+                <div class="producto">
+                    {% if item.producto.laptops %}
+                        <img class="empire-products-content-body__img" src="{{ item.producto.laptops.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
+                        <div class="detalle-producto-carrito">
+                            <li>Marca: {{ item.producto.marca }}</li>
+                            <li>Modelo: {{ item.producto.modelo }}</li>
+                            <li>Pulgadas: {{ item.producto.laptops.pulgadas }}</li>
+                            <li>Resolucion: {{ item.producto.laptops.resolucion }}</li>
+                            <li>Memoria Ram: {{ item.producto.laptops.memoria_ram }}</li>
+                            <li>Bateria: {{ item.producto.laptops.bateria }}</li>
+                            <li>Almacenamiento: {{ item.producto.laptops.almacenamiento }}</li>
+                            <li>Tarjeta de video: {{ item.producto.laptops.tarjeta_video }}</li>
+                            <li>Procesador: {{ item.producto.laptops.procesador }}</li>
+                            <li>Precio: {{ item.producto.precio|currency }}</li>
+                            <li>Cantidad: 
+                                <form action="{% url 'cart_update' item.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" name="action" value="decrementar">-</button>
+                                    <span>{{ item.quantity }}</span>
+                                    <button type="submit" name="action" value="incrementar">+</button>
+                                </form>
+                            </li>
+                        </div>
+                    {% elif item.producto.celulares %}
+                        <img class="empire-products-content-body__img" src="{{ item.producto.celulares.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
+                        <div class="detalle-producto-carrito">
+                            <li>Marca: {{ item.producto.marca }}</li>
+                            <li>Modelo: {{ item.producto.modelo }}</li>
+                            <li>Pulgadas: {{ item.producto.celulares.pulgadas }}</li>
+                            <li>Resolucion: {{ item.producto.celulares.resolucion }}</li>
+                            <li>Bateria: {{ item.producto.celulares.bateria }}</li>
+                            <li>Almacenamiento: {{ item.producto.celulares.almacenamiento }}</li>
+                            <li>Camara: {{ item.producto.camara }}</li>
+                            <li>Precio: {{ item.producto.precio|currency }}</li>
+                            <li>Cantidad:
+                                <form action="{% url 'cart_update' item.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" name="action" value="decrementar">-</button>
+                                    <span>{{ item.quantity }}</span>
+                                    <button type="submit" name="action" value="incrementar">+</button>
+                                </form>
+                            </li>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="total-carrito">
+        <h3>Total del Carrito: {{ total|currency }}</h3>
+    </div>
+    
+    <div class="buttons-container">
+        <button id="openModal" class="btn-pagar">Ingresar Datos de Pago</button>
+        <a href="{% url 'productos' %}" class="btn-seguir-comprando">Seguir Comprando</a>
+    </div>
 
-    <form action="{% url 'cart_detail' %}" method="post">
-        {% csrf_token %}
-        <!-- Aquí puedes añadir campos para el pago, como tarjeta de crédito, dirección de envío, etc. -->
-        <label for="card_number">Número de Tarjeta:</label>
-        <input type="text" id="card_number" name="card_number" required>
-        
-        <label for="expiry_date">Fecha de Expiración:</label>
-        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
-        
-        <label for="cvv">CVV:</label>
-        <input type="text" id="cvv" name="cvv" required>
-        
-        <button type="submit">Pagar</button>
-    </form>
+    <!-- Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form action="{% url 'cart_detail' %}" method="post" class="form-pago">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="card_number">Número de Tarjeta:</label>
+                    <input type="text" id="card_number" name="card_number" pattern="\d{16}" title="Debe tener 16 dígitos" maxlength="16" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="expiry_date">Fecha de Expiración:</label>
+                    <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Debe tener el formato MM/YY" maxlength="5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="password" id="cvv" name="cvv" pattern="\d{3}" title="Debe tener 3 dígitos" maxlength="3" required>
+                </div>
+                
+                <button type="submit" class="btn-pagar">Pagar</button>
+            </form>
+        </div>
+    </div>
 
-    <a href="{% url 'productos' %}">Seguir Comprando</a>
+    <!-- Incluir el archivo JavaScript -->
+    <script src="{% static 'empireapp/js/detail.js' %}"></script>
 </body>
 </html>
 {% endblock contenedor %}

@@ -76,12 +76,10 @@
 
                 <a id="empire-cart" class="empire-menu-cart__link cart--number">
                     <span id="empire-cart__number" class="empire-cart__number">
-                            {{cart_item_count}}
-                        </span>
-                    <img class="empire-menu-cart__img" src="{% static "empireapp/images/icon-carrito.svg" %}"
-                        alt="Icono Carrito de Compra">
-
-
+                        {{cart_item_count}}
+                    </span>
+                    <img class="empire-menu-cart__img" src="{% static 'empireapp/images/icon-carrito.svg' %}" alt="Icono Carrito de Compra">
+                
                     <div id="empire-cart-container" class="empire-cart-container">
                         <!-- Productos en el carrito -->
                         <section class="empire-details-content">
@@ -93,18 +91,18 @@
                                     {% elif item.producto.celulares %}
                                         <img class="empire-products-content-body__img" src="{{ item.producto.celulares.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
                                     {% endif %}
-                                        <ul>
-                                            <li>Modelo: {{ item.producto.modelo }} </li>
-                                            <li>Cantidad:
-                                                <form action="{% url 'cart_update' item.id %}" method="post">
-                                                    {% csrf_token %}
-                                                    <button type="submit" name="action" value="decrementar">-</button>
-                                                    <span>{{ item.quantity }}</span>
-                                                    <button type="submit" name="action" value="incrementar">+</button>
-                                                </form> 
-                                            </li>
-                                            <li>Precio:  {{ item.producto.precio }} </li>
-                                        </ul>
+                                    <ul>
+                                        <li>Modelo: {{ item.producto.modelo }} </li>
+                                        <li>Cantidad:
+                                            <form class="cantidad-form" action="{% url 'cart_update' item.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button type="submit" name="action" value="decrementar">-</button>
+                                                <span>{{ item.quantity }}</span>
+                                                <button type="submit" name="action" value="incrementar">+</button>
+                                            </form>
+                                        </li>
+                                        <li>Precio: {{ item.producto.precio }} </li>
+                                    </ul>
                                 </div>
                             {% endfor %}
                         </section>
@@ -113,65 +111,55 @@
                             <div class="empire-details-products-value">
                                 <h3>Total del Carrito: {{ total|currency }}</h3>
                                 <div class="empire-details-products-value-btn">
-                                    <a href="{% url "cart_detail" %}">
+                                    <a href="{% url 'cart_detail' %}">
                                         <button class="empire-details-products-value-btn--add"> Ir a pagar</button>
                                     </a>
-
-
                                 </div>
-
                             </div>
                         </section>
                     </div>
                 </a>
+                
 
                 
                 <a id="empire-usuario" class="empire-menu-cart__link usuario">
-                    <img class="empire-menu-cart__img" src="{% static "empireapp/images/icon-user.svg" %}"
-                        alt="Icono Usuario">
+                    <img class="empire-menu-cart__img" src="{% static 'empireapp/images/icon-user.svg' %}" alt="Icono Usuario">
                 </a>
                 <div id="empire-usuario-container" class="empire-usuario-container">
                     {% if user.is_staff %}
-                        <h5> Bienvenido {{user.nombre}} <span> </span> {{user.apellido}}</h5>
-                        <li class="empire-menu-nav__list">
-                            <button type="button">
-                                <a href="{% url "home" %}">Panel de Admin</a>
-                            </button>
-                        </li>
+                        <h5>Bienvenido {{user.nombre}} <span> </span> {{user.apellido}}</h5>
+                        <ul>
+                            <li class="empire-menu-nav__list">
+                                <a href="{% url 'home' %}" class="btn-link">Panel de Admin</a>
+                            </li>
+                        </ul>
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button type="submit">Cerrar sesión</button>
+                            <button type="submit" class="btn-logout">Cerrar sesión</button>
                         </form>
                     {% elif user.is_authenticated %}
-                        <h5> Bienvenido {{user.nombre}} <span> </span> {{user.apellido}}</h5>
-
+                        <h5>Bienvenido {{user.nombre}} <span> </span> {{user.apellido}}</h5>
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button type="submit">Cerrar sesión</button>
+                            <button type="submit" class="btn-logout">Cerrar sesión</button>
                         </form>
                         <ul>
                             <li class="empire-menu-nav__list">
-                                <button type="button">
-                                    <a href="{% url "pedidos" %}">Mis pedidos</a>
-                                </button>
+                                <a href="{% url 'pedidos' %}" class="btn-link">Mis pedidos</a>
                             </li>
                             <li class="empire-menu-nav__list">
-                                <button type="button">
-                                    <a href="{% url "perfil" %}">Perfil</a>
-                                </button>
+                                <a href="{% url 'perfil' %}" class="btn-link">Perfil</a>
                             </li>
                         </ul>
                     {% else %}
                         <form method="post" action="{% url 'login' %}">
                             {% csrf_token %}
                             {{ login_form.as_p }}
-                            <button type="submit">Iniciar sesión</button>
+                            <button type="submit" class="btn-login">Iniciar sesión</button>
                         </form>
-                        <button type="button">
-                            <a href={% url "registrarse" %}> registrarse</a>
-                        </button>
+                        <a href="{% url 'registrarse' %}" class="btn-register">Registrarse</a>
                     {% endif %}
-                </div>
+                </div>                
             </div>
         </section>
 

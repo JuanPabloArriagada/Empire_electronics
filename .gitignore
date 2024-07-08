@@ -6,5 +6,5 @@ empireapp/__init__.py
 db.sqlite3
 /venv
 empireapp\templatetags\__pycache__
-.venv
 entorno
+.venv
