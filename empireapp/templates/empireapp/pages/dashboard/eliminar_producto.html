@@ -1,17 +1,17 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
 {% block contenido %}
-    <section class="full-width header-well">
-        <!-- Contenido del encabezado, según tu diseño -->
-    </section>
+    
 
-    <h2>Eliminar {{ product_type|capfirst }}</h2>
+    <div class="delete-product-container">
+        <h2 class="delete-product-title">Eliminar {{ product_type|capfirst }}</h2>
 
-    <p>¿Estás seguro que deseas eliminar {{ product_type|capfirst }} "{{ product }}"?</p>
+        <p class="delete-product-message">¿Estás seguro que deseas eliminar {{ product_type|capfirst }} "{{ product }}"?</p>
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Confirmar eliminación</button>
-        <a href="{% url 'products' %}">Cancelar</a>
-    </form>
+        <form method="post" class="delete-product-form">
+            {% csrf_token %}
+            <button type="submit">Confirmar eliminación</button>
+            <a href="{% url 'products' %}">Cancelar</a>
+        </form>
+    </div>
 
 {% endblock contenido %}

@@ -1,15 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Formulario de Laptops</title>
+    <link rel="stylesheet" href="{% static 'empireapp/css/style.css' %}">
 </head>
 <body>
-    <h1>Agregar Nueva Laptop</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">Empire Electronics</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{% url 'products' %}">Volver</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <h1 class="page-title">Agregar Nueva Laptop</h1>
+        <form method="post" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">Guardar</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Empire Electronics. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>

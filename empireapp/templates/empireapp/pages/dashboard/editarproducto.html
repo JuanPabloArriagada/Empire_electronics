@@ -1,21 +1,18 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
 {% block contenido %}
-    <section class="full-width header-well">
-        <div class="full-width header-well-icon">
-            <i class="zmdi zmdi-washing-machine"></i>
-        </div>
-        <div class="full-width header-well-text">
-            <p class="text-condensedLight">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </p>
-        </div>
-    </section>
 
-    <h2>Editar {{ product_type|capfirst }}</h2>
+    <div class="edit-product-container">
+        <h2 class="edit-product-title">Editar {{ product_type|capfirst }}</h2>
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar cambios</button>
-    </form>
+        <form method="post" enctype="multipart/form-data" class="edit-product-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit">Guardar cambios</button>
+        </form>
+    </div>
 {% endblock contenido %}

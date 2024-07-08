@@ -1,12 +1,11 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
 {% block contenido %}
-<div class="container">
-    <h1>Crear Nuevo Administrador</h1>
-    <form method="post">
+<div class="create-admin-container">
+    <h1 class="create-admin-title">Crear Nuevo Administrador</h1>
+    <form method="post" class="create-admin-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Crear Admin</button>
+        <button type="submit" class="btn-submit">Crear Admin</button>
     </form>
 </div>
-
 {% endblock contenido %}
