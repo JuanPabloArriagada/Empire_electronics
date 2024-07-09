@@ -64,8 +64,19 @@ def productos(request):
     return render(request, "empireapp/pages/productos.html",lista_productos)
 
 @login_required
-def detalleProducto(request):
-    return render(request, "empireapp/pages/detalleProducto.html")
+def detalleProducto(request, product_type, pk):
+    print(request, product_type, pk)
+
+    if product_type == 'laptop':
+        producto = get_object_or_404(Laptops, id=pk)
+    elif product_type == 'celular':
+        producto = get_object_or_404(Celulares, id=pk)
+    else:
+        # Manejar caso de product_type desconocido o incorrecto
+        return redirect('products')
+    
+    print(producto)
+    return render(request, "empireapp/pages/detalleProducto.html",{'producto': producto})
 
 @login_required
 def contacto(request):
@@ -79,7 +90,6 @@ def blog(request):
 def about(request):
     return render(request, "empireapp/pages/about.html")
 
-@login_required
 def registrarse(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)

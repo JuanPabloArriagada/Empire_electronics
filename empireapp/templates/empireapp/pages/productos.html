@@ -67,7 +67,7 @@
                     {% for producto in productos %}
                         {% if producto.celulares %}
                         <div class="empire-products-content-body__item">
-                            <a class="empire-products-content-body__link" href="">
+                            <a class="empire-products-content-body__link" href={% url 'detalleProducto' 'celular' producto.id %}>
                                 <img class="empire-products-content-body__img" src="{{ producto.celulares.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
                             </a>
                             <span class="empire-products-content-body__trade"><strong>{{ producto.marca }}</strong></span>
@@ -89,7 +89,7 @@
                     {% for producto in productos %}
                         {% if producto.laptops and producto.estado == 'disponible'%}
                         <div class="empire-products-content-body__item">
-                            <a class="empire-products-content-body__link" href="">
+                            <a class="empire-products-content-body__link" href={% url "detalleProducto" 'laptop' producto.id%}>
                                 <img class="empire-products-content-body__img" src="{{ producto.laptops.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
                             </a>
                             <span class="empire-products-content-body__trade"><strong>{{ producto.marca }}</strong></span>

@@ -7,7 +7,7 @@ urlpatterns = [
     #PAGINA
     path('', index, name='index'), 
     path('productos/', productos, name="productos"),
-    path('detalleProducto/', detalleProducto, name="detalleProducto"),
+    path('detalleProducto/<str:product_type>/<int:pk>', detalleProducto, name="detalleProducto"),
     path('contacto/', contacto, name="contacto"),
     path('blog/', blog, name="blog"),
     path('about/', about, name="about"),

@@ -11,38 +11,39 @@
             <li class="empire-breadcrumbs-list__item active" aria-current="page">Accesorios</li>
         </ol>
     </nav>
-    <section class="empire-details">
-        <div class="empire-details-products">
-            <img class="empire-details-products__img" src="{% static "empireapp/images/products/laptops/01-macbook-air-15.png" %}"
-                alt="MacBook Pro M2 MNEJ3 2022 LLA 13.3 inc">
+
+    <li class="product-item">
+        {% if producto.laptops %}
+            <img class="product-image" src="{{ producto.laptops.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
+        {% elif producto.celulares %}
+            <img class="product-image" src="{{ producto.celulares.imagen.url }}" alt="{{ producto.marca }} {{ producto.modelo }}" />
+        {% endif %}
+        <div class="product-details">
+            <p><strong>Marca:</strong> {{ producto.marca }}</p>
+            <p><strong>Modelo:</strong> {{ producto.modelo }}</p>
+            {% if producto.laptops %}
+                <p><strong>Pulgadas:</strong> {{ producto.laptops.pulgadas }}</p>
+                <p><strong>Resolución:</strong> {{ producto.laptops.resolucion }}</p>
+                <p><strong>Memoria Ram:</strong> {{ producto.laptops.memoria_ram }}</p>
+                <p><strong>Batería:</strong> {{ producto.laptops.bateria }}</p>
+                <p><strong>Almacenamiento:</strong> {{ producto.laptops.almacenamiento }}</p>
+                <p><strong>Tarjeta de video:</strong> {{ producto.laptops.tarjeta_video }}</p>
+                <p><strong>Procesador:</strong> {{ producto.laptops.procesador }}</p>
+            {% elif producto.celulares %}
+                <p><strong>Pulgadas:</strong> {{ producto.celulares.pulgadas }}</p>
+                <p><strong>Resolución:</strong> {{ producto.celulares.resolucion }}</p>
+                <p><strong>Batería:</strong> {{ producto.celulares.bateria }}</p>
+                <p><strong>Almacenamiento:</strong> {{ producto.celulares.almacenamiento }}</p>
+                <p><strong>Cámara:</strong> {{ producto.celulares.camara }}</p>
+            {% endif %}
+            <p><strong>Precio:</strong> {{ producto.precio }}</p>
         </div>
-        <div class="empire-details-products-item">
-            <h3 class="empire-details-products-item__title">MacBook Pro M2 MNEJ3 2022 LLA 13.3 inch</h3>
-            <ul class="empire-details-products-item-list">
-                <li class="empire-details-products-item-list__item"><span>Marca</span><strong>Apple</strong></li>
-                <li class="empire-details-products-item-list__item"><span>Modelo</span><strong>Macbook Pro</strong>
-                </li>
-                <li class="empire-details-products-item-list__item"><span>Pantalla</span><strong>13.3 "</strong>
-                </li>
-                <li class="empire-details-products-item-list__item"><span>Disco Duro</span><strong>256 GB</strong>
-                </li>
-                <li class="empire-details-products-item-list__item"><span>Modelo CPU</span><strong>Intel Core
-                        I5</strong></li>
-            </ul>
-        </div>
-        <div class="empire-details-products-value">
-            <h2 class="empire-details-products-value__price">$ 1.299</h2>
-            <span class="empire-details-products-value__last-price">$ 1.699</span>
-            <div class="empire-details-products-value-btn">
-                <a href="">
-                    <button class="empire-details-products-value-btn--add"> Comprar</button>
-                </a>
+    </li>
 
                 <!-- SIMULACION DE CARRITO DE COMPRAS -->
-                <form action="{% url 'cart_add' product.id %}" method="post">
+                <form action="{% url 'cart_add' producto.id %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" name="quantity" value="1" class="btn btn-green fw-semibold text-dark"><i class="fas fa-cart-plus fa-lg"></i>
-                        Añadir Al Carro</button>
+                    <button type="submit" name="quantity" value="1" class="empire-products-content-body__add">Añadir Al Carro</button>
                 </form>
 
             </div>
