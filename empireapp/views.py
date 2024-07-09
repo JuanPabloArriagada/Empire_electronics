@@ -46,7 +46,7 @@ def perfil(request):
         form = UpdateClienteForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            # Redirecciona al perfil o a donde desees después de guardar los cambios
+            messages.success(request,'Modificacion exitosa.')
             return redirect('perfil')  
     else:
         form = UpdateClienteForm(instance=request.user)
@@ -86,6 +86,7 @@ def registrarse(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request,'Registro completo, Bienvenido')
             return redirect('index')
     else:
         form = ClienteForm()
@@ -114,6 +115,7 @@ def crear_admin(request):
         form = AdminCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'Admin creado')
             return redirect('home')  # Redirigir a la página deseada después de crear el admin
     else:
         form = AdminCreationForm()
@@ -148,6 +150,7 @@ def sales(request):
         if nuevo_estado and nuevo_estado in dict(TIPO_ESTADO_PEDIDO):
             pedido.estado = nuevo_estado
             pedido.save()
+            messages.success(request,'Estado actualizado.')
             return redirect('sales')
 
     context = {
@@ -195,7 +198,7 @@ def crearcliente(request):
         form=ClienteForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            """ messages.success(request, 'Persona agregada al registro') """
+            messages.success(request, 'Cliente agregado')
             return redirect(to="clientes")
 
     datos={
@@ -205,22 +208,25 @@ def crearcliente(request):
 
 @user_passes_test(is_admin)
 @login_required
-def modificarcliente(request,id):
-    cliente=get_object_or_404(Cliente,rut=id)
+def modificarcliente(request, id):
+    cliente = get_object_or_404(Cliente, rut=id)
 
-    form=UpdateClienteForm(instance=cliente)
-    datos={
-        "form":form,
-        "cliente":cliente
-    }
-
-    if request.method=="POST":
-        form=UpdateClienteForm(data=request.POST, files=request.FILES, instance=cliente)
+    if request.method == "POST":
+        form = UpdateClienteForm(data=request.POST, files=request.FILES, instance=cliente)
         if form.is_valid():
             form.save()
-            """ messages.warning(request,'cliente Modificada') """
-            return redirect(to='clientes')
-        
+            messages.success(request, 'Cliente modificado exitosamente.')
+            return redirect('clientes')
+        else:
+            messages.error(request, 'Por favor, corrija los errores en el formulario.')
+    else:
+        form = UpdateClienteForm(instance=cliente)
+
+    datos = {
+        "form": form,
+        "cliente": cliente
+    }
+
     return render(request, "empireapp/pages/dashboard/modificarcliente.html", datos)
 
 
@@ -252,7 +258,7 @@ def añadirlaptops(request):
         form=LaptopsForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            """ messages.success(request, 'Laptop agregada') """
+            messages.success(request, 'Laptop agregado')
             return redirect(to="products")
 
     datos={
@@ -271,7 +277,7 @@ def añadircelulares(request):
         form=CelularesForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            """ messages.success(request, 'Laptop agregada') """
+            messages.success(request, 'Celular agregado')
             return redirect(to="products")
 
     datos={
@@ -301,11 +307,12 @@ def editarproducto(request, product_type, pk):
         product = get_object_or_404(Celulares, id=pk)
         form = CelularesForm(request.POST or None, instance=product)
     else:
-        # Handle unknown product type
+        #productos fututos
         return redirect('products')
 
     if request.method == 'POST' and form.is_valid():
         form.save()
+        messages.success(request, 'Producto modificado correctamente.')
         return redirect('products')
 
     context = {
@@ -334,6 +341,7 @@ def eliminar_producto(request, product_type, pk):
         if product.imagen:
             remove(os.path.join(str(settings.MEDIA_ROOT).replace('/media', '') + product.imagen.url))
         product.delete()
+        messages.warning(request,'Producto eliminado.')
         return redirect('products')  # Redirigir a la página de productos después de eliminar
 
     context = {
@@ -382,6 +390,7 @@ def cart_detail(request):
             # Vaciar el carrito después de completar el pedido
             cart.cartitem_set.all().delete()
             cart.delete()
+            messages.success(request,'Pedido realizado, espere actualizaciones de estado.')
         return redirect('pedidos')
     return render(request, 'cart/detail.html', {'cart': cart, 'items': items, 'total': total})
 

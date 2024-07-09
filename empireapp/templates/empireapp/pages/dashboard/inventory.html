@@ -25,8 +25,6 @@
                         <th>Estado</th>
                         <th>Precio</th>
                         <th>Stock</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,20 +44,6 @@
                                 <td>{{ producto.estado }}</td>
                                 <td>{{ producto.precio }}</td>
                                 <td>{{ producto.stock }}</td>
-                                <td>
-                                    {% if producto.laptops %}
-                                        <a href="{% url 'editarproducto' 'laptop' producto.id %}" class="inventory-btn-edit">Editar</a>
-                                    {% elif producto.celulares %}
-                                        <a href="{% url 'editarproducto' 'celular' producto.id %}" class="inventory-btn-edit">Editar</a>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if producto.laptops %}
-                                        <a href="{% url 'eliminar_producto' 'laptop' producto.id %}" class="inventory-btn-delete">Eliminar</a>
-                                    {% elif producto.celulares %}
-                                        <a href="{% url 'eliminar_producto' 'celular' producto.id %}" class="inventory-btn-delete">Eliminar</a>
-                                    {% endif %}
-                                </td>
                             </tr>
                         {% endif %}
                     {% endfor %}
@@ -78,8 +62,6 @@
                         <th>Estado</th>
                         <th>Precio</th>
                         <th>Stock</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,20 +81,6 @@
                                 <td>{{ producto.estado }}</td>
                                 <td>{{ producto.precio }}</td>
                                 <td>{{ producto.stock }}</td>
-                                <td>
-                                    {% if producto.laptops %}
-                                        <a href="{% url 'editarproducto' 'laptop' producto.id %}" class="inventory-btn-edit">Editar</a>
-                                    {% elif producto.celulares %}
-                                        <a href="{% url 'editarproducto' 'celular' producto.id %}" class="inventory-btn-edit">Editar</a>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if producto.laptops %}
-                                        <a href="{% url 'eliminar_producto' 'laptop' producto.id %}" class="inventory-btn-delete">Eliminar</a>
-                                    {% elif producto.celulares %}
-                                        <a href="{% url 'eliminar_producto' 'celular' producto.id %}" class="inventory-btn-delete">Eliminar</a>
-                                    {% endif %}
-                                </td>
                             </tr>
                         {% endif %}
                     {% endfor %}

@@ -204,54 +204,6 @@
                 <h4 class="empire-featured-item__title">Accesorios</h4>
             </a>
         </section>
-        {% if messages %} 
-
-        {% for message in messages %}
-            {% if message.level == 25 %}
-              {% comment %}   <div class="alert alert-success alert-dismissible mt-3">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    <strong>Operación Realizada: </strong>{{message}} 
-                </div> {% endcomment %}
-                <script>
-                    Swal.fire({
-                        title: 'Operación exitosa!',
-                        text: '{{message}}',
-                        icon: 'success',
-                        confirmButtonText: 'Ok'
-                      })
-                </script>
-            {% endif %}
-            {% if message.level == 30 %}
-               {% comment %}  <div class="alert alert-warning alert-dismissible mt-3">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    <strong>Alerta: </strong>{{message}} 
-                </div> {% endcomment %}
-                <script>
-                    Swal.fire({
-                        title: 'Alerta!',
-                        text: '{{message}}',
-                        icon: 'warning',
-                        confirmButtonText: 'Ok'
-                      })
-                </script>
-            {% endif %}
-            {% if message.level == 40 %}
-           {% comment %}  <div class="alert alert-danger alert-dismissible mt-3">
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                <strong>Importante: </strong>{{message}} 
-            </div> {% endcomment %}
-            <script>
-                Swal.fire({
-                    title: 'Importante!',
-                    text: '{{message}}',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                  })
-            </script>
-        {% endif %}
-        {% endfor %}
-
-{% endif %}
     </main>
     {% endblock contenedor %}
     <footer class="empire-footer">
