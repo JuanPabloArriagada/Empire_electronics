@@ -24,7 +24,7 @@ urlpatterns = [
     path('detallecliente/<id>', detallecliente, name="detallecliente"),
     path('crearcliente/',crearcliente,name='crearcliente'),
     path('modificarcliente/<id>',modificarcliente, name='modificarcliente'),
-    path('eliminarcliente/<id>', eliminarcliente, name='eliminarcliente'),
+    path('eliminarcliente/<str:id>', eliminarcliente, name='eliminarcliente'),
     path('añadirlaptops/', añadirlaptops, name="añadirlaptops"),
     path('añadircelulares/', añadircelulares, name="añadircelulares"),
     path('editarproducto/<str:product_type>/<int:pk>', editarproducto, name="editarproducto"),
@@ -34,8 +34,8 @@ urlpatterns = [
 
     
     #LOGIN Y LOGOUT
-    path('login/', auth_views.LoginView.as_view(template_name='index.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='index'), name='logout'),
+    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     
     #CARRITO
     path('cart/', cart_detail, name='cart_detail'),

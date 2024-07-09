@@ -1510,6 +1510,41 @@ h1,h2,h3,h4,h5,h6, a, p, span, textarea {
     z-index: 1000;
 }
 
+.empire-login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    max-width: 350px; 
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.empire-login-container h2 {
+    margin-bottom: 1.5rem;
+    color: #333333;
+}
+
+.empire-login-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.empire-login-container form input {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.empire-login-container button[type="submit"] {
+    width: 100%;
+    margin-top: 1rem;
+}
+
 .usuario:hover .empire-usuario-container {
     display: flex;
 }
@@ -2802,7 +2837,7 @@ h1, h2 {
 /*DETALLE CLIENTE*/
 /* Contenedor principal */
 .client-detail-container {
-    max-width: 800px;
+    max-width: 1800px;
     margin: 40px auto;
     padding: 20px;
     background-color: #f9f9f9;

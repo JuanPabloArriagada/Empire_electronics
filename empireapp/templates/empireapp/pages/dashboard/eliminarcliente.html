@@ -1,49 +1,23 @@
 {% extends "empireapp/pages/dashboard/home.html" %}
+
 {% block contenido %}
-<div class="delete-client-container">
-    <h3 class="delete-client-title">Eliminar Cliente</h3>
-    <div class="alert alert-danger" role="alert">
-        <strong>
-            <h1>Está a punto de eliminar al siguiente cliente:</h1>
-        </strong>
-        <div class="mt-5">
-            <h3>{{cliente.nombre}} {{cliente.apellido }} Rut:{{cliente.rut}}</h3>
-        </div>
-    </div>
-
-    <div class="delete-client-form-actions">
-        <button type="button" class="delete-client-btn delete-client-btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
-            Eliminar cliente
-        </button>
-        <a href="{% url 'clientes' %}" class="delete-client-btn delete-client-btn-primary">Cancelar</a>
-    </div>
-</div>
-
-<!-- Button to Open the Modal -->
-<!-- The Modal -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Importante</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                Está seguro que desea eliminar a {{cliente.nombre}} {{cliente.apellido}}
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <form action="" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <input type="submit" value="Confirmar Eliminación" class="btn btn-danger btn-lg">
-                </form>
+<form method="post">
+    {% csrf_token %}
+    <div class="delete-client-container">
+        <h3 class="delete-client-title">Eliminar Cliente</h3>
+        <div class="alert alert-danger" role="alert">
+            <strong>Está a punto de eliminar al siguiente cliente:</strong>
+            <div class="mt-3">
+                <h3>{{ cliente.nombre }} {{ cliente.apellido }} Rut: {{ cliente.rut }}</h3>
             </div>
         </div>
+
+        <div class="delete-client-form-actions">
+            <button type="submit" class="delete-client-btn delete-client-btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                Eliminar cliente
+            </button>
+            <a href="{% url 'clientes' %}" class="delete-client-btn delete-client-btn-primary">Cancelar</a>
+        </div>
     </div>
-</div>
+</form>
 {% endblock contenido %}
